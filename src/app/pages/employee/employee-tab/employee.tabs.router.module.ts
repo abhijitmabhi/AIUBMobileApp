@@ -34,6 +34,15 @@ const routes: Routes = [
           }
         ]
       },
+      {
+        path: 'employeeMenu',
+        children: [
+          {
+            path: '',
+            loadChildren: '../employee-menu/employee-menu.module#EmployeeMenuPageModule'
+          }
+        ]
+      },
       // {
       //   path: '',
       //   redirectTo: '/Tabs/Home',

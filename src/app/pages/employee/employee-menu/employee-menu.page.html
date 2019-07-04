@@ -1,0 +1,398 @@
+<ion-header>
+  <ion-toolbar class="appHeader">
+    <ion-title>More</ion-title>
+
+    <ion-buttons slot="secondary">
+        <ion-button (click)="logout()">
+          <ion-icon slot="icon-only" name="ios-log-out"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- Academics Manu -->
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+              <mat-icon class="material-icons">insert_chart</mat-icon>
+              <label>Academics</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description class="subMenuPanel">
+        <ion-row>
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="paper"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content">
+                  <div class="icContent">
+                    <span class="menu-title">Courses & Results</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+          
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content">
+                  <div class="icContent">
+                    <span class="menu-title">Offered Courses</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content">
+                  <div class="icContent">
+                    <span class="menu-title">Drop Recommend</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+          
+          <ion-col>
+            <!-- <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content">
+                  <div class="icContent">
+                    <span class="menu-title">Offered Courses</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div> -->
+          </ion-col>
+        </ion-row>
+      </mat-panel-description>
+    </mat-expansion-panel>
+
+    <!-- Attendance Manu -->
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+              <mat-icon class="material-icons">fingerprint</mat-icon>
+              <label>Attendance</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description class="subMenuPanel">
+        <ion-row>
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="md-finger-print"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content needExtraHeight">
+                  <div class="icContent" style="position: absolute;
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);">
+                    <span class="menu-title">Attendance</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+          
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content needExtraHeight">
+                  <div class="icContent" style="position: absolute;
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);">
+                    <span class="menu-title">Missing Attendance</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content">
+                  <div class="icContent">
+                    <span class="menu-title">Attendance Recommendation</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+          
+          <ion-col>
+            <div class="menu-div">
+              <ion-card class="ion-activatable">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-card-header class="subMenuHeader">
+                  <ion-card-title class="hTitle">
+                    <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="menu-card-content">
+                  <div class="icContent">
+                    <span class="menu-title">Attendance Supervision</span>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </mat-panel-description>
+    </mat-expansion-panel>
+
+    <!-- Manage Leave Manu -->
+    <ion-row class="horizontalListMenu">
+      <ion-item-divider>
+          <div class="package-rating-detail">
+              <mat-icon class="material-icons menuDividerIcon">notes</mat-icon>
+              <label class="menuDividerTile">Manage Leave</label>
+          </div>
+      </ion-item-divider>
+      <div class="scrolling-wrapper">
+        <div class="card firstCard">
+          <div class="menu-div">
+            <ion-card class="ion-activatable horizontalMenuCard">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="ios-stats"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content">
+                <div class="icContent">
+                  <span class="menu-title">Allocation</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="menu-div">
+            <ion-card class="ion-activatable horizontalMenuCard">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="ios-list-box"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content">
+                <div class="icContent">
+                  <span class="menu-title">Application</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="menu-div">
+            <ion-card class="ion-activatable horizontalMenuCard">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content">
+                <div class="icContent">
+                  <span class="menu-title">Recommendation</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="menu-div">
+            <ion-card class="ion-activatable horizontalMenuCard">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="ios-albums"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content">
+                <div class="icContent">
+                  <span class="menu-title">Supervision</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="menu-div">
+            <ion-card class="ion-activatable horizontalMenuCard">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="ios-paper"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content">
+                <div class="icContent">
+                  <span class="menu-title">History</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+
+
+      </div>
+    </ion-row>
+
+    <!-- <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">calendar_today</mat-icon>
+                <label>TSF</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">repeat</mat-icon>
+                <label>Duty & Day-Off</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">fingerprint</mat-icon>
+                <label>Attendance</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">payment</mat-icon>
+                <label>Payment</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">assignment</mat-icon>
+                <label>Library</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">description</mat-icon>
+                <label>Others</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="menuTile">
+      <mat-expansion-panel-header class="menuTileHeader">
+          <mat-panel-title class="menuTileHeaderTitle">
+            <div class="package-rating-detail">
+                <mat-icon class="material-icons">help_outline</mat-icon>
+                <label>About</label>
+            </div>
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+          Not Implemented Yet!
+        </mat-panel-description>
+    </mat-expansion-panel> -->
+</ion-content>
