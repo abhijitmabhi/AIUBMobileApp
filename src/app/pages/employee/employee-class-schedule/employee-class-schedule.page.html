@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar class="appHeader">
+      <ion-buttons slot="start">
+          <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+    <ion-title>Class Schedule</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Pull Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    refreshingSpinner="circles">
+  </ion-refresher-content>
+    </ion-refresher>
+
+  <!-- Class Schedule -->
+ <ion-row class="ClassSchedule">
+    <ion-item-divider style="padding-left: 2px;">
+        <div style="width: 100%;" class="package-rating-detail">
+            <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
+            <label class="menuDividerTile">Full Class Schedule</label>
+        </div>
+    </ion-item-divider>
+
+    <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
+        <div style="margin-left: 7px;
+        border-left: 3px solid #014ea2; margin-top: 3px;">
+            <mat-list>
+              <mat-list-item class="matListItem" style="height: auto;">
+                <div style="width: 50%;" class="day-title">
+                    {{classSchedule.ClassRoutineDate2}}
+                </div>
+                <div style="width: 50%;"></div>
+              </mat-list-item>
+              <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;" 
+              *ngFor="let section of classSchedule.Classes">
+                <div class="schedule-desc-left">
+                    {{section.SectionDescription}} 
+                </div>
+                <div class="schedule-desc-right">
+                    {{section.Time}} {{section.Room2}}
+                </div>
+              </mat-list-item> 
+            </mat-list>
+          </div>
+
+          <!-- <div style="margin-left: 7px;
+        border-left: 3px solid #014ea2; margin-top: 3px;">
+            <mat-list>
+              <mat-list-item class="matListItem" style="height: auto;">
+                <div style="width: 50%;" class="day-title">
+                    Tomorrow
+                </div>
+                <div style="width: 50%;"></div>
+              </mat-list-item>
+              <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
+                <div class="schedule-desc-left">
+                  Software Engineering (A)
+                </div>
+                <div class="schedule-desc-right">
+                  09:30 AM - 10:30 AM [3103]
+                </div>
+              </mat-list-item>
+              <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
+                <div class="schedule-desc-left">
+                    Complex Variable, Laplace & Z-Transformation (O)
+                </div>
+                <div class="schedule-desc-right">
+                  11:30 AM - 01:30 PM [3104]
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </div> -->
+    </div>
+  </ion-row>
+
+  <!-- <ion-row justify-content-center align-items-center>
+      <ion-button shape="round" fill="outline">See Full Class Schedule</ion-button>
+  </ion-row> -->
+</ion-content>

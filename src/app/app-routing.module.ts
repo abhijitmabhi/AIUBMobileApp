@@ -6,7 +6,9 @@ const routes: Routes = [
   { path: '', loadChildren: './pages/login/login/login.module#LoginPageModule' },
   { path: 'login', loadChildren: './pages/login/login/login.module#LoginPageModule' },
   // { path: 'employee-home', loadChildren: './pages/employee/employee-home/employee-home.module#EmployeeHomePageModule' },
-  { path: 'employee-tab', loadChildren: './pages/employee/employee-tab/employee-tab.module#EmployeeTabPageModule' }
+  { path: 'employee-tab', loadChildren: './pages/employee/employee-tab/employee-tab.module#EmployeeTabPageModule' },
+  { path: 'employee-class-schedule', loadChildren: './pages/employee/employee-class-schedule/employee-class-schedule.module#EmployeeClassSchedulePageModule' },
+  // { path: 'employee-attendance', loadChildren: './pages/employee/employee-attendance/employee-attendance.module#EmployeeAttendancePageModule' }
 ];
 @NgModule({
   imports: [

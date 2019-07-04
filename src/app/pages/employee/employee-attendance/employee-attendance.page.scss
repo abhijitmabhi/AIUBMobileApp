@@ -1,0 +1,89 @@
+.list_padding {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .align-right {
+    text-align: right;
+  }
+  
+  .list-item1 {
+    padding-left: 5%;
+    width: 70%;
+    text-align: left;
+  }
+  
+  .list-item2 {
+    padding-right: 5%;
+    width: 20%;
+    text-align: right;
+  }
+  
+  .attendance-list-head1 {
+    width: 33.33%;
+    text-align: center;
+  }
+  
+  .attendance-list-head2 {
+    width: 33.33%;
+    text-align: center;
+  }
+  
+  .attendance-list-head3 {
+    width: 33.33%;
+    text-align: center;
+  }
+  
+  //JAOWAT's customise
+  // .attendance-list-head4{
+  //     width: 23%;
+  //     text-align: center;
+  // }
+  // .attendance-list-head5{
+  //     width: 100%;
+  //     text-align: center;
+  // }
+  
+  .footerDiv {
+    height: 20px;
+    width: 100%;
+  }
+  
+  .mat-list-base .mat-list-item {
+    font-size: 14px;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-title,
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    margin-right: 12px;
+  }
+  
+  .example-button-row button,
+  .example-button-row a {
+    align-self: center;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 4%;
+    width: 29.33%;
+  }
+  
+  .desc-head {
+    width: 50%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+  }
+  

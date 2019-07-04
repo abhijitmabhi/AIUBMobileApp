@@ -16,15 +16,15 @@ const routes: Routes = [
           }
         ]
       },
-    //   {
-    //     path: 'Attendance',
-    //     children: [
-    //       {
-    //         path: '',
-    //         loadChildren: '../attendance/attendance.module#AttendancePageModule'
-    //       }
-    //     ]
-    //   },
+      {
+        path: 'employeeAttendance',
+        children: [
+          { 
+            path: '',
+            loadChildren: '../employee-attendance/employee-attendance.module#EmployeeAttendancePageModule'
+          }
+        ]
+      },
     //   {
     //     path: 'More',
     //     children: [

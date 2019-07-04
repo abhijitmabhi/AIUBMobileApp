@@ -16,6 +16,7 @@ import {
   MatCardModule,
   MatIconModule,
   MatRippleModule,
+  MatProgressBarModule
 } from "@angular/material";
  
 @NgModule({
@@ -36,6 +37,7 @@ import {
     MatExpansionModule,
     MatCardModule,
     MatRippleModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule {}

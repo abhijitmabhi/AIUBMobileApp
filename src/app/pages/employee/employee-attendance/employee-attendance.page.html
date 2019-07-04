@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar class="appHeader">
+    <ion-title>Attendance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
+  <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
+    <ion-label>Select Month</ion-label>
+    <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
+      <ion-select-option *ngFor="let payroll of payrollList" [value]="payroll.Value"> {{payroll.Name}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <mat-list dense>
+    <mat-list-item>
+      <div class="attendance-list-head1">
+        <b>Date</b>
+      </div>
+      <div class="attendance-list-head1">
+        <b>Day</b>
+      </div>
+      <div class="attendance-list-head2">
+        <b>Total by Shift</b>
+      </div>
+      <!-- <div class="attendance-list-head3">
+        <b>Total by FI-LO</b>
+      </div> -->
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
+    <!-- <div [hidden]="attendanceList" style="margin-top: 6%;">
+      <ngx-content-loading [width]="222">
+        <svg:g ngx-bullet-list-preset></svg:g>
+      </ngx-content-loading>
+
+      <ngx-content-loading [width]="222">
+        <svg:g ngx-bullet-list-preset></svg:g>
+      </ngx-content-loading>
+
+      <ngx-content-loading [width]="222">
+        <svg:g ngx-bullet-list-preset></svg:g>
+      </ngx-content-loading>
+    </div> -->
+
+  </mat-list>
+  <!-- **Page Refresher**
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher> -->
+
+  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+                'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
+    *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
+    <mat-expansion-panel-header [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+                'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}">
+      <div class="attendance-list-head1">{{attendance?.Date}}</div>
+      <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
+      <div class="attendance-list-head2">{{attendance?.AllShift}}</div>
+      <!-- <div class="attendance-list-head3">{{attendance?.Filo}}</div> -->
+    </mat-expansion-panel-header>
+    <mat-panel-description
+      [ngStyle]="{'color': isCurrentPayroll && attendance?.Date > today  && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : ''}">
+      <div style="width:100%; text-align:center;" [innerHTML]="attendance?.InOut"></div>
+    </mat-panel-description>
+  </mat-expansion-panel>
+
+
+  <!-- </mat-list> -->
+  <!-- **Page Refresher**
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher> -->
+  <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
+</ion-content>
+
+<ion-footer>
+  <mat-divider></mat-divider>
+  <div class="footerDiv"></div>
+  <mat-list dense>
+    <mat-list-item>
+      <div style="width:80%">
+        <mat-list dense>
+          <mat-list-item style="height:auto; margin-top:2%;">
+            <div class="desc-head">
+              <b>Total by Shift</b>
+            </div>
+            <!-- <div class="desc-head">
+              <b>Total by FI-LO</b>
+            </div> -->
+          </mat-list-item>
+          <mat-list-item style="height:auto; margin-top:2%; margin-bottom: 4%;">
+            <div class="desc-head">{{attendanceList?.TotalAllShift}}</div>
+            <!-- <div class="desc-head">{{attendanceList?.TotalFILO}}</div> -->
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <!-- <div style="width:20%">
+        <ion-fab-button color="primary">
+          <ion-icon name="download"></ion-icon>
+        </ion-fab-button>
+      </div> -->
+    </mat-list-item>
+  </mat-list>
+  <div class="footerDiv"></div>
+</ion-footer>
