@@ -1,0 +1,353 @@
+<ion-header no-border>
+  <ion-toolbar class="appHeader">
+    <!-- style="--background: #f7f7f700;" -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Profile</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="GoToHome()">
+        <ion-icon slot="icon-only" name="ios-home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #f7f1fe;" fullscreen>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+    <div class="header" style="padding-top: 5px;">
+      <ion-row style="padding: 5px;" justify-content-center align-items-center>
+        <ion-avatar class="userProfilePic">
+          <img src="{{'data:image/jpg;base64,' + userImage}}" /> <!-- src="../../../../assets/images/111392.jpg"  -->
+        </ion-avatar>
+      </ion-row>
+      <ion-row justify-content-center align-items-center>
+        <ion-label style="font-size: 24px;
+              /* font-weight: bold; */
+              color: whitesmoke;
+              text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);"
+          text-center>{{employeeProfile?.FullName}}</ion-label>
+      </ion-row>
+      <ion-row justify-content-center align-items-center>
+        <span style="font-size: 18px;margin-top: 5px;
+              color: whitesmoke;">{{employeeProfile?.EmployeeID}}</span>
+      </ion-row>
+      <ion-row style="padding-bottom: 80px;" justify-content-center align-items-center>
+        <span style="font-size: 15px;margin-top: 5px;
+              color: whitesmoke;">{{employeeProfile?.Position}}</span>
+      </ion-row>
+    </div>
+
+    <div class="userShortInfoCard">
+      <ion-row justify-content-center align-items-center>
+        <div class="shortInfoCard">
+          <ion-row justify-content-center align-items-center>
+            <ion-col class="infoHeaderTitle" text-center><span>Designation</span></ion-col>
+            <ion-col class="infoHeaderTitle" text-center>Department</ion-col>
+            <ion-col class="infoHeaderTitle" text-center>Year of Service</ion-col>
+          </ion-row>
+          <ion-row justify-content-center align-items-center>
+            <ion-col text-center>{{employeeProfile?.Designation}}</ion-col>
+            <ion-col text-center>{{employeeProfile?.Department}}</ion-col>
+            <ion-col text-center>{{employeeProfile?.YearOfService}}</ion-col>
+          </ion-row>
+        </div>
+      </ion-row>
+
+      <div>
+        <ion-segment [(ngModel)]="currentview">
+          <!-- (ionChange)="viewChanged($event)" -->
+          <ion-segment-button value="office" (ionSelect)="showOfficeView()">
+            <ion-label>Office Info.</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="personal" (ionSelect)="showPersonalView()">
+            <ion-label>Personal Info</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+
+      <div>
+        <div [ngSwitch]="currentview">
+
+          <div *ngSwitchCase="'personal'">
+            <!-- Phone Number -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Phone : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Phone}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Email -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Email : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Email}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Tin No. -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Tin No. : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.TinNo ? employeeProfile?.TinNo : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Father Name -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Father Name : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.FatherName ? employeeProfile?.FatherName : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Mother Name -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Mother Name : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.MotherName ? employeeProfile?.MotherName : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Present Address -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Present Address : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.PresentAddress ? employeeProfile?.PresentAddress : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Permanent Address -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Permanent Address : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.PermanentAddres ? employeeProfile?.PermanentAddres : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Date of Birth -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Date of Birth : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.DOB | date:"dd-MMM-yy"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Gender -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Gender : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Sex}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Blood Group -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Blood Group : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.BloodGroup}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Marital Status -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Marital Status : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.MaritalStatus}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Religion -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Religion : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Religion}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Nationality -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Nationality : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Country}}</ion-label>
+              </ion-col>
+            </ion-row>
+
+          </div>
+
+          <div *ngSwitchCase="'office'">
+            <!-- Position -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Position : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Position}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Designation -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Designation : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Designation}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Department -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Department : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Department}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Classification -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Classification : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Classification}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Employee Type -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Employee Type : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.EmployeeType}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Superviore -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Supervisor : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.Supervisor}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Joining Date -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Joining Date : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.JoiningDate | date:"dd-MMM-yy"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Year of Service -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Year of Service : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.YearOfService}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Increment Month -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Increment Month : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.IncrementMonth}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Superviore -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Account No. : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{employeeProfile?.AccountNo}}</ion-label>
+              </ion-col>
+            </ion-row>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <div>
+            <ion-segment>
+                <ion-segment-button value="friends">
+                  <ion-label>Friends</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="enemies">
+                  <ion-label>Enemies</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+        </div> -->
+</ion-content>

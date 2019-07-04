@@ -25,15 +25,15 @@ const routes: Routes = [
           }
         ]
       },
-    //   {
-    //     path: 'More',
-    //     children: [
-    //       {
-    //         path: '',
-    //         loadChildren: '../employee-menu/employee-menu.module#EmployeeMenuPageModule'
-    //       }
-    //     ]
-    //   },
+      {
+        path: 'employeeProfile',
+        children: [
+          {
+            path: '',
+            loadChildren: '../employee-profile/employee-profile.module#EmployeeProfilePageModule'
+          }
+        ]
+      },
       // {
       //   path: '',
       //   redirectTo: '/Tabs/Home',
