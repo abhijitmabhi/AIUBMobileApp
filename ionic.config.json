@@ -1,5 +1,7 @@
 {
   "name": "AIUBMobileApplication",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,171 @@
+.mainContent{
+    /* --background: #fff url('../../../../../assets/images/aiub_bg.png') no-repeat fixed center;
+    background-size: contain; */
+    --background: none;
+    background-image: url('../../../../assets/logos/aiub_bg.webp');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    /* --background: var(--aiub-logo-main-color); */
+  }
+  
+  @media only screen and (orientation: landscape) {
+    .mainContent{
+        background-size: 100% 65%;
+    }
+  
+    .bottom {                 
+      bottom: 6.5% !important;                       
+    }
+  }
+  
+  .main { 
+    
+    min-height: 100%;
+    min-width: 100%;
+    padding: 10px;
+    position: relative;
+    display: -webkit-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+  } 
+  
+  .centerElement{
+    position: relative;
+    /* background-color: var(--aiub-logo-main-color); */
+    display: -webkit-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15%;
+    margin-bottom: 15%;
+  }
+  
+  .contentCard{
+    background-color: #f0f1f5;
+    margin: 2px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.52);
+  }
+  
+  .title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .subTitle{
+    color: #014ea2;
+    font-size: medium;
+    font-weight: bold;
+  }
+  
+  .pageLogo{
+    margin-top: 5px;
+    height: 92px;
+    width: 92px;
+  }
+  
+  .aiubTitle{
+    padding: 5px 10px;
+    margin: 0 0 5px;
+    font-size: 15px;
+  }
+  
+  blockquote footer, blockquote small, blockquote .small {
+    display: block;
+    font-size: 80%;
+    line-height: .5;
+    color: #777;
+  }
+  
+  .loginButton {
+    width: 40%;
+    height: 13%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: white;
+    margin-top: 20px;
+    position: absolute;
+    border-radius: 30px;
+    outline: 0 !important;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  .formInput {
+    display: black;
+    width: 100%;
+    border: none;
+    font-family: sans-serif;
+    font-size: 18px;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px #aaaaaa;
+    outline: none;
+}
+  
+  .icon{
+    height: 18px;
+  }
+  
+  ion-input{
+  font-size: var(--input-font-size);
+  }
+  
+  .marginBottomLess25{
+  margin-bottom: -25px;
+  }
+  
+  .bottom { 
+    text-align: center;
+    //position:absolute;                  
+    bottom: 10%;                       
+  }
+  
+  .anchorButtonContent{
+    text-decoration:none;
+    display: inline-flex;
+  }
+  
+  .scroll-content {
+    padding-bottom: 0 !important;
+  }
+  
+  ion-grid {
+    min-height: 100%;
+  }
+
+  .aiubButton{
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #014ea2;
+    background-color: transparent;
+    font-weight: bold;
+    outline: 0 !important;
+  }
+
+  ion-item{
+    --background: #f0f1f5;
+  }
+
+  .showPassButton{
+    --background: transparent;
+    background-color: transparent;
+    color: #000;
+    outline: none;
+    --box-shadow: none !important;
+    min-height: 100%;
+  }
