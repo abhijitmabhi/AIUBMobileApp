@@ -23,6 +23,7 @@ export class EmployeeHomePage implements OnInit {
   notificationCount: number;
   announcements: any;
   classSchedules: any;
+  profileImageLoaded: boolean = false;
 
   //ProgressBar
   color = 'warn';
@@ -90,6 +91,7 @@ export class EmployeeHomePage implements OnInit {
 
   getUserProfileImage() {
     this.profileService.getImage().subscribe(response => {
+      this.profileImageLoaded = true;
       this.userImage = response;
     })
   }

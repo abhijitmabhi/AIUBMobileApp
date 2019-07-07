@@ -1,38 +1,43 @@
-<ion-header> <!-- no-border -->
+<ion-header>
+  <!-- no-border -->
   <ion-toolbar class="appHeader">
 
-      <ion-row class="headerRow" style="min-height:100%" justify-content-center align-items-center>
-          <ion-col class="my-thin-col" no-padding fixed>
-              <ion-row>
-                  <ion-avatar (click)="ShowProfile()" class="profilePictureAvatar">
-                      <ion-ripple-effect></ion-ripple-effect>
-                      <img src="{{'data:image/jpg;base64,' + userImage}}"/> <!-- src="../../../../assets/images/111392.jpg"  -->
-                  </ion-avatar>
-                </ion-row>
-            </ion-col>
-            <ion-col no-padding>
-                <ion-row>
-                    <div>
-                        <!-- <label >Welcome,</label><br/> -->
-                        <ion-text class="UserName">
-                            {{appUserInfo?.User.FullName}}
-                          </ion-text><br/>
-                        <label style="font-size: 13px;">{{appUserInfo?.User.UserName}}</label>
-                    </div>
-                  </ion-row>
-            </ion-col>
-            <ion-col class="my-thin-col" no-padding fixed>
-              <ion-row justify-content-center align-items-center>
-                <div ><!-- style="margin-top: 5px;margin-right: 5px;" -->
-                    <ion-ripple-effect></ion-ripple-effect>
-                    <button ion-button icon-only clear shape="round" class="notifButton" routerLink="/notifications">
-                        <ion-icon class="tabIcon" name="notifications"></ion-icon>
-                      <ion-badge class="notifBadge">{{notificationCount}}</ion-badge>
-                      </button> 
-              </div>
-                </ion-row>
-            </ion-col>
-      </ion-row>
+    <ion-row class="headerRow" style="min-height:100%" justify-content-center align-items-center>
+      <ion-col class="my-thin-col" no-padding fixed>
+        <ion-row>
+          <ion-avatar (click)="ShowProfile()" class="profilePictureAvatar">
+            <ion-ripple-effect></ion-ripple-effect>
+            <div *ngIf="!profileImageLoaded" class="spinner-box">
+              <div class="spinner spinner3"></div>
+            </div>
+            <img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}" />
+          </ion-avatar>
+        </ion-row>
+      </ion-col>
+      <ion-col no-padding>
+        <ion-row>
+          <div>
+            <!-- <label >Welcome,</label><br/> -->
+            <ion-text class="UserName">
+              {{appUserInfo?.User.FullName}}
+            </ion-text><br />
+            <label style="font-size: 13px;">{{appUserInfo?.User.UserName}}</label>
+          </div>
+        </ion-row>
+      </ion-col>
+      <ion-col class="my-thin-col" no-padding fixed>
+        <ion-row justify-content-center align-items-center>
+          <div>
+            <!-- style="margin-top: 5px;margin-right: 5px;" -->
+            <ion-ripple-effect></ion-ripple-effect>
+            <button ion-button icon-only clear shape="round" class="notifButton" routerLink="/notifications">
+              <ion-icon class="tabIcon" name="notifications"></ion-icon>
+              <ion-badge class="notifBadge">{{notificationCount}}</ion-badge>
+            </button>
+          </div>
+        </ion-row>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
   <!-- <ion-progress-bar type="indeterminate"></ion-progress-bar> -->
 </ion-header>
@@ -47,45 +52,46 @@
     </ion-col>
     <ion-col class="announcement-body">
       <div>
-          <ion-row class="announcement-title"><strong>{{announcement.Title}}!</strong></ion-row>
-          <ion-row class="announcement-mesage"><label>{{announcement.Message}}!</label></ion-row>
+        <ion-row class="announcement-title"><strong>{{announcement.Title}}!</strong></ion-row>
+        <ion-row class="announcement-mesage"><label>{{announcement.Message}}!</label></ion-row>
       </div>
     </ion-col>
   </ion-row>
 
-   <!-- Class Schedule -->
-   <ion-row class="ClassSchedule">
-      <ion-item-divider style="padding-left: 2px;">
-          <div style="width: 100%;" class="package-rating-detail">
-              <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
-              <label class="menuDividerTile">Next Two Days Class Schedule</label>
-              <mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerRightSideIcon">launch</mat-icon>
-          </div>
-      </ion-item-divider>
+  <!-- Class Schedule -->
+  <ion-row class="ClassSchedule">
+    <ion-item-divider style="padding-left: 2px;">
+      <div style="width: 100%;" class="package-rating-detail">
+        <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
+        <label class="menuDividerTile">Next Two Days Class Schedule</label>
+        <mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerRightSideIcon">launch
+        </mat-icon>
+      </div>
+    </ion-item-divider>
 
-      <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
-          <div style="margin-left: 7px;
+    <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
+      <div style="margin-left: 7px;
           border-left: 3px solid #014ea2; margin-top: 3px;">
-              <mat-list>
-                <mat-list-item class="matListItem" style="height: auto;">
-                  <div style="width: 50%;" class="day-title">
-                      {{classSchedule.ClassRoutineDate2}}
-                  </div>
-                  <div style="width: 50%;"></div>
-                </mat-list-item>
-                <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;" 
-                *ngFor="let section of classSchedule.Classes">
-                  <div class="schedule-desc-left">
-                      {{section.SectionDescription}} 
-                  </div>
-                  <div class="schedule-desc-right">
-                      {{section.Time}} {{section.Room2}}
-                  </div>
-                </mat-list-item> 
-              </mat-list>
+        <mat-list>
+          <mat-list-item class="matListItem" style="height: auto;">
+            <div style="width: 50%;" class="day-title">
+              {{classSchedule.ClassRoutineDate2}}
             </div>
+            <div style="width: 50%;"></div>
+          </mat-list-item>
+          <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;"
+            *ngFor="let section of classSchedule.Classes">
+            <div class="schedule-desc-left">
+              {{section.SectionDescription}}
+            </div>
+            <div class="schedule-desc-right">
+              {{section.Time}} {{section.Room2}}
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
 
-            <!-- <div style="margin-left: 7px;
+      <!-- <div style="margin-left: 7px;
           border-left: 3px solid #014ea2; margin-top: 3px;">
               <mat-list>
                 <mat-list-item class="matListItem" style="height: auto;">
@@ -112,11 +118,11 @@
                 </mat-list-item>
               </mat-list>
             </div> -->
-      </div>
-    </ion-row>
+    </div>
+  </ion-row>
 
-    <!-- <ion-row justify-content-center align-items-center>
+  <!-- <ion-row justify-content-center align-items-center>
         <ion-button shape="round" fill="outline">See Full Class Schedule</ion-button>
     </ion-row> -->
-  
+
 </ion-content>
