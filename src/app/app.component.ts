@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  router: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -20,6 +21,16 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
+      if (localStorage.getItem('token')) {
+        let user_type = localStorage.getItem('userType');
+        if(user_type == "3" || user_type == "1") {
+          this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
+        }
+        if(user_type == "0" ) {
+          // this.router.navigateByUrl('home');
+        }
+      }
+
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
