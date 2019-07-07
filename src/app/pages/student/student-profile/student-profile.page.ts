@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
+import { StudentProfileService } from 'src/app/services/student/student-profile.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { AlertService } from 'src/app/core/alert/alert.service';
 
 @Component({
-  selector: 'app-employee-profile',
-  templateUrl: './employee-profile.page.html',
-  styleUrls: ['./employee-profile.page.scss'],
+  selector: 'app-student-profile',
+  templateUrl: './student-profile.page.html',
+  styleUrls: ['./student-profile.page.scss'],
 })
-export class EmployeeProfilePage implements OnInit {
+export class StudentProfilePage implements OnInit {
 
-  public employeeProfile: any;
+  public studentProfile: any;
   public errorMsg: any;
   public userImage: string = null;
   public currentview: string;
@@ -23,7 +23,7 @@ export class EmployeeProfilePage implements OnInit {
   
   constructor(
     private router: Router,
-    private profileService: EmployeeProfileService,
+    private profileService: StudentProfileService,
     private loadingService: LoadingService,
     private alertService: AlertService,
   ) { }
@@ -45,7 +45,7 @@ export class EmployeeProfilePage implements OnInit {
   }
 
   GoToHome(){
-    this.router.navigate(['/employee-tab']);
+    this.router.navigate(['/student-home']);
   }
 
   viewChanged(segmentEvent) {
@@ -56,8 +56,9 @@ export class EmployeeProfilePage implements OnInit {
   getProfile() {
     this.loadingService.loadingStart();
     this.profileService.getEmployeeProfile().subscribe(res => {
+      console.log(res.Data);
       this.loadingService.loadingDismiss();
-      this.employeeProfile = res.Data;
+      this.studentProfile = res.Data;
     },
       error => {
         this.loadingService.loadingDismiss();

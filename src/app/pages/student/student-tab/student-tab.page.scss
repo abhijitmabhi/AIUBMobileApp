@@ -1,0 +1,46 @@
+ion-tab-bar,ion-tab-button{
+    background-color: #014ea2;
+    background: #014ea2;
+    border-color: #014ea2;
+    color: #fff;
+}
+
+.tabLabel{
+    font-size: 12px;
+}
+
+.tabButton{
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.tabBar{
+    min-height: 70px;
+}
+
+.notifBadge{
+    font-size: 10px;
+    background-color: red;
+    position: absolute;
+    margin-top: -10px;
+    margin-left: -2px;
+}
+
+.tabIcon{
+    height: 20px;
+    width: 20px;
+}
+
+ion-tab-button.tab-selected{
+    background-color: #0d59ac;
+    background: #0d59ac;
+    border-color: #0d59ac;
+    color: #fff;
+}
+
+ion-tab-button:hover {
+    background-color: #0d59ac;
+    background: #0d59ac;
+    border-color: #0d59ac;
+    color: #fff !important;
+}

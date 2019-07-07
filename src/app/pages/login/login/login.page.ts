@@ -37,11 +37,10 @@ export class LoginPage implements OnInit {
     this.Cred = CredModel;
 
     // this.User.password = '243866';
-    // this.User.username = '16-31332-1';
-    this.User.username = '1801-1848-3';
-    // this.User.password = '26103588';
+    this.User.username = '16-31332-1';
+    this.User.password = '26103588';
     // this.User.username = '1801-1848-3';
-    this.User.password = '58389796';
+    // this.User.password = '58389796';
   }
 
   ngOnInit() {
@@ -112,7 +111,7 @@ export class LoginPage implements OnInit {
     let user_type = localStorage.getItem('userType');
     if (user_type == "0") {
       // this.menuCtrl.enable(true, "student");
-      // this.router.navigate(['/home']);
+      this.router.navigate(['/student-tab/tabs/studentHome']);
     }
     if (user_type == "3" || user_type == "1") {
       // this.menuCtrl.enable(true, "employee");
@@ -137,7 +136,6 @@ export class LoginPage implements OnInit {
   async showAlert(title: string, message: string) {
     const alert = await this.alertCtrl.create({
       header: title,
-      //subHeader: message,
       message: message,
       buttons: ['OK']
     });

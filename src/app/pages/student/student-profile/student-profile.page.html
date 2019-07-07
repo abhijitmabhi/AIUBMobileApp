@@ -1,0 +1,332 @@
+<ion-header no-border>
+  <ion-toolbar class="appHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Profile</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="GoToHome()">
+        <ion-icon slot="icon-only" name="ios-home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #f7f1fe;" fullscreen>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+    <div class="header" style="padding-top: 5px;">
+      <ion-row style="padding: 5px;" justify-content-center align-items-center>
+        <ion-avatar class="userProfilePic">
+          <img src="{{'data:image/jpg;base64,' + userImage}}" /> <!-- src="../../../../assets/images/111392.jpg"  -->
+        </ion-avatar>
+      </ion-row>
+      <ion-row justify-content-center align-items-center>
+        <ion-label style="font-size: 24px;
+              /* font-weight: bold; */
+              color: whitesmoke;
+              text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);"
+          text-center>{{studentProfile?.FullName}}</ion-label>
+      </ion-row>
+      <ion-row justify-content-center align-items-center>
+        <span style="font-size: 18px;margin-top: 5px;
+              color: whitesmoke;">{{studentProfile?.StudentID}}</span>
+      </ion-row>
+      <ion-row style="padding-bottom: 80px;" justify-content-center align-items-center>
+        <span style="font-size: 15px;margin-top: 5px;
+              color: whitesmoke;">{{studentProfile?.Email}}</span>
+      </ion-row>
+    </div>
+
+    <div class="userShortInfoCard">
+      <ion-row justify-content-center align-items-center>
+        <div class="shortInfoCard">
+          <ion-row justify-content-center align-items-center>
+            <ion-col class="infoHeaderTitle" text-center><span>Department</span></ion-col>
+            <ion-col class="infoHeaderTitle" text-center>Credit Completed</ion-col>
+            <ion-col class="infoHeaderTitle" text-center>CGPA</ion-col>
+          </ion-row>
+          <ion-row justify-content-center align-items-center>
+            <ion-col text-center>{{studentProfile?.Department}}</ion-col>
+            <ion-col text-center>{{studentProfile?.Credit}}</ion-col>
+            <ion-col text-center>{{studentProfile?.CGPA}}</ion-col>
+          </ion-row>
+        </div>
+      </ion-row>
+
+      <div>
+        <ion-segment [(ngModel)]="currentview">
+          <!-- (ionChange)="viewChanged($event)" -->
+          <ion-segment-button value="office" (ionSelect)="showOfficeView()">
+            <ion-label>Basic Info.</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="personal" (ionSelect)="showPersonalView()">
+            <ion-label>Personal Info</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+
+      <div>
+        <div [ngSwitch]="currentview">
+
+          <div *ngSwitchCase="'personal'">
+            <!-- Phone Number -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Phone : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Phone}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Email -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Email : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Email}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Tin No. -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Tin No. : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.TinNo ? studentProfile?.TinNo : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Father Name -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Father Name : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.FatherName ? studentProfile?.FatherName : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Mother Name -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Mother Name : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.MotherName ? studentProfile?.MotherName : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Present Address -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Present Address : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.PresentAddress ? studentProfile?.PresentAddress : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Permanent Address -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Permanent Address : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.PermanentAddres ? studentProfile?.PermanentAddres : "N/A"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Date of Birth -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Date of Birth : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.DOB | date:"dd-MMM-yy"}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Gender -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Gender : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Sex}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Blood Group -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Blood Group : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.BloodGroup}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Marital Status -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Marital Status : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.MaritalStatus}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Religion -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Religion : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Religion}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <!-- Nationality -->
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Nationality : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Country}}</ion-label>
+              </ion-col>
+            </ion-row>
+
+          </div>
+
+          <div *ngSwitchCase="'office'">
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>AdmissionDate : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.AdmissionDate}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Program : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Program}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Core : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Core}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Elective : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Elective}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>GraduationDate : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.GraduationDate ? studentProfile?.GraduationDate: 'N/A'}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Major : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Major ? studentProfile?.Major: 'N/A' }}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Minor : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.Minor ? studentProfile?.Minor: 'N/A' }}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>Second Major : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.SecondMajor ? studentProfile?.SecondMajor: 'N/A' }}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+            <ion-row>
+              <ion-col class="dataLabel">
+                <ion-label>AdmissionDate : </ion-label>
+              </ion-col>
+              <ion-col class="dataValue">
+                <ion-label>{{studentProfile?.AdmissionDate}}</ion-label>
+              </ion-col>
+            </ion-row>
+            <mat-divider style="padding: 2px;"></mat-divider>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <!-- <div>
+            <ion-segment>
+                <ion-segment-button value="friends">
+                  <ion-label>Friends</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="enemies">
+                  <ion-label>Enemies</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+        </div> -->
+</ion-content>
