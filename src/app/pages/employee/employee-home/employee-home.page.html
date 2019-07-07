@@ -7,7 +7,10 @@
         <ion-row>
           <ion-avatar (click)="ShowProfile()" class="profilePictureAvatar">
             <ion-ripple-effect></ion-ripple-effect>
-            <img src="{{'data:image/jpg;base64,' + userImage}}" /> <!-- src="../../../../assets/images/111392.jpg"  -->
+            <div *ngIf="!profileImageLoaded" class="spinner-box">
+              <div class="spinner spinner3"></div>
+            </div>
+            <img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}" />
           </ion-avatar>
         </ion-row>
       </ion-col>
