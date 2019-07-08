@@ -127,6 +127,7 @@ export class StudentHomePage implements OnInit {
         console.log(result.Messages);
       }else{
         this.appUserInfo = result.Data;
+        console.log(this.appUserInfo);
         this.notificationCount = this.appUserInfo.UnReadNotificationCount;
       }
     })

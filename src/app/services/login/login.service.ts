@@ -41,7 +41,7 @@ export class LoginService {
     return this.httpClient.get<IResult>(`Student/IsStudentValid`);
   }
 
-  logMeOut(){
+  logMeOut() : Observable<IResult> {
     return this.httpClient.get<IResult>(`Common/Logout`);
   }
   

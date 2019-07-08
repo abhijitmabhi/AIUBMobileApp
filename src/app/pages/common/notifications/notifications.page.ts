@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
 import {  IonItem,IonItemSliding, PopoverController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
@@ -11,11 +12,13 @@ import { NotificationDetails } from 'src/app/core/components/pop-up/notification
 export class NotificationsPage implements OnInit {
   private notificationList:any = [];
   constructor(
-    private modalController:ModalController) {
+    private modalController:ModalController,
+    private notificationService:NotificationService) {
   }
 
   ngOnInit() {
-    this.getNotifData();
+    // this.getNotifData();
+    this.notificationByUser();
   }
 
   async openNotification(notification : any) {
@@ -229,5 +232,32 @@ export class NotificationsPage implements OnInit {
     });
 
     this.notificationList = this.notificationList.concat(data);
+  }
+
+  notificationByUser(){
+    this.notificationService.getNotificationsByUser(0,10).subscribe( res => {
+      console.log(res);
+
+
+
+      let data:any[] = [];
+      res.Data.forEach(notif => {
+      data.push({
+        Id : notif.ID,
+        ContentCssClass : (notif.IsRead === true) ? "read" : "unread",
+        HeaderCssClass : (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
+        BodyCssClass : (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
+        TimeCssClass : (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
+        Title : notif.Title,
+        Message : notif.Message,
+        Time : `${notif.PostDate} ${notif.PostTime}`,
+        TypeID : notif.TypeID,
+        Type : notif.Type,
+        IsRead : notif.IsRead
+      });
+    });
+
+    this.notificationList = this.notificationList.concat(data);
+    })
   }
 }
