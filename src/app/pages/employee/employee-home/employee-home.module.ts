@@ -7,6 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EmployeeHomePage } from './employee-home.page';
+import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
+import { ComponentsModule } from 'src/app/core/components/components.module';
 
 
 const routes: Routes = [
@@ -22,8 +24,10 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     MaterialModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [EmployeeHomePage]
+  declarations: [EmployeeHomePage],
+  entryComponents: [NotificationDetails]
 })
 export class EmployeeHomePageModule {}

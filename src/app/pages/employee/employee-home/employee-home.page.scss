@@ -175,5 +175,45 @@ ion-col.my-thin-col {
 
 /* announcement */
 
+/* Loader */
+
+.spinner-box{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  .spinner {
+  width: 50px;
+  height: 50px;
+  &.spinner3{
+  border-top: 2px solid rgba(#ffffff, 1);
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+  }
+  }
+  
+  .spinner3{
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: rotation 1s linear infinite;
+  animation: rotation .8s linear infinite;
+  }
+  
+  // ANIMATIONS
+  @keyframes rotation{
+  from{
+  transform: rotate(0deg);
+  }
+  to{
+  transform: rotate(360deg);
+  }
+  }
+  
+  /* Loader */
+
 
 

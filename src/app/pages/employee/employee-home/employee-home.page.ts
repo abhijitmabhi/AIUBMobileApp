@@ -9,6 +9,8 @@ import { AlertService } from 'src/app/core/alert/alert.service';
 import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
 import { EmployeeHomeService } from 'src/app/services/employee/employee-home.service';
 import { ClassScheduleService } from 'src/app/services/employee/class-schedule.service';
+import { ModalController } from '@ionic/angular';
+import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
 
 @Component({
   selector: 'app-employee-home',
@@ -23,6 +25,7 @@ export class EmployeeHomePage implements OnInit {
   notificationCount: number;
   announcements: any;
   classSchedules: any;
+  profileImageLoaded: boolean = false;
 
   //ProgressBar
   color = 'warn';
@@ -40,6 +43,7 @@ export class EmployeeHomePage implements OnInit {
     private classSceduleService: ClassScheduleService,
     private commonService: CommonService,
     private alertService: AlertService,
+    private modalController:ModalController
   ) { }
 
   ngOnInit() {
@@ -90,6 +94,7 @@ export class EmployeeHomePage implements OnInit {
 
   getUserProfileImage() {
     this.profileService.getImage().subscribe(response => {
+      this.profileImageLoaded = true;
       this.userImage = response;
     })
   }
@@ -114,6 +119,20 @@ export class EmployeeHomePage implements OnInit {
         let errorResponse = error;
         console.log(errorResponse.error.Message);
     });
+  }
+
+  async ShowPopUpModal() {
+    const myModal = await this.modalController.create({
+      component: NotificationDetails,
+      componentProps: { 
+        Title: "Notification",
+        Message: "Notification Body",
+        Time: "02-Jul-19 02:30:33 PM"
+      },
+      cssClass: 'popup-modal-css',
+      backdropDismiss:false,
+    });
+    return await myModal.present();
   }
 
 
