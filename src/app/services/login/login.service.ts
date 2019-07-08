@@ -40,5 +40,9 @@ export class LoginService {
   checkStudentValidity(): Observable<IResult> {
     return this.httpClient.get<IResult>(`Student/IsStudentValid`);
   }
+
+  logMeOut(){
+    return this.httpClient.get<IResult>(`Common/Logout`);
+  }
   
 }

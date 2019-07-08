@@ -32,10 +32,15 @@ export class PushNotificationService {
   }
 
   getPlayerID(){
-      this.oneSignal.getIds().then(obj => {
-          this.commonService.savePLayerIDIntoDatabase(obj.userId).subscribe(res => {
-          });
-      });
+    //   this.oneSignal.getIds().then(obj => {
+    //       this.commonService.savePLayerIDIntoDatabase(obj.userId).subscribe(res => {
+    //           console.log(res);
+    //       });
+    //   });
+
+      this.commonService.savePLayerIDIntoDatabase('4c025713-ba9a-46f6-b747-e4967acfee7e').subscribe(res => {
+        console.log(res);
+    });
   }
 
   unsubscribeFromNotification(){

@@ -10,7 +10,9 @@ const routes: Routes = [
   { path: 'employee-class-schedule', loadChildren: './pages/employee/employee-class-schedule/employee-class-schedule.module#EmployeeClassSchedulePageModule' },
 
   //student
-  { path: 'student-tab', loadChildren: './pages/student/student-tab/student-tab.module#StudentTabPageModule' },  { path: 'student-profile', loadChildren: './pages/student/student-profile/student-profile.module#StudentProfilePageModule' },
+  { path: 'student-tab', loadChildren: './pages/student/student-tab/student-tab.module#StudentTabPageModule' },
+  // { path: 'student-profile', loadChildren: './pages/student/student-profile/student-profile.module#StudentProfilePageModule' },
+  // { path: 'student-menu', loadChildren: './pages/student/student-menu/student-menu.module#StudentMenuPageModule' },
 
   // { path: 'student-home', loadChildren: './pages/student/student-home/student-home.module#StudentHomePageModule' },
 

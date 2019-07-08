@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-employee-menu',
-  templateUrl: './employee-menu.page.html',
-  styleUrls: ['./employee-menu.page.scss'],
+  selector: 'app-student-menu',
+  templateUrl: './student-menu.page.html',
+  styleUrls: ['./student-menu.page.scss'],
 })
-export class EmployeeMenuPage implements OnInit {
+export class StudentMenuPage implements OnInit {
 
-  constructor(private router:Router,
+  constructor(private router: Router,
     private loginService: LoginService) { }
 
   ngOnInit() {

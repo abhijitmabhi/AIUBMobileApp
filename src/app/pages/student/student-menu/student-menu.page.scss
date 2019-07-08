@@ -1,0 +1,179 @@
+.cardIcon{
+    height: 25px;
+    width: 25px;
+}
+
+.subMenuIcon{
+    height: 50px;
+    width: 50px;
+}
+
+.cardLabel{
+    font-size: 16px;
+}
+
+.package-rating-detail {
+    display: inline-flex;
+    align-items: center;
+}
+
+.package-rating-detail > label {
+    margin-left: 0.5em;
+}
+
+.headerButton{
+    height: 90%;
+    width: 100%;
+}
+
+.headerButtonTitle{
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.menuTile{
+    margin: 5px;
+}
+
+.menuTileHeader{
+    background: var(--ion-color-primary) !important;
+}
+
+.menuTileHeaderTitle{
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+::ng-deep .menuTileHeader > .mat-expansion-indicator:after {
+    color: white;
+  }
+
+  .menu-icon{
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    align-items: center;
+}
+
+  .subMenuPanel{
+      display: unset;
+      margin: 0px !important;
+  }
+
+  ::ng-deep .menuTile .mat-expansion-panel-body {
+    padding: 5px !important;
+    background-color: #f3efef;
+}
+
+  .card-content-ios {
+    padding: 10px !important;
+    font-size: 14px !important;
+}
+
+.card-content-md {
+    padding: 10px !important;
+    font-size: 14px !important;
+}
+
+.icContent{
+    text-align: center;
+}
+
+.menu-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: relative;
+    padding: 0px !important;
+    margin: 4%;
+}
+
+.menu-icon{
+    height: 50%;
+    width: 50%;
+    padding: 5%;
+    align-self: center;
+}
+
+.menu-card-content{
+    background-color: var(--ion-color-primary);
+}
+
+.menu-title{
+    color: white;
+}
+
+.cardHeader{
+    height: 50px;
+}
+
+.firstCard{
+    padding-left: 10px;
+}
+
+.hTitle{
+    text-align: center;
+}
+
+
+.card-content-ios {
+    padding: 10px !important;
+    font-size: 14px !important;
+}
+
+.card-content-md {
+    padding: 10px !important;
+    font-size: 14px !important;
+    line-height: 1.5;
+}
+
+@media screen and (orientation:portrait) {
+    ion-card-content.needExtraHeight{
+        height: 62px;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    ion-card-content.needExtraHeight{
+        height: 41px;
+    }
+}
+
+.menuDividerTile{
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #014ea2;
+    font-weight: 600
+}
+
+.menuDividerIcon{
+    color: #014ea2;
+}
+
+.scrolling-wrapper {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    .card {
+        display: inline-block;
+    }
+}
+
+.scrolling-wrapper {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.horizontalListMenu{
+    margin-top: 10px;
+}
+
+.horizontalMenuCard{
+    min-width: 140px;;
+}
+

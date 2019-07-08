@@ -16,15 +16,6 @@ const routes: Routes = [
           }
         ]
       },
-    //   {
-    //     path: 'employeeAttendance',
-    //     children: [
-    //       { 
-    //         path: '',
-    //         loadChildren: '../employee-attendance/employee-attendance.module#EmployeeAttendancePageModule'
-    //       }
-    //     ]
-    //   },
       {
         path: 'studentProfile',
         children: [
@@ -34,15 +25,15 @@ const routes: Routes = [
           }
         ]
       },
-    //   {
-    //     path: 'employeeMenu',
-    //     children: [
-    //       {
-    //         path: '',
-    //         loadChildren: '../employee-menu/employee-menu.module#EmployeeMenuPageModule'
-    //       }
-    //     ]
-    //   },
+      {
+        path: 'studentMenu',
+        children: [
+          {
+            path: '',
+            loadChildren: '../student-menu/student-menu.module#StudentMenuPageModule'
+          }
+        ]
+      },
       {
         path: '',
         redirectTo: '/tabs/studentHome',
