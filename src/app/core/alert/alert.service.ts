@@ -1,12 +1,17 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { PushNotificationService } from '../oneSignal/push-notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
-  constructor(private alertController: AlertController, private router: Router) { }
+  constructor(
+    private alertController: AlertController, 
+    private router: Router,
+    private pushNotificationService: PushNotificationService
+    ) { }
 
   async Success(obj){
     const alert = await this.alertController.create({
@@ -39,19 +44,17 @@ export class AlertService {
     await alert.present();
   }
 
-  async alertForSubscribeToOneSignal(msg){
+  async alertForSubscribeToOneSignal(playerID){
     const alert = await this.alertController.create({
       header: 'Push Notification Alert!',
       subHeader: '',
-      message: msg ? msg  :'Something Went Wrong',
+      message: 'You have registered for push notifications from another device. Do you want to ovverride it?',
       buttons: [
         {
           text: 'No',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            // localStorage.setItem('route', route);
-            // this.router.navigate(['/error-landing']);
           }
         },
         {
@@ -59,8 +62,7 @@ export class AlertService {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            // localStorage.setItem('route', route);
-            // this.router.navigate(['/error-landing']);
+            this.pushNotificationService.getPlayerID2(playerID)
           }
         }
       ]
