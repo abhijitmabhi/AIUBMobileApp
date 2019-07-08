@@ -3,6 +3,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { CommonService } from 'src/app/services/common/common.service';
 import { AlertService } from '../alert/alert.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 // import { HomeApiService } from 'src/app/Services/student/home-api.service';
 
 @Injectable({
@@ -14,7 +15,8 @@ export class PushNotificationService {
   constructor(
       private oneSignal: OneSignal,
       private commonService : CommonService,
-      private alertController: AlertController
+      private alertController: AlertController,
+      private router: Router
   ) { }
 
   oneSignalSubscription(){
@@ -23,6 +25,7 @@ export class PushNotificationService {
       this.oneSignal.handleNotificationReceived().subscribe((res) => {
       // do something when notification is received
           console.log(res);
+          this.router.navigate(['/notifications']);
       });
   
       this.oneSignal.handleNotificationOpened().subscribe((res) => {
