@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { CommonService } from 'src/app/services/common/common.service';
+import { AlertService } from '../alert/alert.service';
+import { AlertController } from '@ionic/angular';
 // import { HomeApiService } from 'src/app/Services/student/home-api.service';
 
 @Injectable({
@@ -11,7 +13,8 @@ export class PushNotificationService {
   firebase_id:string = "860919846901";
   constructor(
       private oneSignal: OneSignal,
-      private commonService : CommonService
+      private commonService : CommonService,
+      private alertController: AlertController
   ) { }
 
   oneSignalSubscription(){
@@ -32,18 +35,47 @@ export class PushNotificationService {
   }
 
   getPlayerID(){
-    //   this.oneSignal.getIds().then(obj => {
-    //       this.commonService.savePLayerIDIntoDatabase(obj.userId).subscribe(res => {
-    //           console.log(res);
-    //       });
-    //   });
+    this.oneSignal.getIds().then(obj => {
+        this.commonService.savePLayerIDIntoDatabase(obj.userId, false).subscribe(res => {
+          if(res.Data.HasWarning){
+            this.alertForSubscribeToOneSignal(obj.userId);
+          }
+        });
+    });
+  }
 
-      this.commonService.savePLayerIDIntoDatabase('4c025713-ba9a-46f6-b747-e4967acfee7e').subscribe(res => {
-        console.log(res);
+  getPlayerID2(playerID){
+    return this.commonService.savePLayerIDIntoDatabase(playerID, true).subscribe(res => {
+      console.log(res);
     });
   }
 
   unsubscribeFromNotification(){
       this.oneSignal.setSubscription(false);
+  }
+
+  async alertForSubscribeToOneSignal(playerID){
+    const alert = await this.alertController.create({
+      header: 'Push Notification Alert!',
+      subHeader: '',
+      message: 'You have registered for push notifications from another device. Do you want to ovverride it?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Yes',
+          cssClass: 'secondary',
+          handler: () => {
+            this.getPlayerID2(playerID)
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

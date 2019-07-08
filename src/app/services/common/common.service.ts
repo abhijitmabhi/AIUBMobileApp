@@ -10,9 +10,11 @@ export class CommonService {
 
   constructor(public httpClient: HttpClient) { }
 
-  public savePLayerIDIntoDatabase(PlayerID){
-    const dt = new HttpParams().set('playerId', PlayerID);
-    return this.httpClient.post(`Notification/MapPlayerId`, dt);
+  public savePLayerIDIntoDatabase(PlayerID, hasWarning){
+    const dt = new HttpParams()
+    .set('playerId', PlayerID)
+    .set('HasWarning', hasWarning);
+    return this.httpClient.post<IResult>(`Notification/MapPlayerId`, dt);
   }
 
   currentUserInfo(): Observable<IResult>{
