@@ -1,0 +1,46 @@
+.unread-notif-content{
+    font-style: italic;
+}
+
+.unread-title{
+    font-weight: 600;
+    color: var(--aiub-logo-main-color);
+}
+
+.unread-body{
+    font-weight: 600;
+}
+
+.read-notif-content{
+    font-style: normal;
+}
+
+.read-title{
+    font-weight: 500;
+    color: black;
+}
+
+.unread{
+    --background: #C7C9CB;
+    visibility: inherit !important;
+}
+
+.read{
+    --background: #F4F5F9;
+    visibility: inherit !important;
+}
+
+ion-skeleton-text {
+    background-color: #bfbebe;
+}
+
+/* Custom Skeleton Line Height and Margin */
+.custom-skeleton ion-skeleton-text {
+    line-height: 13px;
+  }
+  
+  .custom-skeleton ion-skeleton-text:last-child {
+    margin-bottom: 5px;
+  }
+  
+
