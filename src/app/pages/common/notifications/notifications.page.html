@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="appHeader">
+      <ion-buttons slot="start">
+          <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="padding: 0px;">
+    
+    <ion-item-sliding *ngFor="let notification of notificationList">
+        <ion-item-options side="start">
+            <ion-item-option (click)="readNotification(notification)">
+                <ion-icon slot="icon-only" name="eye"></ion-icon>
+              <!-- <ion-icon slot="top" name="eye"></ion-icon>Read -->
+            </ion-item-option>
+          </ion-item-options>
+
+        <ion-item class="{{notification.ContentCssClass}}" (click)="openNotification(notification)">
+          <ion-thumbnail slot="start">
+            <img src="assets/icon/notification.png">
+          </ion-thumbnail>
+          <ion-label>
+            <h2 class="{{notification.HeaderCssClass}}">{{notification.Title}}</h2>
+            <p class="{{notification.BodyCssClass}}">{{notification.Message}}</p>
+            <p class="{{notification.TimeCssClass}}">{{notification.Time}}</p>
+          </ion-label>
+        </ion-item>
+      
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="unreadNotification(notification)">
+          <ion-icon slot="icon-only" name="eye-off"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

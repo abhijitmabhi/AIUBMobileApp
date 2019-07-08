@@ -20,6 +20,9 @@ const routes: Routes = [
   // { path: 'employee-menu', loadChildren: './pages/employee/employee-menu/employee-menu.module#EmployeeMenuPageModule' },
   // { path: 'employee-profile', loadChildren: './pages/employee/employee-profile/employee-profile.module#EmployeeProfilePageModule' },
   // { path: 'employee-attendance', loadChildren: './pages/employee/employee-attendance/employee-attendance.module#EmployeeAttendancePageModule' }
+
+  // common
+  {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
 ];
 @NgModule({
   imports: [
