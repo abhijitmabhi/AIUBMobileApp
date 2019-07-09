@@ -30,20 +30,27 @@
       </div> -->
     </mat-list-item>
     <mat-divider></mat-divider>
-    <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
-    <!-- <div [hidden]="attendanceList" style="margin-top: 6%;">
-      <ngx-content-loading [width]="222">
-        <svg:g ngx-bullet-list-preset></svg:g>
-      </ngx-content-loading>
 
-      <ngx-content-loading [width]="222">
-        <svg:g ngx-bullet-list-preset></svg:g>
-      </ngx-content-loading>
-
-      <ngx-content-loading [width]="222">
-        <svg:g ngx-bullet-list-preset></svg:g>
-      </ngx-content-loading>
-    </div> -->
+    <div *ngIf="!attendanceList">
+        <ion-list>
+          <ion-item *ngFor="let item of [].constructor(8)">
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
 
   </mat-list>
   <!-- **Page Refresher**
