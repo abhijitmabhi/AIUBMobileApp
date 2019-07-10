@@ -1,12 +1,18 @@
 <ion-header>
   <ion-toolbar class="appHeader">
     <ion-title>Attendance</ion-title>
+    <ion-buttons slot="end">
+        <ion-button (click)="GoToHome()">
+          <ion-icon slot="icon-only" name="ios-home"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar>
+  <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
+  <ion-progress-bar [hidden]="attendanceList" type="indeterminate" color="danger" value="0.5" ></ion-progress-bar>
   <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
     <ion-label>Select Month</ion-label>
     <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">

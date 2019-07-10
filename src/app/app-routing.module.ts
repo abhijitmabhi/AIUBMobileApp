@@ -22,7 +22,8 @@ const routes: Routes = [
   // { path: 'employee-attendance', loadChildren: './pages/employee/employee-attendance/employee-attendance.module#EmployeeAttendancePageModule' }
 
   // common
-  {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
+  {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },  { path: 'student-class-schedule', loadChildren: './pages/student/student-class-schedule/student-class-schedule.module#StudentClassSchedulePageModule' },
+
 ];
 @NgModule({
   imports: [

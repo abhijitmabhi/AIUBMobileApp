@@ -36,7 +36,7 @@ export class NotificationsPage implements OnInit {
     this.notificationList.slice(index,1, {notification});
 
     this.notificationService.changeStatusById(notification).subscribe(res => {
-      console.log(res);
+      // console.log(res);
     })
   };
     
@@ -240,23 +240,26 @@ export class NotificationsPage implements OnInit {
 
   notificationByUser(){
     this.notificationService.getNotificationsByUser(0,10).subscribe( res => {
-      console.log(res);
+      // console.log(res);
       let data:any[] = [];
-      res.Data.forEach(notif => {
-      data.push({
-        Id : notif.ID,
-        ContentCssClass : (notif.IsRead === true) ? "read" : "unread",
-        HeaderCssClass : (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
-        BodyCssClass : (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
-        TimeCssClass : (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
-        Title : notif.Title,
-        Message : notif.Message,
-        Time : `${notif.PostDate} ${notif.PostTime}`,
-        TypeID : notif.TypeID,
-        Type : notif.Type,
-        IsRead : notif.IsRead
-      });
-    });
+
+    
+        res.Data.forEach(notif => {
+          data.push({
+            Id : notif.ID,
+            ContentCssClass : (notif.IsRead === true) ? "read" : "unread",
+            HeaderCssClass : (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
+            BodyCssClass : (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
+            TimeCssClass : (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
+            Title : notif.Title,
+            Message : notif.Message,
+            Time : `${notif.PostDate} ${notif.PostTime}`,
+            TypeID : notif.TypeID,
+            Type : notif.Type,
+            IsRead : notif.IsRead
+          });
+        });
+      
 
     this.notificationList = this.notificationList.concat(data);
     })

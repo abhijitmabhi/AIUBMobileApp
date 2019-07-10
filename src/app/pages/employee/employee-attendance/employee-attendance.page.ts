@@ -1,6 +1,7 @@
 import { EmployeeAttendanceService } from './../../../services/employee/employee-attendance.service';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-attendance',
@@ -9,7 +10,9 @@ import { DatePipe } from '@angular/common';
 })
 export class EmployeeAttendancePage implements OnInit {
 
-  constructor(public employeeAttendanceService: EmployeeAttendanceService, private datePipe: DatePipe) { }
+  constructor(public employeeAttendanceService: EmployeeAttendanceService, 
+    private datePipe: DatePipe,
+    private router: Router) { }
 
   payrollList = [];
   attendanceList: any;
@@ -74,5 +77,9 @@ export class EmployeeAttendancePage implements OnInit {
     let mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return mlist[dt.getMonth()];
   };
+
+  GoToHome(){
+    this.router.navigate(['employee-tab/tabs/employeeHome']);
+  }
 
 }

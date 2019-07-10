@@ -1,8 +1,6 @@
 <ion-header no-border>
   <ion-toolbar class="appHeader">
-
     <ion-title>Profile</ion-title>
-
     <ion-buttons slot="end">
       <ion-button (click)="GoToHome()">
         <ion-icon slot="icon-only" name="ios-home"></ion-icon>
@@ -10,6 +8,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content style="--background: #f7f1fe;" fullscreen>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">

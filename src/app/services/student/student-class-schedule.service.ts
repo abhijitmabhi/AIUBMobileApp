@@ -10,6 +10,6 @@ export class StudentClassScheduleService {
   constructor(public httpClient: HttpClient) { }
 
   public getStudentClassSchedule(fromDateTime: string, toDateTime: string): Observable<any> {
-    return this.httpClient.get<any>(`ClassSchedule/GetClassSchedule?fromDateTime=${fromDateTime}&tillDateTime=${toDateTime}`);
+    return this.httpClient.get<any>(`Student/Schedule?fromDateTime=${fromDateTime}&tillDateTime=${toDateTime}`);
   }
 }
