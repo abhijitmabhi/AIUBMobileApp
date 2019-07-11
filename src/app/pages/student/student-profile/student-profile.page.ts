@@ -45,7 +45,7 @@ export class StudentProfilePage implements OnInit {
   }
 
   GoToHome(){
-    this.router.navigate(['/student-home']);
+    this.router.navigate(['student-tab/tabs/studentHome']);
   }
 
   viewChanged(segmentEvent) {
@@ -56,7 +56,6 @@ export class StudentProfilePage implements OnInit {
   getProfile() {
     this.loadingService.loadingStart();
     this.profileService.getEmployeeProfile().subscribe(res => {
-      console.log(res.Data);
       this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
     },

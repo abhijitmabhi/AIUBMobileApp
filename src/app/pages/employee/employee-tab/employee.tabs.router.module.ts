@@ -43,11 +43,11 @@ const routes: Routes = [
           }
         ]
       },
-      // {
-      //   path: '',
-      //   redirectTo: '/Tabs/Home',
-      //   pathMatch: 'full'
-      // }
+      {
+        path: '',
+        redirectTo: '/tabs/employeeHome',
+        pathMatch: 'full'
+      }
     ]
   },
   {

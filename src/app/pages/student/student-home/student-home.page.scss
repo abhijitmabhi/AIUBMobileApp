@@ -1,144 +1,239 @@
-.paddingFivePxl{
-    padding: 5px;
-  }
-  
-  .headerButtonPanel{
-    border: 1px;
-  
-  }
-  
-  ion-col.my-thin-col {
-    flex: 0 0 4px;
-    padding:0;
-    margin-right:10px;
-    }
-  
-  .headerRow{
-    margin: 8px;
-  }
-  
-  .UserName{
-    font-size: 18px;
-    font-weight: 500;
-  }
-  
-  .notifBadge{
-    font-size: 10px;
-    background-color: red;
-    position: absolute;
-    margin-top: -10px;
-    margin-left: -2px;
-  }
-  
-  .tabIcon{
-    height: 20px;
-    width: 20px;
-  }
-  
-  .notifButton {
-    height: 30px;
-    width: 35px;
-    background-color: transparent;
-    color: #fff;
-    outline: none;
-    margin-right: 5px;
-  }
-  
-  /* ClassSchedule */
-  .ClassSchedule{
-    margin-top: 5px;
-  }
-  
-  .menuDividerTile{
-    text-transform: uppercase;
-    font-size: 15px;
-    color: #014ea2;
-    font-weight: 500;
-  }
-  
-  .menuDividerIcon{
-    color: #014ea2;
-  }
-  
-  .package-rating-detail {
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .package-rating-detail > label {
-    margin-left: 0.5em;
-  }
-  
-  .day-title{
-    color: royalblue;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 14px;
-    // font-weight: bold;
-  }
-  .schedule-desc-left{
-    width: 47.5%;
-    margin-right: 2.5%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 12.5px;
-    text-align: left;
-    vertical-align: baseline;
-  }
-  .schedule-desc-right{
-    width: 47.5%;
-    margin-left: 2.5%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 12.5px;
-    text-align: right;
-    vertical-align: baseline;
-  }
-  
-  .menuDividerRightSideIcon{
-    color: #014ea2;
-    position: fixed;
-    right: 0;
-    margin-right: 15px;
-  }
-  
-  :host /deep/ .matListItem  .mat-list-item-content{
-    padding: 0 10px !important;
-  }
-  
-  /* ClassSchedule */
-  
-  /* announcement */
-  .announcement{
-    background: #d79c96;
-    margin: 5px;
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-  }
-  
-  .announcement-icon{
+.paddingFivePxl {
+  padding: 5px;
+}
+
+.headerButtonPanel {
+  border: 1px;
+}
+
+ion-col.my-thin-col {
+  flex: 0 0 4px;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.headerRow {
+  margin: 8px;
+}
+
+.UserName {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.notifBadge {
+  font-size: 10px;
+  background-color: red;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -2px;
+}
+
+.tabIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.notifButton {
+  height: 30px;
+  width: 35px;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  margin-right: 5px;
+}
+
+/* ClassSchedule */
+.ClassSchedule {
+  margin-top: 5px;
+}
+
+.menuDividerTile {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #014ea2;
+  font-weight: 500;
+}
+
+.menuDividerIcon {
+  color: #014ea2;
+}
+
+.package-rating-detail {
+  display: inline-flex;
+  align-items: center;
+}
+
+.package-rating-detail > label {
+  margin-left: 0.5em;
+}
+
+.day-title {
+  color: royalblue;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  // font-weight: bold;
+}
+.schedule-desc-left {
+  width: 47.5%;
+  margin-right: 2.5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  font-size: 12.5px;
+  text-align: left;
+  vertical-align: baseline;
+}
+.schedule-desc-right {
+  width: 47.5%;
+  margin-left: 2.5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  font-size: 12.5px;
+  text-align: right;
+  vertical-align: baseline;
+}
+
+.menuDividerRightSideIcon {
+  color: #014ea2;
+  position: fixed;
+  right: 0;
+  margin-right: 15px;
+}
+
+:host /deep/ .matListItem .mat-list-item-content {
+  padding: 0 10px !important;
+}
+
+/* ClassSchedule */
+
+/* announcement */
+.announcement {
+  background: #d79c96;
+  margin: 5px;
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.announcement-icon {
+  flex: 0 0 15%;
+}
+
+.announcement-body {
+  display: flex;
+  align-items: center;
+}
+
+.announcement-title {
+  font-size: 1.2em;
+}
+
+@media (orientation: landscape) {
+  .announcement-icon {
     flex: 0 0 15%;
   }
-  
-  .announcement-body{
-    display: flex;
+}
+
+.announcement-icon-img {
+  margin-top: 3px;
+  margin-left: 3px;
+}
+
+/* announcement */
+
+/* Loader */
+
+.spinner-box {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  &.spinner3 {
+    border-top: 2px solid rgba(#ffffff, 1);
+    border-right: 2px solid transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+  }
+}
+
+.spinner3 {
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid transparent;
+  border-radius: 50%;
+  -webkit-animation: rotation 1s linear infinite;
+  animation: rotation 0.8s linear infinite;
+}
+
+// ANIMATIONS
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loader */
+
+
+
+
+
+
+.menuTile{
+    margin: 5px;
+}
+
+.menuTileHeader{
+    background: var(--ion-color-primary) !important;
+}
+
+.menuTileHeaderTitle{
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+::ng-deep .menuTileHeader > .mat-expansion-indicator:after {
+    color: white;
+  }
+
+  .menu-icon{
+    align-content: center;
+    align-self: center;
     align-items: center;
+    align-items: center;
+}
+
+  .subMenuPanel{
+      display: unset;
+      margin: 0px !important;
+  }
+
+  ::ng-deep .menuTile .mat-expansion-panel-body {
+    padding: 5px !important;
+    background-color: #f3efef;
+}
+
+.card_title {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
   
-  .announcement-title{
-    font-size: 1.2em;
+  .example-button-row button,
+  .example-button-row a {
+    align-self: center;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 4%;
+    width: 29.33%;
+    outline: 0 !important;
   }
-  
-  @media (orientation: landscape) {
-    .announcement-icon{
-        flex: 0 0 15%;
-    }
-  }
-  
-  .announcement-icon-img{
-    margin-top: 3px;
-    margin-left: 3px;
-  }
-  
-  /* announcement */
-  
-  
-  
-  

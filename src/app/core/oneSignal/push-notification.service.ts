@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { CommonService } from 'src/app/services/common/common.service';
 import { Router } from '@angular/router';
-// import { HomeApiService } from 'src/app/Services/student/home-api.service';
 
 @Injectable({
   providedIn: 'root'

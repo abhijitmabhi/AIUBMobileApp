@@ -42,6 +42,9 @@
   <!-- <ion-progress-bar type="indeterminate"></ion-progress-bar> -->
 </ion-header>
 
+<!-- Progress Bar -->
+<ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5" ></ion-progress-bar>
+
 <ion-content>
   <!-- Announcements -->
   <ion-row class="announcement" *ngFor="let announcement of announcements">
@@ -57,6 +60,8 @@
       </div>
     </ion-col>
   </ion-row>
+
+  
 
   <!-- Class Schedule -->
   <ion-row class="ClassSchedule">
@@ -125,8 +130,8 @@
         <ion-button shape="round" fill="outline">See Full Class Schedule</ion-button>
     </ion-row> -->
 
-  <ion-row style="margin-top: 20px;" justify-content-center align-items-center>
+  <!-- <ion-row style="margin-top: 20px;" justify-content-center align-items-center>
     <ion-button shape="round" (click)="ShowPopUpModal()" fill="outline">Show Pop-Up Modal</ion-button>
-  </ion-row>
+  </ion-row> -->
 
 </ion-content>

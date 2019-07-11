@@ -6,7 +6,10 @@
         <ion-row>
           <ion-avatar (click)="ShowProfile()" class="profilePictureAvatar">
             <ion-ripple-effect></ion-ripple-effect>
-            <img src="{{'data:image/jpg;base64,' + userImage}}" /> <!-- src="../../../../assets/images/111392.jpg"  -->
+            <div *ngIf="!profileImageLoaded" class="spinner-box">
+              <div class="spinner spinner3"></div>
+            </div>
+            <img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}" />
           </ion-avatar>
         </ion-row>
       </ion-col>
@@ -39,6 +42,7 @@
 </ion-header>
 
 <ion-content>
+    <ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
   <!-- Announcements -->
   <!-- <ion-row class="announcement" *ngFor="let announcement of announcements">
     <ion-col class="announcement-icon">
@@ -64,6 +68,7 @@
         </mat-icon>
       </div>
     </ion-item-divider>
+    
 
     <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
       <div style="margin-left: 7px;
@@ -87,35 +92,80 @@
         </mat-list>
       </div>
 
-      <!-- <div style="margin-left: 7px;
-          border-left: 3px solid #014ea2; margin-top: 3px;">
-              <mat-list>
-                <mat-list-item class="matListItem" style="height: auto;">
-                  <div style="width: 50%;" class="day-title">
-                      Tomorrow
-                  </div>
-                  <div style="width: 50%;"></div>
-                </mat-list-item>
-                <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
-                  <div class="schedule-desc-left">
-                    Software Engineering (A)
-                  </div>
-                  <div class="schedule-desc-right">
-                    09:30 AM - 10:30 AM [3103]
-                  </div>
-                </mat-list-item>
-                <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
-                  <div class="schedule-desc-left">
-                      Complex Variable, Laplace & Z-Transformation (O)
-                  </div>
-                  <div class="schedule-desc-right">
-                    11:30 AM - 01:30 PM [3104]
-                  </div>
-                </mat-list-item>
-              </mat-list>
-            </div> -->
+
     </div>
   </ion-row>
+
+  <mat-expansion-panel [expanded]="true" class="menuTile">
+    <mat-expansion-panel-header class="menuTileHeader">
+      <mat-panel-title class="menuTileHeaderTitle">
+        <div class="package-rating-detail">
+          <mat-icon class="material-icons">insert_chart</mat-icon>
+          <label>Registration</label>
+        </div>
+      </mat-panel-title>
+      <mat-panel-description>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-panel-description class="subMenuPanel">
+
+      <ion-progress-bar [hidden]="semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+
+      <ion-item style="width: 100%; padding-bottom: 10px; padding-top: 10px;">
+        <ion-label style="width:20%;">Semester: </ion-label>
+        <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
+          <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester.ID">
+            {{semester.Title}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="semesterData"></mat-progress-bar>
+      <div [hidden]="semesterData">
+          <ngx-content-loading [width]="222">
+            <svg:g ngx-bullet-list-preset></svg:g>
+          </ngx-content-loading>
+        </div> -->
+
+        <div *ngIf="!semesterData">
+            <ion-list>
+              <ion-item *ngFor="let item of [].constructor(5)">
+                <ion-thumbnail slot="start">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-thumbnail>
+                <ion-label>
+                  <h3>
+                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                  </h3>
+                  <p>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                  </p>
+                  <p>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                  </p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+
+      <mat-card *ngFor="let item of semesterData" style="margin-bottom:10px">
+        <mat-card-content>
+          <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
+          <mat-card-subtitle>Status : <ion-chip [color]="item.Valid? 'success': 'warning'">
+              {{item.Valid ? 'Valid' : 'Invalid'}} </ion-chip>
+          </mat-card-subtitle>
+          <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}}
+            {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <div class="example-button-row">
+            <button mat-stroked-button color="primary">TSF</button>
+            <button mat-stroked-button color="primary">Notes</button>
+            <button mat-stroked-button color="primary">Notice</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-panel-description>
+  </mat-expansion-panel>
 
   <!-- <ion-row justify-content-center align-items-center>
         <ion-button shape="round" fill="outline">See Full Class Schedule</ion-button>

@@ -16,9 +16,13 @@ export class LoginService {
     let formattedPassword = encodeURIComponent(user.password);
 
     const dt = new HttpParams()
-      .set('grant_type','password')
+      .set('grant_type', 'password')
       .set('username', user.username)
       .set('password', formattedPassword);
+
+    // return this.httpClient.post('http://172.16.11.117:60002/Token', dt).pipe(map(res => {
+    //   return res;
+    // }));
 
     // return this.httpClient.post('http://172.16.22.101:41379/Token', dt ).pipe(map(res =>{
     //   return res;
@@ -33,7 +37,7 @@ export class LoginService {
     //  }));
   }
 
-  currentUserInfo(): Observable<IResult>{
+  currentUserInfo(): Observable<IResult> {
     return this.httpClient.get<IResult>(`Common/GetCurrentUserInfo2`);
   }
 
@@ -41,8 +45,8 @@ export class LoginService {
     return this.httpClient.get<IResult>(`Student/IsStudentValid`);
   }
 
-  logMeOut() : Observable<IResult> {
+  logMeOut(): Observable<IResult> {
     return this.httpClient.get<IResult>(`Common/Logout`);
   }
-  
+
 }
