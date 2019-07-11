@@ -29,15 +29,14 @@ export class StudentProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.currentview = "office";
+    this.currentview = "academic";
     this.getProfile();
     this.getUserProfileImage();
   }
 
   /* Navigation */
-
-  showOfficeView() {
-    this.currentview = "office";
+  showAcademicView() {
+    this.currentview = "academic";
   }
 
   showPersonalView() {
@@ -58,6 +57,7 @@ export class StudentProfilePage implements OnInit {
     this.profileService.getEmployeeProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
+      console.log(this.studentProfile);
     },
       error => {
         this.loadingService.loadingDismiss();

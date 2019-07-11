@@ -16,7 +16,6 @@
       <ion-col no-padding>
         <ion-row>
           <div>
-            <!-- <label >Welcome,</label><br/> -->
             <ion-text class="UserName">
               {{appUserInfo?.User.FullName}}
             </ion-text><br />
@@ -42,7 +41,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+  <ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
   <!-- Announcements -->
   <!-- <ion-row class="announcement" *ngFor="let announcement of announcements">
     <ion-col class="announcement-icon">
@@ -68,7 +67,7 @@
         </mat-icon>
       </div>
     </ion-item-divider>
-    
+
 
     <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
       <div style="margin-left: 7px;
@@ -91,8 +90,6 @@
           </mat-list-item>
         </mat-list>
       </div>
-
-
     </div>
   </ion-row>
 
@@ -126,49 +123,58 @@
           </ngx-content-loading>
         </div> -->
 
-        <div *ngIf="!semesterData">
-            <ion-list>
-              <ion-item *ngFor="let item of [].constructor(5)">
-                <ion-thumbnail slot="start">
-                  <ion-skeleton-text animated></ion-skeleton-text>
-                </ion-thumbnail>
-                <ion-label>
-                  <h3>
-                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-                  </h3>
-                  <p>
-                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                  </p>
-                  <p>
-                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                  </p>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </div>
+      <div *ngIf="!semesterData">
+        <ion-list>
+          <ion-item *ngFor="let item of [].constructor(5)">
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
 
       <mat-card *ngFor="let item of semesterData" style="margin-bottom:10px">
         <mat-card-content>
-          <mat-card-title class="card_title">{{item.Section.ID}} - {{item.Section.Description}} </mat-card-title>
-          <mat-card-subtitle>Status : <ion-chip [color]="item.Valid? 'success': 'warning'">
+          <mat-card-title class="card_title">
+            <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!item.Valid"></ion-icon>
+            <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="item.Valid"></ion-icon>
+            {{item.Section.ID}} - {{item.Section.Description}}
+            <!-- <ion-icon name="ios-close-circle" class="courseIcon" color="danger"></ion-icon> -->
+          </mat-card-title>
+
+          <!-- <mat-card-subtitle>Status : <ion-chip [color]="item.Valid? 'success': 'warning'">
               {{item.Valid ? 'Valid' : 'Invalid'}} </ion-chip>
-          </mat-card-subtitle>
+          </mat-card-subtitle> -->
           <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}}
             {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</mat-card-subtitle>
           <mat-divider></mat-divider>
           <div class="example-button-row">
-            <button mat-stroked-button color="primary">TSF</button>
-            <button mat-stroked-button color="primary">Notes</button>
-            <button mat-stroked-button color="primary">Notice</button>
+            <button mat-stroked-button color="primary">
+                <ion-icon name="calendar" class="courseIcon"></ion-icon> TSF
+            </button>
+            <button mat-stroked-button color="primary">
+                <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
+            </button>
+            <button mat-stroked-button color="primary">
+                <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notice
+            </button>
           </div>
         </mat-card-content>
       </mat-card>
-
     </mat-panel-description>
   </mat-expansion-panel>
-
   <!-- <ion-row justify-content-center align-items-center>
         <ion-button shape="round" fill="outline">See Full Class Schedule</ion-button>
     </ion-row> -->
-
 </ion-content>

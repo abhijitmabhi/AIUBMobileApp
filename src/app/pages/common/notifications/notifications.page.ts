@@ -247,7 +247,7 @@ export class NotificationsPage implements OnInit {
       // if (data.length == 1000) {
       //   event.target.disabled = true;
       // }
-    }, 5000);
+    }, 500);
   }
 
   notificationByUser() {
@@ -271,7 +271,6 @@ export class NotificationsPage implements OnInit {
           IsRead: notif.IsRead
         });
       });
-
 
       this.notificationList = this.notificationList.concat(data);
     })
