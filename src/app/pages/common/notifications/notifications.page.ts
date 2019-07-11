@@ -1,7 +1,6 @@
 import { NotificationService } from './../../../services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
-import {  IonItem,IonItemSliding, PopoverController, ModalController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
 
 @Component({
@@ -17,7 +16,6 @@ export class NotificationsPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.getNotifData();
     this.notificationByUser();
   }
 
@@ -236,10 +234,6 @@ export class NotificationsPage implements OnInit {
 
   notificationByUser(){
     this.notificationService.getNotificationsByUser(0,10).subscribe( res => {
-      console.log(res);
-
-
-
       let data:any[] = [];
       res.Data.forEach(notif => {
       data.push({
@@ -258,6 +252,6 @@ export class NotificationsPage implements OnInit {
     });
 
     this.notificationList = this.notificationList.concat(data);
-    })
+    });
   }
 }

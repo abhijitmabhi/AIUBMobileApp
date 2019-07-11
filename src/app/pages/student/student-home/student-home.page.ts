@@ -58,6 +58,7 @@ export class StudentHomePage implements OnInit {
   }
 
   ngOnInit() {
+    this.pushNotification.oneSignalSubscription();
     this.pushNotification.getPlayerID();
     this.getSemesterList();
     // this.getSchedule();

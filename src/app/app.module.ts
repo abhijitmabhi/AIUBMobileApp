@@ -24,8 +24,8 @@ import { BrowserModule } from '@angular/platform-browser';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    BrowserModule, 
     IonicModule.forRoot(), 
+    BrowserModule,
     AppRoutingModule
   ],
   providers: [
