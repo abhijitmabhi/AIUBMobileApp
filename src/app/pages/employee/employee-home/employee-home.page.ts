@@ -47,6 +47,7 @@ export class EmployeeHomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pushNotification.oneSignalSubscription();
     this.pushNotification.getPlayerID();
     this.getUserWarningList();
     this.getClassSchedule();
