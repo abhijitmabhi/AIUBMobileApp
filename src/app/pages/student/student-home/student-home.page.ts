@@ -160,6 +160,6 @@ export class StudentHomePage implements OnInit {
     this.notificationCount = 0;
     this.notificationService.seenAllNotifications().subscribe( res => {
     });
-    this.router.navigate(['notifications']);
+    this.router.navigate(['/notifications']);
   }
 }

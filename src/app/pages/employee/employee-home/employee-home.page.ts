@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../services/notification/notification.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -39,7 +40,8 @@ export class EmployeeHomePage implements OnInit {
     private loadingService: LoadingService,
     private classSceduleService: ClassScheduleService,
     private commonService: CommonService,
-    private modalController:ModalController
+    private modalController:ModalController,
+    private notificationService:NotificationService
   ) { }
 
   ngOnInit() {
@@ -132,6 +134,13 @@ export class EmployeeHomePage implements OnInit {
     return await myModal.present();
   }
 
+  /* Opne notification */
 
+  openNotification() {
+    this.notificationCount = 0;
+    this.notificationService.seenAllNotifications().subscribe( res => {
+    });
+    this.router.navigate(['/notifications']);
+  }
 
 }

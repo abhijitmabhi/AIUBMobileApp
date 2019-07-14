@@ -26,8 +26,7 @@ export class PushNotificationService {
   
       this.oneSignal.handleNotificationOpened().subscribe((res) => {
         // do something when notification is opened
-        localStorage.setItem('notification', JSON.stringify(res));
-        this.testAlert(JSON.stringify(res));
+        localStorage.setItem('notification', JSON.stringify(res.notification.payload.additionalData.ID));
         this.router.navigateByUrl('/notifications');
       });
       
