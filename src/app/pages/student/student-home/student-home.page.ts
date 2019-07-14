@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../services/notification/notification.service';
 import { CommonService } from './../../../services/common/common.service';
 import { StudentClassScheduleService } from './../../../services/student/student-class-schedule.service';
 import { AlertService } from './../../../core/alert/alert.service';
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController } from '@ionic/angular';
 import { StudentProfileService } from '../../../services/student/student-profile.service';
 import { Router } from '@angular/router';
+import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-student-home',
@@ -54,7 +56,8 @@ export class StudentHomePage implements OnInit {
     private alertService: AlertService,
     private studentProfileService: StudentProfileService,
     private studentClassSceduleService: StudentClassScheduleService,
-    private router: Router) {
+    private router: Router,
+    private notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -149,5 +152,14 @@ export class StudentHomePage implements OnInit {
         this.semesterData = res.Data;
       });
     }
+  }
+
+  /* Opne notification */
+
+  openNotification() {
+    this.notificationCount = 0;
+    this.notificationService.seenAllNotifications().subscribe( res => {
+    });
+    this.router.navigate(['notifications']);
   }
 }

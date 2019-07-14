@@ -28,7 +28,7 @@
           <div>
             <!-- style="margin-top: 5px;margin-right: 5px;" -->
             <ion-ripple-effect></ion-ripple-effect>
-            <button ion-button icon-only clear shape="round" class="notifButton" routerLink="/notifications">
+            <button ion-button icon-only clear shape="round" class="notifButton" (click)="openNotification()">
               <ion-icon class="tabIcon" name="notifications"></ion-icon>
               <ion-badge class="notifBadge">{{notificationCount}}</ion-badge>
             </button>

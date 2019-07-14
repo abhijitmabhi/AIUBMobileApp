@@ -37,5 +37,6 @@ export class CommonService {
   public registeredCoursesBySemester(semesterId: number): Observable<IResult> {
     return this.httpClient.get<IResult>(`Student/GetCourseList?semesterID=${semesterId}`);
   }
+
  
 }

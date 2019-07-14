@@ -28,9 +28,13 @@ export class NotificationsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getNotifData();
+    // this.getNotifData();
+    this.notificationByUser();
     let notification = JSON.parse(localStorage.getItem('notification'));
-    this.ShowNotificationDetails(notification);
+    if(notification){
+      this.ShowNotificationDetails(notification);
+    }
+    
   }
 
   async openNotification(notification: any) {
@@ -66,9 +70,9 @@ export class NotificationsPage implements OnInit {
     const myModal = await this.modalController.create({
       component: NotificationDetails,
       componentProps: {
-        Title: notification.Title,
+        Title: notification.Title? notification.Title: 'Error Titile',
         Message: notification.Message? notification.Message: 'Notification',
-        Time: notification.Time
+        Time: notification.Time? notification.Time: 'Error Time'
       },
       cssClass: 'popup-modal-css',
       backdropDismiss: false,
@@ -76,216 +80,218 @@ export class NotificationsPage implements OnInit {
     return await myModal.present();
   }
 
-  getNotifData() {
-    let notifData = [
-      {
-        "ID": 1,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 01",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T14:09:14.593",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "02:09:14 PM"
-      },
-      {
-        "ID": 2,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 02",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T14:09:14.593",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "02:09:14 PM"
-      },
-      {
-        "ID": 3,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 03",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T14:05:29.723",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "02:05:29 PM"
-      },
-      {
-        "ID": 4,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 04",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T13:31:23.927",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "01:31:23 PM"
-      },
-      {
-        "ID": 5,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 05",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T13:31:02.503",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "01:31:02 PM"
-      },
-      {
-        "ID": 6,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 06",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T13:30:50.89",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "01:30:50 PM"
-      },
-      {
-        "ID": 7,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 07",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T13:30:31.96",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "01:30:31 PM"
-      },
-      {
-        "ID": 8,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 08",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-07-02T13:29:34.02",
-        "IsRead": false,
-        "PostDate": "02-Jul-19",
-        "PostTime": "01:29:34 PM"
-      },
-      {
-        "ID": 9,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 09",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-06-30T17:22:38.413",
-        "IsRead": false,
-        "PostDate": "30-Jun-19",
-        "PostTime": "05:22:38 PM"
-      },
-      {
-        "ID": 10,
-        "UserID": "16-31332-1",
-        "Title": "Notification",
-        "Message": "Notification 10",
-        "Url": null,
-        "StatusID": 0,
-        "TypeID": 0,
-        "Type": "Error",
-        "ReadDate": null,
-        "PostedDate": "2019-06-30T17:22:37.663",
-        "IsRead": false,
-        "PostDate": "30-Jun-19",
-        "PostTime": "05:22:37 PM"
-      }
-    ];
+  // getNotifData() {
+   
+  //   let notifData = [
+  //     {
+  //       "ID": 1,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 01",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T14:09:14.593",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "02:09:14 PM"
+  //     },
+  //     {
+  //       "ID": 2,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 02",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T14:09:14.593",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "02:09:14 PM"
+  //     },
+  //     {
+  //       "ID": 3,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 03",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T14:05:29.723",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "02:05:29 PM"
+  //     },
+  //     {
+  //       "ID": 4,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 04",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T13:31:23.927",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "01:31:23 PM"
+  //     },
+  //     {
+  //       "ID": 5,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 05",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T13:31:02.503",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "01:31:02 PM"
+  //     },
+  //     {
+  //       "ID": 6,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 06",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T13:30:50.89",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "01:30:50 PM"
+  //     },
+  //     {
+  //       "ID": 7,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 07",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T13:30:31.96",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "01:30:31 PM"
+  //     },
+  //     {
+  //       "ID": 8,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 08",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-07-02T13:29:34.02",
+  //       "IsRead": false,
+  //       "PostDate": "02-Jul-19",
+  //       "PostTime": "01:29:34 PM"
+  //     },
+  //     {
+  //       "ID": 9,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 09",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-06-30T17:22:38.413",
+  //       "IsRead": false,
+  //       "PostDate": "30-Jun-19",
+  //       "PostTime": "05:22:38 PM"
+  //     },
+  //     {
+  //       "ID": 10,
+  //       "UserID": "16-31332-1",
+  //       "Title": "Notification",
+  //       "Message": "Notification 10",
+  //       "Url": null,
+  //       "StatusID": 0,
+  //       "TypeID": 0,
+  //       "Type": "Error",
+  //       "ReadDate": null,
+  //       "PostedDate": "2019-06-30T17:22:37.663",
+  //       "IsRead": false,
+  //       "PostDate": "30-Jun-19",
+  //       "PostTime": "05:22:37 PM"
+  //     }
+  //   ];
 
-    let data: any[] = [];
-    notifData.forEach(notif => {
-      data.push({
-        Id: notif.ID,
-        ContentCssClass: (notif.IsRead === true) ? "read" : "unread",
-        HeaderCssClass: (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
-        BodyCssClass: (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
-        TimeCssClass: (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
-        Title: notif.Title,
-        Message: notif.Message,
-        Time: `${notif.PostDate} ${notif.PostTime}`,
-        TypeID: notif.TypeID,
-        Type: notif.Type,
-        IsRead: notif.IsRead
-      });
-    });
+  //   let data: any[] = [];
+  //   notifData.forEach(notif => {
+  //     data.push({
+  //       Id: notif.ID,
+  //       ContentCssClass: (notif.IsRead === true) ? "read" : "unread",
+  //       HeaderCssClass: (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
+  //       BodyCssClass: (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
+  //       TimeCssClass: (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
+  //       Title: notif.Title,
+  //       Message: notif.Message,
+  //       Time: `${notif.PostDate} ${notif.PostTime}`,
+  //       TypeID: notif.TypeID,
+  //       Type: notif.Type,
+  //       IsRead: notif.IsRead
+  //     });
+  //   });
 
-    this.notificationList = this.notificationList.concat(data);
-  }
+  //   this.notificationList = this.notificationList.concat(data);
+  // }
 
-  loadData(event) {
-    setTimeout(() => {
-      console.log('Done');
-      this.getNotifData();
-      event.target.complete();
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      // if (data.length == 1000) {
-      //   event.target.disabled = true;
-      // }
-    }, 500);
-  }
+  // loadData(event) {
+  //   setTimeout(() => {
+  //     console.log('Done');
+  //     this.getNotifData();
+  //     event.target.complete();
+  //     // App logic to determine if all data is loaded
+  //     // and disable the infinite scroll
+  //     // if (data.length == 1000) {
+  //     //   event.target.disabled = true;
+  //     // }
+  //   }, 500);
+  // }
 
   notificationByUser() {
-    this.notificationService.getNotificationsByUser(0, 10).subscribe(res => {
+    this.notificationService.getNotificationsByUser(0, 50).subscribe(res => {
       // console.log(res);
       let data: any[] = [];
-
-
-      res.Data.forEach(notif => {
-        data.push({
-          Id: notif.ID,
-          ContentCssClass: (notif.IsRead === true) ? "read" : "unread",
-          HeaderCssClass: (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
-          BodyCssClass: (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
-          TimeCssClass: (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
-          Title: notif.Title,
-          Message: notif.Message,
-          Time: `${notif.PostDate} ${notif.PostTime}`,
-          TypeID: notif.TypeID,
-          Type: notif.Type,
-          IsRead: notif.IsRead
+      if(res.Data) {
+        res.Data.forEach(notif => {
+          data.push({
+            Id: notif.ID,
+            ContentCssClass: (notif.IsRead === true) ? "read" : "unread",
+            HeaderCssClass: (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
+            BodyCssClass: (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
+            TimeCssClass: (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
+            Title: notif.Title,
+            Message: notif.Message,
+            Time: `${notif.PostDate} ${notif.PostTime}`,
+            TypeID: notif.TypeID,
+            Type: notif.Type,
+            IsRead: notif.IsRead
+          });
         });
-      });
+  
+        this.notificationList = this.notificationList.concat(data);
+      }
 
-      this.notificationList = this.notificationList.concat(data);
     })
   }
 }

@@ -19,5 +19,9 @@ export class NotificationService {
     return this.httpClient.post<any>(`Notification/ChangeStatusByID`, httpParams );
   }
 
+  public seenAllNotifications() {
+    return this.httpClient.get(`Notification/MarkNotificationAsSeen`);
+  }
+
   
 }
