@@ -27,6 +27,7 @@ export class PushNotificationService {
       this.oneSignal.handleNotificationOpened().subscribe((res) => {
         // do something when notification is opened
         localStorage.setItem('notification', JSON.stringify(res));
+        this.testAlert(JSON.stringify(res));
         this.router.navigateByUrl('/notifications');
       });
       
@@ -36,6 +37,9 @@ export class PushNotificationService {
 
   getPlayerID(){
     this.oneSignal.getIds().then(obj => {
+        if(!localStorage.getItem('playerId')){
+          localStorage.setItem('playerId', obj.userId);
+        }
         this.commonService.savePLayerIDIntoDatabase(obj.userId, false).subscribe(res => {
           if(res.Data.HasWarning){
             this.alertForSubscribeToOneSignal(obj.userId);

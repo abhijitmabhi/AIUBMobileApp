@@ -1,7 +1,8 @@
 import { NotificationService } from './../../../services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -12,12 +13,24 @@ export class NotificationsPage implements OnInit {
   private notificationList: any = [];
   constructor(
     private modalController: ModalController,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private router: Router,
+    private platform: Platform) {
+      this.platform.backButton.subscribe(() => { 
+        let user_type = localStorage.getItem('userType');
+        if(user_type == "3" || user_type == "1") {
+          this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
+        }
+        if(user_type == "0" ) {
+          this.router.navigateByUrl('/student-tab/tabs/studentHome');
+        }
+      });
   }
 
   ngOnInit() {
     this.getNotifData();
-    // this.notificationByUser();
+    let notification = JSON.parse(localStorage.getItem('notification'));
+    this.ShowNotificationDetails(notification);
   }
 
   async openNotification(notification: any) {
@@ -54,7 +67,7 @@ export class NotificationsPage implements OnInit {
       component: NotificationDetails,
       componentProps: {
         Title: notification.Title,
-        Message: notification.Message,
+        Message: notification.Message? notification.Message: 'Notification',
         Time: notification.Time
       },
       cssClass: 'popup-modal-css',

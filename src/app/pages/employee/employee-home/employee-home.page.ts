@@ -5,9 +5,7 @@ import { PushNotificationService } from 'src/app/core/oneSignal/push-notificatio
 import { DatePipe } from '@angular/common';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { CommonService } from 'src/app/services/common/common.service';
-import { AlertService } from 'src/app/core/alert/alert.service';
 import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
-import { EmployeeHomeService } from 'src/app/services/employee/employee-home.service';
 import { ClassScheduleService } from 'src/app/services/employee/class-schedule.service';
 import { ModalController } from '@ionic/angular';
 import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
@@ -39,16 +37,14 @@ export class EmployeeHomePage implements OnInit {
     private pushNotification: PushNotificationService,
     private datePipe: DatePipe,
     private loadingService: LoadingService,
-    private employeeHomeService: EmployeeHomeService,
     private classSceduleService: ClassScheduleService,
     private commonService: CommonService,
-    private alertService: AlertService,
     private modalController:ModalController
   ) { }
 
   ngOnInit() {
-    this.pushNotification.oneSignalSubscription();
     this.pushNotification.getPlayerID();
+    this.pushNotification.oneSignalSubscription();
     this.getUserWarningList();
     this.getClassSchedule();
     this.getCurrentUserInfo();

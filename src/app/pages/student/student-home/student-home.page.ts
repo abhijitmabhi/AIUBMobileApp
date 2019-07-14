@@ -58,8 +58,8 @@ export class StudentHomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.pushNotification.oneSignalSubscription();
     this.pushNotification.getPlayerID();
+    this.pushNotification.oneSignalSubscription();
     this.getSemesterList();
     this.getClassSchedule();
     this.getCurrentUserInfo();
@@ -150,8 +150,4 @@ export class StudentHomePage implements OnInit {
       });
     }
   }
-  
-
-
-
 }

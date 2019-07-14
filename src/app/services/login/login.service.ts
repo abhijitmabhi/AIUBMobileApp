@@ -24,13 +24,13 @@ export class LoginService {
     //   return res;
     // }));
 
-    // return this.httpClient.post('http://172.16.22.101:41379/Token', dt ).pipe(map(res =>{
-    //   return res;
-    //  }));
-
-     return this.httpClient.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
+    return this.httpClient.post('http://172.16.22.101:41379/Token', dt ).pipe(map(res =>{
       return res;
      }));
+
+    //  return this.httpClient.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
+    //   return res;
+    //  }));
 
     //  return this.httpClient.post(`https://testapi.aiub.edu/ums-auth-api/Token`, dt).pipe(map(res =>{
     //   return res;
@@ -45,8 +45,12 @@ export class LoginService {
     return this.httpClient.get<IResult>(`Student/IsStudentValid`);
   }
 
-  logMeOut(): Observable<IResult> {
-    return this.httpClient.get<IResult>(`Common/Logout`);
+  logMeOut(playerId) {
+    const dt = new HttpParams()
+      .set('playerId', playerId);
+    return this.httpClient.post(`Common/Logout`, dt ).pipe(map(res =>{
+      return res;
+     }));
   }
 
 }

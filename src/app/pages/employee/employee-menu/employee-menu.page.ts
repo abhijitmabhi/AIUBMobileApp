@@ -1,3 +1,4 @@
+import { PushNotificationService } from 'src/app/core/oneSignal/push-notification.service';
 import { LoadingService } from './../../../core/loader/loading.service';
 import { LoginService } from './../../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,16 +11,20 @@ import { Router } from '@angular/router';
 })
 export class EmployeeMenuPage implements OnInit {
 
+  private playerId:any;
+
   constructor(private router:Router,
     private loginService: LoginService,
     private loadingService: LoadingService) { }
 
+
   ngOnInit() {
+    this.playerId = localStorage.getItem('playerId');
   }
 
   logout(){
     this.loadingService.loadingStart();
-    this.loginService.logMeOut().subscribe(res => {
+    this.loginService.logMeOut(this.playerId).subscribe(res => {
       localStorage.clear();
       this.loadingService.loadingDismiss();
       this.router.navigate(['']);

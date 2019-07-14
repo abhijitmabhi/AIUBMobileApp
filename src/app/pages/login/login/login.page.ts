@@ -86,7 +86,7 @@ export class LoginPage implements OnInit {
     this.loadingService.loadingStart();
     this.loginService.login(this.User).subscribe(res => {
       this.Cred = res;
-      this.User.password = null;
+      // this.User.password = null;
       // console.log(this.Cred);
       //Detect User Type
       localStorage.setItem('userType', this.Cred.UserTypeID);
