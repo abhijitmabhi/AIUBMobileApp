@@ -269,7 +269,7 @@ export class NotificationsPage implements OnInit {
   // }
 
   notificationByUser() {
-    this.notificationService.getNotificationsByUser(0, 50).subscribe(res => {
+    this.notificationService.getNotificationsByUser(0, 7).subscribe(res => {
       // console.log(res);
       let data: any[] = [];
       if(res.Data) {
