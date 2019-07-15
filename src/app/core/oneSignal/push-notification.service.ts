@@ -61,7 +61,8 @@ export class PushNotificationService {
     const alert = await this.alertController.create({
       header: 'Push Notification Alert!',
       subHeader: '',
-      message: 'You have registered for push notifications from another device. Do you want to ovverride it?',
+      message: 'Do you want to opt out push notifications from another device?',
+      translucent: true,
       buttons: [
         {
           text: 'No',
