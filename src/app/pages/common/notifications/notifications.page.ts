@@ -143,14 +143,17 @@ export class NotificationsPage implements OnInit {
         });
   
         this.notificationList = this.notificationList.concat(data);
+
         let notificationId = JSON.parse(localStorage.getItem('notification'));
         if(notificationId){
           for (let i=0; i < this.notificationList.length; i++) {
            if(this.notificationList[i].ID == notificationId){
              this.openNotification(this.notificationList[i]);
+             localStorage.setItem('notification', null);
            }
           }
         }
+
       }
     });
   }

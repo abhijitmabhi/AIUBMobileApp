@@ -21,8 +21,8 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
+      this.splashScreen.hide();
       if (localStorage.getItem('token')) {
-        this.splashScreen.hide();
         let user_type = localStorage.getItem('userType');
         if(user_type == "3" || user_type == "1") {
           this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
@@ -31,6 +31,7 @@ export class AppComponent {
           this.router.navigateByUrl('/student-tab/tabs/studentHome');
         }
       }
+      
       this.statusBar.styleLightContent();
     });
   }

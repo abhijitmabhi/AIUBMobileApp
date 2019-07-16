@@ -20,6 +20,7 @@ export class InterceptorService implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           'Authorization': 'bearer ' + token,
+          'AppKey': 'AiubPortalMobileAppBy$DD2019',
           'content-type': 'application/x-www-form-urlencoded'
         },
         url:`${this.baseUrl}${request.url}`

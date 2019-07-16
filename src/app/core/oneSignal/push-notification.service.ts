@@ -19,7 +19,7 @@ export class PushNotificationService {
 
   oneSignalSubscription(){
       this.oneSignal.startInit(this.signal_app_id, this.firebase_id);
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
       this.oneSignal.handleNotificationReceived().subscribe((res) => {
       // do something when notification is received
       });
