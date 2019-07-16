@@ -1,3 +1,4 @@
+import { EmployeeHomeService } from 'src/app/services/employee/employee-home.service';
 import { NotificationService } from './../../../services/notification/notification.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,6 +26,10 @@ export class EmployeeHomePage implements OnInit {
   announcements: any;
   classSchedules: any;
   profileImageLoaded: boolean = false;
+  semesterList: any;
+  nrSelect: any;
+  semesterData: any;
+  
 
   //ProgressBar
   color = 'warn';
@@ -41,7 +46,8 @@ export class EmployeeHomePage implements OnInit {
     private classSceduleService: ClassScheduleService,
     private commonService: CommonService,
     private modalController:ModalController,
-    private notificationService:NotificationService
+    private notificationService:NotificationService,
+    private employeeHomeService: EmployeeHomeService
   ) { }
 
   ngOnInit() {
@@ -51,6 +57,7 @@ export class EmployeeHomePage implements OnInit {
     this.getClassSchedule();
     this.getCurrentUserInfo();
     this.getUserProfileImage();
+    this.getSemesterList();
   }
 
   private currentDateTime = new Date();
@@ -142,5 +149,52 @@ export class EmployeeHomePage implements OnInit {
     });
     this.router.navigate(['/notifications']);
   }
+
+  /* Employee Course List */
+  
+  getSemesterList(){
+    this.employeeHomeService.getEmployeeSemesterList().subscribe(semesterLists => {
+      this.semesterList = semesterLists.Data;
+      let currentSemesterId;
+      let isCurrentSemesterEnrolled = false;
+      console.log(this.semesterList);
+
+      this.semesterList.forEach(semester => {
+        if(semester.IsCurrent === true){
+          currentSemesterId = semester.ID;
+          isCurrentSemesterEnrolled = true;
+        }
+      });
+      if(isCurrentSemesterEnrolled){
+        this.nrSelect = currentSemesterId;
+      }else {
+        this.nrSelect = this.semesterList[0].ID;
+      }
+
+      this.onChangeSemester();
+
+    });
+    
+  }
+
+  /* Student Registraton Semester List Dropdown */
+
+  onChangeSemester(){
+    this.semesterData = null;
+    if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== ""){
+      this.employeeHomeService.getEmployeeCourseList(this.nrSelect).subscribe(res => {
+        this.semesterData = res.Data.Courses;
+        console.log(this.semesterData);
+      });
+    }
+  }
+
+  /* Get Student List */
+
+  openStudentList(sectionId: number) {
+
+    this.router.navigate(["call", sectionId]);
+  }
+
 
 }

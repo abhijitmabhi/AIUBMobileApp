@@ -124,7 +124,7 @@ ion-col.my-thin-col {
 
 .menuDividerRightSideIcon{
   color: #014ea2;
-  position: fixed;
+  position: absolute;
   right: 0;
   margin-right: 15px;
 }
@@ -214,6 +214,61 @@ ion-col.my-thin-col {
   }
   
   /* Loader */
+
+  /* Course Start */
+    
+.menuTile{
+  margin: 5px;
+}
+
+.menuTileHeader{
+  background: var(--ion-color-primary) !important;
+}
+
+.menuTileHeaderTitle{
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+::ng-deep .menuTileHeader > .mat-expansion-indicator:after {
+  color: white;
+}
+
+.menu-icon{
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  align-items: center;
+}
+
+.subMenuPanel{
+    display: unset;
+    margin: 0px !important;
+}
+
+::ng-deep .menuTile .mat-expansion-panel-body {
+  padding: 5px !important;
+  background-color: #f3efef;
+}
+
+.card_title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.example-button-row button,
+.example-button-row a {
+  align-self: center;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 4%;
+  width: 29.33%;
+  outline: 0 !important;
+}
+
+  /* Course End */
 
 
 

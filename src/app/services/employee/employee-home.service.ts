@@ -14,4 +14,12 @@ export class EmployeeHomeService {
     return this.httpClient.get<IResult>(`Employee/Schedule?fromDateTime=${fromDateTime}&tillDateTime=${tillDateTime}`);
   }
 
+  public getEmployeeSemesterList(): Observable<IResult> {
+    return this.httpClient.get<IResult>(`Employee/GetSemesterList`);
+  }
+
+  public getEmployeeCourseList(semesterId: number): Observable<IResult> {
+    return this.httpClient.get<IResult>(`Employee/GetCourseList?semesterID=${semesterId}`);
+  }
+
 }
