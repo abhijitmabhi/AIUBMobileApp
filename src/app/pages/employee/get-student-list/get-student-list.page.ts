@@ -40,7 +40,10 @@ export class GetStudentListPage implements OnInit {
 
     this.route.params.subscribe((params: Params) => {
       this.sectionId = params['sectionId'];
-      this.sectionService.getStudentBySection(this.sectionId).subscribe(res => console.log(res))
+      this.sectionService.getStudentBySection(this.sectionId, 0 , 100).subscribe(res => {
+        console.log(res);
+        this.studentList = res.Data;
+      });
     });
   }
 

@@ -8,38 +8,38 @@
 </ion-header>
 
 <ion-content>
-<div *ngFor="let student of studentList" class="mainDiv">
+<div *ngFor="let stdList of studentList" class="mainDiv">
   <div style="float: left">
       <div class="frame-square">
           <div class="crop">
-              <img class="Picture" src="{{ student.Picture }}" />
+              <ion-img class="Picture" src="{{'data:image/jpg;base64,' + stdList.PictureAsBase64}}" ></ion-img>
             </div>
         </div>
   </div>
   
   <div class="details">
     <p> 
-      <b>{{ student.Name }}</b>
-      <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!student.IsValid"></ion-icon>
+      <b>{{ stdList.Student?.FullName }}</b>
+      <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!stdList.Valid"></ion-icon>
     </p>
     <tr>
       <td valign="top"><p class="element">Cgpa</p></td>
       <td valign="top"><p class="element">
-          {{ student.Cgpa }}
+          {{ stdList.Student?.Cgpa }}
       </p></td>
     </tr>
 
     <tr>
       <td valign="top"><p class="element">CreditCompleted</p></td>
       <td valign="top"><p class="element">
-          {{ student.CreditCompleted }}
+          {{ stdList.Student?.CreditCompleted }}
       </p></td>
     </tr>
 
     <tr>
       <td valign="top"><p class="element">Program</p></td>
       <td valign="top"><p class="element">
-          {{ student.Program }}
+          {{ stdList.Student?.Program }}
       </p></td>
     </tr>
   </div>

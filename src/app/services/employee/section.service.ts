@@ -11,8 +11,8 @@ export class SectionService {
 
   constructor(public httpClient: HttpClient) { }
   
-  public getStudentBySection(sectionId:number): Observable<IResult> {
-    return this.httpClient.get<IResult>(`Section/GetStudentList?sectionID=${sectionId}`);
+  public getStudentBySection(sectionId:number, page:number, pageSize:number): Observable<IResult> {
+    return this.httpClient.get<IResult>(`Section/GetStudentList?sectionID=${sectionId}&page=${page}&pageSize=${pageSize}`);
   }
 }
 
