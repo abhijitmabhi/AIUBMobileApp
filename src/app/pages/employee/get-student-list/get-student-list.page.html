@@ -1,48 +1,53 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-back-button text=""></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-title>Student List</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div *ngFor="let stdList of studentList" class="mainDiv">
-  <div style="float: left">
-      <div class="frame-square">
-          <div class="crop">
-              <ion-img class="Picture" src="{{'data:image/jpg;base64,' + stdList.PictureAsBase64}}" ></ion-img>
-            </div>
-        </div>
-  </div>
-  
-  <div class="details">
-    <p> 
-      <b>{{ stdList.Student?.FullName }}</b>
-      <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!stdList.Valid"></ion-icon>
-    </p>
-    <tr>
-      <td valign="top"><p class="element">Cgpa</p></td>
-      <td valign="top"><p class="element">
-          {{ stdList.Student?.Cgpa }}
-      </p></td>
-    </tr>
+    <ion-progress-bar [hidden]="studentList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+    <div *ngIf="!studentList">
+        <ion-list>
+          <ion-item *ngFor="let item of [].constructor(10)">
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+  <ion-list style="padding: 0px;">
 
-    <tr>
-      <td valign="top"><p class="element">CreditCompleted</p></td>
-      <td valign="top"><p class="element">
-          {{ stdList.Student?.CreditCompleted }}
-      </p></td>
-    </tr>
+     
 
-    <tr>
-      <td valign="top"><p class="element">Program </p></td>
-      <td valign="top"><p class="element">
-          {{ stdList.Student?.Program }}
-      </p></td>
-    </tr>
-  </div>
-</div>
-      
+    <span *ngFor="let stdList of studentList">
+      <ion-item >
+          <ion-thumbnail slot="end">
+              <ion-img class="Picture" src="{{'data:image/jpg;base64,' + stdList.PictureAsBase64}}"></ion-img>
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            <h2 >{{stdList?.Student?.FullName}}
+                <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!stdList.Valid"></ion-icon>
+                <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="stdList.Valid"></ion-icon>
+            </h2>
+            <p >{{stdList?.Student?.StudentID}}</p>
+            <p >CGPA: {{stdList?.Student?.Cgpa}} Credit Completed: {{stdList?.Student?.CreditCompleted}}</p>
+            <p >Program: {{stdList?.Student?.Program}}</p>
+          </ion-label>
+        </ion-item>
+      </span>
+  </ion-list>
 </ion-content>

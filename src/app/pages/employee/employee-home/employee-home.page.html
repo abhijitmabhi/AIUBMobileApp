@@ -140,7 +140,7 @@
   
       <mat-panel-description class="subMenuPanel">
   
-        <!-- <ion-progress-bar [hidden]="semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar> -->
+        <ion-progress-bar [hidden]="semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
   
         <ion-item style="width: 100%; padding-bottom: 10px; padding-top: 10px;">
           <ion-label style="width:20%;">Semester: </ion-label>
@@ -185,7 +185,7 @@
             <mat-divider></mat-divider>
             <div class="example-button-row">
               <button mat-stroked-button color="primary" (click)="openStudentList(item.Section.ID)">
-                  <ion-icon name="calendar" class="courseIcon" ></ion-icon> Students
+                  <ion-icon name="people" class="courseIcon" ></ion-icon> Students
               </button>
               <button mat-stroked-button color="primary" disabled="true">
                   <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
