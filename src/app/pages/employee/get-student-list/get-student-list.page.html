@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Student List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div *ngFor="let student of studentList" class="mainDiv">
+  <div style="float: left">
+      <div class="frame-square">
+          <div class="crop">
+              <img class="Picture" src="{{ student.Picture }}" />
+            </div>
+        </div>
+  </div>
+  
+  <div class="details">
+    <p> 
+      <b>{{ student.Name }}</b>
+      <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!student.IsValid"></ion-icon>
+    </p>
+    <tr>
+      <td valign="top"><p class="element">Cgpa</p></td>
+      <td valign="top"><p class="element">
+          {{ student.Cgpa }}
+      </p></td>
+    </tr>
+
+    <tr>
+      <td valign="top"><p class="element">CreditCompleted</p></td>
+      <td valign="top"><p class="element">
+          {{ student.CreditCompleted }}
+      </p></td>
+    </tr>
+
+    <tr>
+      <td valign="top"><p class="element">Program</p></td>
+      <td valign="top"><p class="element">
+          {{ student.Program }}
+      </p></td>
+    </tr>
+  </div>
+</div>
+      
+</ion-content>

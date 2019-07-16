@@ -10,7 +10,7 @@
             <div *ngIf="!profileImageLoaded" class="spinner-box">
               <div class="spinner spinner3"></div>
             </div>
-            <img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}" />
+            <ion-img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}" ></ion-img>
           </ion-avatar>
         </ion-row>
       </ion-col>
@@ -184,8 +184,8 @@
              </mat-card-subtitle>
             <mat-divider></mat-divider>
             <div class="example-button-row">
-              <button mat-stroked-button color="primary">
-                  <ion-icon name="calendar" class="courseIcon" (click)="openStudentList(item.Section.ID)"></ion-icon> Students
+              <button mat-stroked-button color="primary" (click)="openStudentList(item.Section.ID)">
+                  <ion-icon name="calendar" class="courseIcon" ></ion-icon> Students
               </button>
               <button mat-stroked-button color="primary" disabled="true">
                   <ion-icon name="copy" class="courseIcon"></ion-icon> Notes

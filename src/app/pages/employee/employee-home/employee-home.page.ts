@@ -192,8 +192,9 @@ export class EmployeeHomePage implements OnInit {
   /* Get Student List */
 
   openStudentList(sectionId: number) {
-
-    this.router.navigate(["call", sectionId]);
+    console.log('clicked');
+    this.router.navigate(["/get-student-list", sectionId]);
+                           
   }
 
 
