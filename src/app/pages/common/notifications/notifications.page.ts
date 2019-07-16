@@ -15,8 +15,7 @@ export class NotificationsPage implements OnInit {
     private modalController: ModalController,
     private notificationService: NotificationService,
     private router: Router,
-    private platform: Platform,
-    private alertController: AlertController
+    private platform: Platform
     ) {
       this.platform.backButton.subscribe(() => { 
         this.redirectToHome();
@@ -167,14 +166,5 @@ export class NotificationsPage implements OnInit {
     }
   }
 
-  async Success(obj){
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: '',
-      message: obj ? obj  :'This is an alert message.',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
+  
 }

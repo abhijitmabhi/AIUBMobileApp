@@ -82,15 +82,4 @@ export class PushNotificationService {
     });
     await alert.present();
   }
-
-  async testAlert(obj){
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: '',
-      message: obj ? obj  :'This is an alert message.',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
 }
