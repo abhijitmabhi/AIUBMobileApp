@@ -16,6 +16,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './core/interceptor/intercept.service';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +36,10 @@ import { BrowserModule } from '@angular/platform-browser';
     StatusBar,
     SplashScreen,
     OneSignal,
+    File,
+    FileOpener,
+    FileTransfer,
+    DocumentViewer,
     DatePipe,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {

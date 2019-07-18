@@ -162,4 +162,10 @@ export class StudentHomePage implements OnInit {
     });
     this.router.navigate(['/notifications']);
   }
+
+  /* Get Notes */
+
+  openSectionNotes(sectionId: number){
+    this.router.navigate(['student-notes', sectionId]);
+  }
 }

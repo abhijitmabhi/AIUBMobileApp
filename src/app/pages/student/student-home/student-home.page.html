@@ -163,7 +163,7 @@
             <button mat-stroked-button color="primary">
                 <ion-icon name="calendar" class="courseIcon"></ion-icon> TSF
             </button>
-            <button mat-stroked-button color="primary">
+            <button mat-stroked-button color="primary" (click)="openSectionNotes(item?.Section?.ID)">
                 <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
             </button>
             <button mat-stroked-button color="primary">

@@ -1,4 +1,3 @@
-import { PushNotificationService } from 'src/app/core/oneSignal/push-notification.service';
 import { LoadingService } from './../../../core/loader/loading.service';
 import { LoginService } from './../../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';

@@ -23,6 +23,21 @@ export class LoadingService {
         });
   }
 
+  async loadingFileDownload(){
+    this.isLoading = true;
+    return await this.loadingCtrl.create({
+        spinner: "dots",
+        message: 'Downloading...',
+        translucent: true
+        }).then( a => {
+          a.present().then(() => {
+            if(!this.isLoading){
+              a.dismiss();
+            }
+          })
+        });
+  }
+
   async loadingDismiss(){
     this.isLoading = false;
     return await this.loadingCtrl.dismiss();
