@@ -24,7 +24,9 @@ const routes: Routes = [
   // common
   {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
   { path: 'student-class-schedule', loadChildren: './pages/student/student-class-schedule/student-class-schedule.module#StudentClassSchedulePageModule' },
-  { path: 'get-student-list/:sectionId', loadChildren: './pages/employee/get-student-list/get-student-list.module#GetStudentListPageModule' }
+  { path: 'get-student-list/:sectionId', loadChildren: './pages/employee/get-student-list/get-student-list.module#GetStudentListPageModule' },
+  { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notice/employee-notice.module#EmployeeNoticePageModule' }
+
 ];
 @NgModule({
   imports: [

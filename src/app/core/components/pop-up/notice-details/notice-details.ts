@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { ModalController, Platform, NavParams } from '@ionic/angular';
+
+@Component({
+  selector: 'app-notice-details',
+  templateUrl: './notice-details.html',
+  styleUrls: ['./notice-details.scss'],
+})
+export class NoticeDetails implements OnInit {
+  private title:string;
+  private message:string;
+  private time:string;
+  constructor(private platform:Platform, private modalController:ModalController, private navParams: NavParams) {
+  }
+
+  ngOnInit() {
+    this.title = this.navParams.data.Title;
+    this.message = this.navParams.data.Message;
+    this.time = this.navParams.data.Time;
+  }
+
+  async CloseModal() {
+    this.modalController.dismiss();
+  }
+
+}

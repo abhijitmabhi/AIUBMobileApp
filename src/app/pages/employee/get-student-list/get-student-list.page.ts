@@ -1,7 +1,7 @@
+import { EmployeeSectionService } from './../../../services/employee/employee-section.service';
 import { LoadingService } from './../../../core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { SectionService } from 'src/app/services/employee/section.service';
 
 @Component({
   selector: 'app-get-student-list',
@@ -14,7 +14,7 @@ export class GetStudentListPage implements OnInit {
   studentList:any = [];
   constructor(
     private route: ActivatedRoute,
-    private sectionService: SectionService,
+    private sectionService: EmployeeSectionService,
     private loadingService: LoadingService,
     ) { }
 

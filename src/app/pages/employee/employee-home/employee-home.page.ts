@@ -61,8 +61,6 @@ export class EmployeeHomePage implements OnInit {
   }
 
   private currentDateTime = new Date();
-  // private fromDateTime = this.datePipe.transform(this.currentDateTime, 'yyyy-MM-dd HH:mm:ss.SSS');
-  // private tillDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate() + 5), 'yyyy-MM-dd HH:mm:ss.SSS');
 
   getClassSchedule() {
     let fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
@@ -157,21 +155,21 @@ export class EmployeeHomePage implements OnInit {
       this.semesterList = semesterLists.Data;
       let currentSemesterId;
       let isCurrentSemesterEnrolled = false;
-      console.log(this.semesterList);
-
-      this.semesterList.forEach(semester => {
-        if(semester.IsCurrent === true){
-          currentSemesterId = semester.ID;
-          isCurrentSemesterEnrolled = true;
+      // console.log(this.semesterList);
+      if(this.semesterList.length != 0){
+        this.semesterList.forEach(semester => {
+          if(semester.IsCurrent === true){
+            currentSemesterId = semester.ID;
+            isCurrentSemesterEnrolled = true;
+          }
+        });
+        if(isCurrentSemesterEnrolled){
+          this.nrSelect = currentSemesterId;
+        }else {
+          this.nrSelect = this.semesterList[0].ID;
         }
-      });
-      if(isCurrentSemesterEnrolled){
-        this.nrSelect = currentSemesterId;
-      }else {
-        this.nrSelect = this.semesterList[0].ID;
+        this.onChangeSemester();
       }
-
-      this.onChangeSemester();
 
     });
     
@@ -184,7 +182,7 @@ export class EmployeeHomePage implements OnInit {
     if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== ""){
       this.employeeHomeService.getEmployeeCourseList(this.nrSelect).subscribe(res => {
         this.semesterData = res.Data.Courses;
-        console.log(this.semesterData);
+        // console.log(this.semesterData);
       });
     }
   }
@@ -194,6 +192,12 @@ export class EmployeeHomePage implements OnInit {
   openStudentList(sectionId: number) {
     this.router.navigate(["/get-student-list", sectionId]);
                            
+  }
+
+  /* Get Section Notice */
+
+  openSectionNotice(sectionId: number){
+    this.router.navigate(['employee-notice', sectionId]);
   }
 
 

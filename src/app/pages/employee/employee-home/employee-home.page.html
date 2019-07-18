@@ -126,7 +126,7 @@
     </div>
   </ion-row>
 
-  <mat-expansion-panel [expanded]="true" class="menuTile">
+  <mat-expansion-panel [expanded]="true" class="menuTile" *ngIf="semesterList?.length != 0">
       <mat-expansion-panel-header class="menuTileHeader">
         <mat-panel-title class="menuTileHeaderTitle">
           <div class="package-rating-detail">
@@ -145,7 +145,7 @@
         <ion-item style="width: 100%; padding-bottom: 10px; padding-top: 10px;">
           <ion-label style="width:20%;">Semester: </ion-label>
           <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
-            <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester.ID">
+            <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester?.ID">
               {{semester.Title}}</ion-select-option>
           </ion-select>
         </ion-item>
@@ -184,13 +184,13 @@
              </mat-card-subtitle>
             <mat-divider></mat-divider>
             <div class="example-button-row">
-              <button mat-stroked-button color="primary" (click)="openStudentList(item.Section.ID)">
+              <button mat-stroked-button color="primary" (click)="openStudentList(item?.Section?.ID)">
                   <ion-icon name="people" class="courseIcon" ></ion-icon> Students
               </button>
               <button mat-stroked-button color="primary" disabled="true">
                   <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
               </button>
-              <button mat-stroked-button color="primary" disabled="true">
+              <button mat-stroked-button color="primary" (click)="openSectionNotice(item?.Section?.ID)">
                   <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notices
               </button>
             </div>

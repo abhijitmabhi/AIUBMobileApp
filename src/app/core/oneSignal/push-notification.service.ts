@@ -62,7 +62,7 @@ export class PushNotificationService {
       header: 'Push Notification Alert!',
       subHeader: '',
       message: 'Do you want to opt out push notifications from another device?',
-      translucent: true,
+      backdropDismiss: false,
       buttons: [
         {
           text: 'No',
