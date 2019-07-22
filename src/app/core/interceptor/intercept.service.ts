@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/core/alert/alert.service';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -10,7 +11,7 @@ export class InterceptorService implements HttpInterceptor {
 
   baseUrl: string = settings.baseUrl;
 
-  constructor(public toastController: ToastController) { }
+  constructor(public toastController: ToastController, public alert: AlertService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -55,6 +56,7 @@ export class InterceptorService implements HttpInterceptor {
         //  Do Something
         // }
         // return throwError(error);
+        this.alert.Success(JSON.stringify(error));
         if (error instanceof HttpErrorResponse) {
           // Server Side Error
           // console.log(error);

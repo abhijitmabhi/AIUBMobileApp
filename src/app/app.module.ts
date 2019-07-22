@@ -1,4 +1,5 @@
 import { ComponentsModule } from 'src/app/core/components/components.module';
+import { Network } from '@ionic-native/network/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
@@ -21,6 +22,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+import { NetworkService } from './core/network/network.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +36,8 @@ import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
     AppRoutingModule
   ],
   providers: [
+    Network,
+    NetworkService,
     StatusBar,
     SplashScreen,
     OneSignal,
