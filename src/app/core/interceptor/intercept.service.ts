@@ -56,7 +56,7 @@ export class InterceptorService implements HttpInterceptor {
         //  Do Something
         // }
         // return throwError(error);
-        this.alert.Success(JSON.stringify(error));
+        // this.alert.Success(JSON.stringify(error));
         if (error instanceof HttpErrorResponse) {
           // Server Side Error
           // console.log(error);

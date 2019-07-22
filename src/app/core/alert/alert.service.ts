@@ -15,7 +15,7 @@ export class AlertService {
 
   async Success(obj){
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: '',
       subHeader: '',
       message: obj ? obj  :'This is an alert message.',
       buttons: ['OK']
@@ -26,17 +26,15 @@ export class AlertService {
 
   async alertError(msg){
     const alert = await this.alertController.create({
-      header: 'Oops!',
+      header: 'Warning!',
       subHeader: '',
       message: msg ? msg  :'Something Went Wrong',
       buttons: [
         {
           text: 'Close',
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'primary',
           handler: () => {
-            // localStorage.setItem('route', route);
-            // this.router.navigate(['/error-landing']);
           }
         }
       ]

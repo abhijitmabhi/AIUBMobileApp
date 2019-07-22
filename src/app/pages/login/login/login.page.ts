@@ -36,10 +36,10 @@ export class LoginPage implements OnInit {
     this.User = UserModel;
     this.Cred = CredModel;
 
-    // this.User.password = '243866';
+    this.User.password = '243866';
     this.User.username = '16-31332-1';
     // this.User.username = '1801-1848-3';
-    this.User.password = '26103588';
+    // this.User.password = '26103588';
     // this.User.username = '1801-1848-3';
     // this.User.password = '58389796';
     // this.User.username = '1306-1448-3';
@@ -92,7 +92,7 @@ export class LoginPage implements OnInit {
       this.subscribeOneSignal();
     }, err => {
       this.loadingService.loadingDismiss();
-      this.alertService.alertError("Something went wrong");
+      this.alertService.alertError(err.error.error_description);
     });
   }
 
