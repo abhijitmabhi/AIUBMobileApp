@@ -26,8 +26,8 @@ const routes: Routes = [
   { path: 'student-class-schedule', loadChildren: './pages/student/student-class-schedule/student-class-schedule.module#StudentClassSchedulePageModule' },
   { path: 'get-student-list/:sectionId', loadChildren: './pages/employee/get-student-list/get-student-list.module#GetStudentListPageModule' },
   { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notice/employee-notice.module#EmployeeNoticePageModule' },
-  { path: 'student-notes/:sectionId', loadChildren: './pages/student/student-notes/student-notes.module#StudentNotesPageModule' }
-
+  { path: 'student-notes/:sectionId', loadChildren: './pages/student/student-notes/student-notes.module#StudentNotesPageModule' },
+  { path: 'student-notice/:sectionId', loadChildren: './pages/student/student-notice/student-notice.module#StudentNoticePageModule' }
 
 ];
 @NgModule({

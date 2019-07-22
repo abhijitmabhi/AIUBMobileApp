@@ -168,4 +168,10 @@ export class StudentHomePage implements OnInit {
   openSectionNotes(sectionId: number){
     this.router.navigate(['student-notes', sectionId]);
   }
+
+  /* Get Section Notice */
+
+   openSectionNotice(sectionId: number){
+    this.router.navigate(['student-notice', sectionId]);
+  }
 }

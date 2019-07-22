@@ -1,3 +1,4 @@
+import { CustomPipe } from './../../../core/pipes/custom.pipe';
 import { MaterialModule } from 'src/app/Core/modules/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,6 +24,6 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [EmployeeProfilePage]
+  declarations: [EmployeeProfilePage,CustomPipe]
 })
 export class EmployeeProfilePageModule {}

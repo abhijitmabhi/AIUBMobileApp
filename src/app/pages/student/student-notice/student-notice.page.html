@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Section Notice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="padding: 0px;">
+      <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
+        <ion-thumbnail slot="start">
+          <img src="assets/icon/reminder.png">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{notice.Subject}}</h2>
+          <p>{{notice.PostDate}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>

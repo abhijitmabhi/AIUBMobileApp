@@ -15,6 +15,7 @@ export class EmployeeProfilePage implements OnInit {
   public errorMsg: any;
   public userImage: string = null;
   public currentview: string;
+  dd: any;
 
   //ProgressBar
   color = 'warn';
@@ -29,6 +30,7 @@ export class EmployeeProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.currentview = "office";
     this.getProfile();
     this.getUserProfileImage();
@@ -76,5 +78,6 @@ export class EmployeeProfilePage implements OnInit {
     this.getUserProfileImage();
     event.target.complete();
   }
+
 
 }

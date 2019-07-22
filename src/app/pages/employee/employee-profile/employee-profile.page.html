@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content style="--background: #f7f1fe;" fullscreen>
+<ion-content style="--background: #f7f1fe;">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content refreshingSpinner="circles">
     </ion-refresher-content>
@@ -50,7 +50,7 @@
           <ion-row justify-content-center align-items-center>
             <ion-col text-center>{{employeeProfile?.Designation}}</ion-col>
             <ion-col text-center>{{employeeProfile?.Department}}</ion-col>
-            <ion-col text-center>{{employeeProfile?.YearOfService}}</ion-col>
+            <ion-col text-center [innerHtml]="employeeProfile?.YearOfService | customYearOfService"></ion-col>
           </ion-row>
         </div>
       </ion-row>
@@ -228,7 +228,7 @@
             <mat-divider style="padding: 2px;"></mat-divider>
 
             <!-- Designation -->
-            <ion-row>
+            <!-- <ion-row>
               <ion-col class="dataLabel">
                 <ion-label>Designation : </ion-label>
               </ion-col>
@@ -236,10 +236,10 @@
                 <ion-label>{{employeeProfile?.Designation}}</ion-label>
               </ion-col>
             </ion-row>
-            <mat-divider style="padding: 2px;"></mat-divider>
+            <mat-divider style="padding: 2px;"></mat-divider> -->
 
             <!-- Department -->
-            <ion-row>
+            <!-- <ion-row>
               <ion-col class="dataLabel">
                 <ion-label>Department : </ion-label>
               </ion-col>
@@ -247,7 +247,7 @@
                 <ion-label>{{employeeProfile?.Department}}</ion-label>
               </ion-col>
             </ion-row>
-            <mat-divider style="padding: 2px;"></mat-divider>
+            <mat-divider style="padding: 2px;"></mat-divider> -->
 
             <!-- Classification -->
             <ion-row>
@@ -294,7 +294,7 @@
             <mat-divider style="padding: 2px;"></mat-divider>
 
             <!-- Year of Service -->
-            <ion-row>
+            <!-- <ion-row>
               <ion-col class="dataLabel">
                 <ion-label>Year of Service : </ion-label>
               </ion-col>
@@ -302,7 +302,7 @@
                 <ion-label>{{employeeProfile?.YearOfService}}</ion-label>
               </ion-col>
             </ion-row>
-            <mat-divider style="padding: 2px;"></mat-divider>
+            <mat-divider style="padding: 2px;"></mat-divider> -->
 
             <!-- Increment Month -->
             <ion-row>

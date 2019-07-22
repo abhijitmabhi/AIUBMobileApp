@@ -57,7 +57,7 @@ export class StudentProfilePage implements OnInit {
     this.profileService.getEmployeeProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
-      console.log(this.studentProfile);
+      // console.log(this.studentProfile);
     },
       error => {
         this.loadingService.loadingDismiss();

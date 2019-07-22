@@ -1,16 +1,17 @@
-import { ModalController } from '@ionic/angular';
-import { ActivatedRoute, Params } from '@angular/router';
-import { EmployeeSectionService } from './../../../services/employee/employee-section.service';
 import { Component, OnInit } from '@angular/core';
+import { EmployeeSectionService } from 'src/app/services/employee/employee-section.service';
+import { ActivatedRoute, Params } from '@angular/router';
 import { LoadingService } from 'src/app/core/loader/loading.service';
+import { ModalController } from '@ionic/angular';
 import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
 
 @Component({
-  selector: 'app-employee-notice',
-  templateUrl: './employee-notice.page.html',
-  styleUrls: ['./employee-notice.page.scss'],
+  selector: 'app-student-notice',
+  templateUrl: './student-notice.page.html',
+  styleUrls: ['./student-notice.page.scss'],
 })
-export class EmployeeNoticePage implements OnInit {
+export class StudentNoticePage implements OnInit {
+
   sectionId:any;
   private notices:any[] = [];
   constructor(
@@ -58,5 +59,6 @@ export class EmployeeNoticePage implements OnInit {
     });
     return await myModal.present();
   }
+
 
 }

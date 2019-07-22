@@ -25,7 +25,7 @@ const routes: Routes = [
     IonicModule,
     MaterialModule,
     ComponentsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [EmployeeHomePage],
   entryComponents: [NotificationDetails]

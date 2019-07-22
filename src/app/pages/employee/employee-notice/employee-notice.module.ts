@@ -1,4 +1,4 @@
-import { NoticeDetails } from './../../../core/components/pop-up/notice-details/notice-details';
+import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
 import { MaterialModule } from './../../../core/modules/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,6 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [EmployeeNoticePage, NoticeDetails],
-  entryComponents: [NoticeDetails]
+  declarations: [EmployeeNoticePage],
 })
 export class EmployeeNoticePageModule {}

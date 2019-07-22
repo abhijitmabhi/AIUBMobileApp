@@ -1,3 +1,4 @@
+import { ComponentsModule } from 'src/app/core/components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouteReuseStrategy } from '@angular/router';
