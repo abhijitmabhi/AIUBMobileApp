@@ -30,18 +30,16 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     private loadingService: LoadingService,
     private pushNotification: PushNotificationService,
-    private alertService: AlertService
+    private alert: AlertService
   ) {
     this.menuCtrl.enable(false);
     this.User = UserModel;
     this.Cred = CredModel;
 
-    this.User.password = '243866';
-    this.User.username = '16-31332-1';
+    // this.User.password = '243866';
+    // this.User.username = '16-31332-1';
     // this.User.username = '1801-1848-3';
     // this.User.password = '26103588';
-    // this.User.username = '1801-1848-3';
-    // this.User.password = '58389796';
     // this.User.username = '1306-1448-3';
     // this.User.password = '5671613278';
   }
@@ -60,17 +58,17 @@ export class LoginPage implements OnInit {
         //   return;
         // }
       } else {
-        await this.showAlert('Error', 'Invalid Username!');
+        await this.alert.alertErrorLogin('Error', 'Invalid Username!');
         return;
       }
     } else {
-      await this.showAlert('Warning', 'Username is requried!');
+      await this.alert.alertErrorLogin('Warning', 'Username is requried!');
       return;
     }
     if (this.User.password) {
       // await this.showAlert('Info', this.User.password);
     } else {
-      await this.showAlert('Warning', 'Password is requried!');
+      await this.alert.alertErrorLogin('Warning', 'Password is requried!');
       return;
     }
     if (this.User.isRemember) {
@@ -82,8 +80,8 @@ export class LoginPage implements OnInit {
     this.loadingService.loadingStart();
     this.loginService.login(this.User).subscribe(res => {
       this.Cred = res;
-      // this.User.password = null;
-      // console.log(this.Cred);
+      this.User.password = null;
+      this.User.username = null;
       //Detect User Type
       localStorage.setItem('userType', this.Cred.UserTypeID);
       //Save Token into local torage
@@ -92,7 +90,7 @@ export class LoginPage implements OnInit {
       this.subscribeOneSignal();
     }, err => {
       this.loadingService.loadingDismiss();
-      this.alertService.alertError(err.error.error_description);
+      this.alert.alertError(err.error.error_description);
     });
   }
 
@@ -107,11 +105,9 @@ export class LoginPage implements OnInit {
   redirect() {
     let user_type = localStorage.getItem('userType');
     if (user_type == "0") {
-      // this.menuCtrl.enable(true, "student");
       this.router.navigate(['/student-tab/tabs/studentHome']);
     }
     if (user_type == "3" || user_type == "1") {
-      // this.menuCtrl.enable(true, "employee");
       this.router.navigate(['/employee-tab/tabs/employeeHome']);
     }
   }
@@ -128,15 +124,6 @@ export class LoginPage implements OnInit {
       this.visible = true;
       this.password.nativeElement.setAttribute('type', 'text');
     }
-  }
-
-  async showAlert(title: string, message: string) {
-    const alert = await this.alertCtrl.create({
-      header: title,
-      message: message,
-      buttons: ['OK']
-    });
-    await alert.present();
   }
 
 }

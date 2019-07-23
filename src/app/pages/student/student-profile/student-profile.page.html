@@ -1,11 +1,6 @@
 <ion-header no-border>
     <ion-toolbar class="appHeader">
       <ion-title>Profile</ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="GoToHome()">
-          <ion-icon slot="icon-only" name="ios-home"></ion-icon>
-        </ion-button>
-      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
@@ -254,7 +249,7 @@
                   <ion-label>Core : </ion-label>
                 </ion-col>
                 <ion-col class="dataValue">
-                  <ion-label>{{studentProfile?.Core}}</ion-label>
+                  <ion-label>{{ studentProfile?.Core ? studentProfile?.Core : "N/A"}}</ion-label>
                 </ion-col>
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
@@ -265,7 +260,7 @@
                   <ion-label>Major : </ion-label>
                 </ion-col>
                 <ion-col class="dataValue">
-                  <ion-label>{{studentProfile?.Major}}</ion-label>
+                  <ion-label>{{ studentProfile?.Major ? studentProfile?.Major : "N/A" }}</ion-label>
                 </ion-col>
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
@@ -276,7 +271,7 @@
                   <ion-label>Second Major : </ion-label>
                 </ion-col>
                 <ion-col class="dataValue">
-                  <ion-label>{{studentProfile?.SecondMajor}}</ion-label>
+                  <ion-label>{{ studentProfile?.SecondMajor ? studentProfile?.SecondMajor : "N/A"}}</ion-label>
                 </ion-col>
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
@@ -287,7 +282,7 @@
                   <ion-label>Minor : </ion-label>
                 </ion-col>
                 <ion-col class="dataValue">
-                  <ion-label>{{studentProfile?.Minor}}</ion-label>
+                  <ion-label>{{ studentProfile?.Minor ? studentProfile?.Minor : "N/A" }}</ion-label>
                 </ion-col>
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
@@ -298,7 +293,7 @@
                   <ion-label>Elective : </ion-label>
                 </ion-col>
                 <ion-col class="dataValue">
-                  <ion-label>{{studentProfile?.Elective}}</ion-label>
+                  <ion-label>{{ studentProfile?.Elective ? studentProfile?.Elective : "N/A" }}</ion-label>
                 </ion-col>
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
@@ -309,7 +304,7 @@
                   <ion-label>Admission Date : </ion-label>
                 </ion-col>
                 <ion-col class="dataValue">
-                  <ion-label>{{studentProfile?.AdmissionDate}}</ion-label>
+                  <ion-label>{{ studentProfile?.AdmissionDate ? studentProfile?.AdmissionDate : "N/A" }}</ion-label>
                 </ion-col>
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
@@ -320,7 +315,7 @@
                     <ion-label>Graduation Date : </ion-label>
                   </ion-col>
                   <ion-col class="dataValue">
-                    <ion-label>{{studentProfile?.GraduationDate}}</ion-label>
+                    <ion-label>{{ studentProfile?.GraduationDate ? studentProfile?.GraduationDate : "N/A" }}</ion-label>
                   </ion-col>
                 </ion-row>
             </div>

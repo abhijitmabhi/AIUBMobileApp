@@ -13,7 +13,7 @@ import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/not
 export class StudentNoticePage implements OnInit {
 
   sectionId:any;
-  private notices:any[] = [];
+  notices:any[] = [];
   constructor(
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
@@ -34,7 +34,7 @@ export class StudentNoticePage implements OnInit {
         // console.log(data);
         if(data && !data.HasError){
           if(data.Data){
-            this.notices = data.Data.SectionNotices;
+            this.notices = data.Data;
           }
         }
       },
@@ -60,5 +60,9 @@ export class StudentNoticePage implements OnInit {
     return await myModal.present();
   }
 
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
+  }
 
 }

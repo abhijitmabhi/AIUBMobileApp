@@ -20,7 +20,7 @@ export class EmployeeAttendancePage implements OnInit {
   private currentDateTime = new Date();
   private firstDateOfCurrentMonth = new Date(this.currentDateTime.getFullYear(), this.currentDateTime.getMonth(), 1);
   private forMattedfirstDateOfCurrentMonth = this.datePipe.transform(this.firstDateOfCurrentMonth, 'dd-MMM-yyyy');
-  private today = this.datePipe.transform(this.currentDateTime, 'dd-MMM-yyyy');
+  today = this.datePipe.transform(this.currentDateTime, 'dd-MMM-yyyy');
 
   isCurrentMonth = false;
   attendanceCurrentMonth: any;
@@ -77,9 +77,5 @@ export class EmployeeAttendancePage implements OnInit {
     let mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return mlist[dt.getMonth()];
   };
-
-  GoToHome(){
-    this.router.navigate(['employee-tab/tabs/employeeHome']);
-  }
 
 }

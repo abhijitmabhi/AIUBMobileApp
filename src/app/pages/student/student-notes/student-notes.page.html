@@ -6,7 +6,7 @@
       </ion-buttons>
       <ion-title>Notes</ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
   
   <ion-content>
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -44,9 +44,7 @@
                 <ion-img class="Picture" src="{{ getImageSource(note.Extention) }}"></ion-img>
             </ion-thumbnail>
             <ion-label class="ion-text-wrap">
-              <h2 >{{note?.Title}}
-                  <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="note.Valid"></ion-icon>
-              </h2>
+              <h2 >{{note?.Title}}</h2>
               <p >Uploaded at: {{note?.UploadDateTime2}}</p>
               <p >Size: {{note?.Size2}}</p>
             </ion-label>

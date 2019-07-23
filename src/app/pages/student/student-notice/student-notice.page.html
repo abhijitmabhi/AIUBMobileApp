@@ -3,11 +3,15 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Section Notice</ion-title>
+    <ion-title>Notice</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content refreshingSpinner="circles">
+      </ion-refresher-content>
+  </ion-refresher>
   <ion-list style="padding: 0px;">
       <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
         <ion-thumbnail slot="start">

@@ -28,13 +28,18 @@ export class LoginService {
     //   return res;
     //  }));
 
-     return this.httpClient.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
-      return res;
-     }));
+    //  return this.httpClient.post('http://172.16.22.101:2694/Token', dt ).pipe(map(res =>{
+    //   return res;
+    //  }));
 
     //  return this.httpClient.post('http://172.16.22.160:7646/Token', dt ).pipe(map(res =>{
     //   return res;
     //  }));
+
+    //Jaowats Local
+     return this.httpClient.post(`http://172.16.22.161:41379/Token`, dt).pipe(map(res =>{
+      return res;
+     }));
 
     //  return this.httpClient.post(`https://testapi.aiub.edu/ums-auth-api/Token`, dt).pipe(map(res =>{
     //   return res;

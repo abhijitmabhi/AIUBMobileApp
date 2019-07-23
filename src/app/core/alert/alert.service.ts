@@ -24,6 +24,24 @@ export class AlertService {
     await alert.present();
   }
 
+  async alertErrorLogin(header,msg){
+    const alert = await this.alertController.create({
+      header: header,
+      subHeader: '',
+      message: msg ? msg  :'Something Went Wrong',
+      buttons: [
+        {
+          text: 'Close',
+          role: 'cancel',
+          cssClass: 'primary',
+          handler: () => {
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
   async alertError(msg){
     const alert = await this.alertController.create({
       header: 'Warning!',

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { StudentProfileService } from 'src/app/services/student/student-profile.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { AlertService } from 'src/app/core/alert/alert.service';
@@ -22,7 +21,6 @@ export class StudentProfilePage implements OnInit {
   value = 50;
   
   constructor(
-    private router: Router,
     private profileService: StudentProfileService,
     private loadingService: LoadingService,
     private alertService: AlertService,
@@ -43,10 +41,6 @@ export class StudentProfilePage implements OnInit {
     this.currentview = "personal";
   }
 
-  GoToHome(){
-    this.router.navigate(['student-tab/tabs/studentHome']);
-  }
-
   viewChanged(segmentEvent) {
     let event = JSON.stringify(segmentEvent);
     this.currentview = "personal";
@@ -57,7 +51,6 @@ export class StudentProfilePage implements OnInit {
     this.profileService.getEmployeeProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
-      // console.log(this.studentProfile);
     },
       error => {
         this.loadingService.loadingDismiss();

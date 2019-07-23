@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, Platform, NavParams } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-notice-details',
@@ -7,10 +7,10 @@ import { ModalController, Platform, NavParams } from '@ionic/angular';
   styleUrls: ['./notice-details.scss'],
 })
 export class NoticeDetails implements OnInit {
-  private title:string;
-  private message:string;
-  private time:string;
-  constructor(private platform:Platform, private modalController:ModalController, private navParams: NavParams) {
+  title:string;
+  message:string;
+  time:string;
+  constructor(private modalController:ModalController, private navParams: NavParams) {
   }
 
   ngOnInit() {
