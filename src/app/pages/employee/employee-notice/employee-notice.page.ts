@@ -12,7 +12,7 @@ import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/not
 })
 export class EmployeeNoticePage implements OnInit {
   sectionId:any;
-  private notices:any[] = [];
+  notices:any[] = [];
   constructor(
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,

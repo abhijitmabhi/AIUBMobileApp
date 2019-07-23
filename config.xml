@@ -3,7 +3,7 @@
     <name>AIUB Portal</name>
     <description>A Mobile application for AIUB</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://172.16.22.161:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -98,5 +98,6 @@
     <plugin name="cordova-plugin-file" spec="^6.0.2" />
     <plugin name="cordova-plugin-document-viewer" spec="^0.9.11" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.2" />
+    <allow-navigation href="http://172.16.22.161:8100" sessionid="f658e6c4" />
     <engine name="android" spec="^8.0.0" />
 </widget>
