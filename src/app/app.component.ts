@@ -56,7 +56,6 @@ export class AppComponent implements OnInit {
       .pipe(debounceTime(300))
       .subscribe((connected: boolean) => {
           this.isConnected = connected;
-          console.log('Status', this.isConnected);
 
           let msg = "";
           if(!this.isConnected && this.flag){
@@ -72,12 +71,6 @@ export class AppComponent implements OnInit {
           if(msg != ""){
             this.toast.presentToast(msg);
           }
-
-          console.log(navigator);
-          // this.router.events.subscribe((res) => { 
-          //   console.log(this.router.url,"Current URL");
-          // });
-
       });
   }
 }
