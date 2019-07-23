@@ -35,7 +35,10 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      setTimeout(()=>{
+        this.splashScreen.hide();  
+      },1000);
+      
       if (localStorage.getItem('token')) {
         let user_type = localStorage.getItem('userType');
         if(user_type == "3" || user_type == "1") {
