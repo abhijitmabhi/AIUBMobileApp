@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../../core/components/components.module';
 import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
 import { MaterialModule } from './../../../core/modules/material.module';
 import { NgModule } from '@angular/core';
@@ -22,8 +23,10 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     MaterialModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EmployeeNoticePage],
+  entryComponents: [NoticeDetails],
 })
 export class EmployeeNoticePageModule {}

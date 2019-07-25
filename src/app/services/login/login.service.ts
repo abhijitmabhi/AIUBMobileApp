@@ -36,7 +36,7 @@ export class LoginService {
     //   return res;
     //  }));
 
-    //Jaowats Local
+    // //Jaowats Local
     //  return this.httpClient.post(`http://172.16.22.161:41379/Token`, dt).pipe(map(res =>{
     //   return res;
     //  }));

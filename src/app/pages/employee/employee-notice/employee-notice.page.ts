@@ -33,7 +33,7 @@ export class EmployeeNoticePage implements OnInit {
         // console.log(data);
         if(data && !data.HasError){
           if(data.Data){
-            this.notices = data.Data.SectionNotices;
+            this.notices = data.Data;
           }
         }
       },

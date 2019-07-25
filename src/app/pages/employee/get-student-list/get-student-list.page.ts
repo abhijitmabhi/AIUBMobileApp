@@ -12,6 +12,7 @@ export class GetStudentListPage implements OnInit {
   
   sectionId:any;
   studentList:any = [];
+  studentCount: number = 0;
   constructor(
     private route: ActivatedRoute,
     private sectionService: EmployeeSectionService,
@@ -24,6 +25,8 @@ export class GetStudentListPage implements OnInit {
       this.sectionId = params['sectionId'];
       this.sectionService.getStudentBySection(this.sectionId, 0 , 100).subscribe(res => {
         this.studentList = res.Data;
+        this.studentCount = res.Count;
+        console.log(this.studentList);
         this.loadingService.loadingDismiss();
       });
     });

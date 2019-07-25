@@ -1,4 +1,3 @@
-import { ComponentsModule } from 'src/app/core/components/components.module';
 import { Network } from '@ionic-native/network/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';

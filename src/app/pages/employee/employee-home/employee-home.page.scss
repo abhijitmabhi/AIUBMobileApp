@@ -268,6 +268,16 @@ ion-col.my-thin-col {
   outline: 0 !important;
 }
 
+.mat-stroked-button { 
+  border: none !important;
+}
+
+// ion-select width increase
+
+ion-select {
+  max-width: 70% !important;
+}
+
   /* Course End */
 
 

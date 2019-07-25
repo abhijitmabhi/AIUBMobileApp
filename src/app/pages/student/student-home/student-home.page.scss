@@ -186,6 +186,16 @@ ion-col.my-thin-col {
   }
 }
 
+.profilePictureAvatar{
+  height: 70px;
+  width: 70px;
+  border: 2px solid #eee;
+  //box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+}
+
 /* Loader */
 
 
@@ -242,4 +252,14 @@ ion-col.my-thin-col {
     margin-top: 4%;
     width: 29.33%;
     outline: 0 !important;
+  }
+
+  .mat-stroked-button { 
+    border: none !important;
+  }
+  
+  // ion-select width increase
+  
+  ion-select {
+    max-width: 70% !important;
   }

@@ -1,3 +1,4 @@
+import { ComponentsModule } from 'src/app/core/components/components.module';
 import { MaterialModule } from 'src/app/Core/modules/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,9 +23,10 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     MaterialModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [StudentNoticePage, NoticeDetails],
-  entryComponents: [NoticeDetails]
+  declarations: [StudentNoticePage],
+  entryComponents: [NoticeDetails],
 })
 export class StudentNoticePageModule {}

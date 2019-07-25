@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="1006" id="edu.aiub.www" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="1007" id="edu.aiub.www" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>AIUB Portal</name>
     <description>A Mobile application for AIUB</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://172.16.22.161:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -99,5 +99,4 @@
     <plugin name="cordova-plugin-document-viewer" spec="^0.9.11" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.2" />
     <allow-navigation href="http://172.16.22.161:8100" sessionid="f658e6c4" />
-    <engine name="android" spec="^8.0.0" />
 </widget>
