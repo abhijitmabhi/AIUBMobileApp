@@ -1,7 +1,8 @@
 import { EmployeeAttendanceService } from './../../../services/employee/employee-attendance.service';
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location  } from '@angular/common';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-employee-attendance',
@@ -9,10 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee-attendance.page.scss'],
 })
 export class EmployeeAttendancePage implements OnInit {
-
-  constructor(public employeeAttendanceService: EmployeeAttendanceService, 
-    private datePipe: DatePipe,
-    private router: Router) { }
 
   payrollList = [];
   attendanceList: any;
@@ -32,6 +29,20 @@ export class EmployeeAttendancePage implements OnInit {
   mode = 'indeterminate';
   value = 50;
 
+  constructor(
+    public employeeAttendanceService: EmployeeAttendanceService, 
+    private datePipe: DatePipe,
+    private router: Router,
+    private platform: Platform,
+    private location: Location) {
+    }
+  
+  ionViewWillEnter(){
+    this.platform.backButton.subscribe(()=>{
+      this.router.navigate(['/employee-tab/tabs/employeeHome']);
+    });
+  }
+  
   ngOnInit() {
     this.getPayroll();
   }

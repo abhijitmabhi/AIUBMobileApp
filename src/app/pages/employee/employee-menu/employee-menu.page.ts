@@ -2,6 +2,8 @@ import { LoginService } from 'src/app/services/login/login.service';
 import { LoadingService } from './../../../core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location  } from '@angular/common';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-employee-menu',
@@ -14,7 +16,13 @@ export class EmployeeMenuPage implements OnInit {
 
   constructor(private router:Router,
     private loginService: LoginService,
-    private loadingService: LoadingService) { }
+    private loadingService: LoadingService,
+    private platform: Platform,
+    private location: Location) { 
+      this.platform.backButton.subscribe(()=>{
+        this.location.back();
+      });
+    }
 
 
   ngOnInit() {
