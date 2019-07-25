@@ -6,4 +6,5 @@ export const settings = {
     // baseUrl: 'http://172.16.22.160:4564/api'
     //Jaowats Local
     // baseUrl:'http://172.16.22.161:1374/api/'
+    
 }
