@@ -1,8 +1,10 @@
+import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { AlertService } from 'src/app/core/alert/alert.service';
+import {  Location  } from '@angular/common';
 
 @Component({
   selector: 'app-employee-profile',
@@ -27,7 +29,16 @@ export class EmployeeProfilePage implements OnInit {
     private profileService: EmployeeProfileService,
     private loadingService: LoadingService,
     private alertService: AlertService,
-  ) { }
+    private platform: Platform,
+    private location: Location
+  ) {
+   }
+  
+  ionViewWillEnter(){
+    this.platform.backButton.subscribe(()=>{
+      this.router.navigate(['/employee-tab/tabs/employeeHome']);
+    });
+  }
 
   ngOnInit() {
 

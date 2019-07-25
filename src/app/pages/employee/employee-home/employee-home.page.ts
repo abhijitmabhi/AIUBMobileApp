@@ -9,7 +9,7 @@ import { LoadingService } from 'src/app/core/loader/loading.service';
 import { CommonService } from 'src/app/services/common/common.service';
 import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
 import { ClassScheduleService } from 'src/app/services/employee/class-schedule.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
 
 @Component({
@@ -47,8 +47,15 @@ export class EmployeeHomePage implements OnInit {
     private commonService: CommonService,
     private modalController:ModalController,
     private notificationService:NotificationService,
-    private employeeHomeService: EmployeeHomeService
-  ) { }
+    private employeeHomeService: EmployeeHomeService,
+    private platform: Platform
+  ) {
+      this.platform.backButton.subscribe(()=>{
+        if(this.router.url == "/employee-tab/tabs/employeeHome"){
+          navigator['app'].exitApp();
+        }
+      });
+  }
 
   ngOnInit() {
     this.pushNotification.getPlayerID();

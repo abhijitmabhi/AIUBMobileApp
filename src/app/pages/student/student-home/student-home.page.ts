@@ -6,7 +6,7 @@ import { PushNotificationService } from './../../../core/oneSignal/push-notifica
 import { LoadingService } from './../../../core/loader/loading.service';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController } from '@ionic/angular';
+import { NavController, MenuController, Platform, AlertController } from '@ionic/angular';
 import { StudentProfileService } from '../../../services/student/student-profile.service';
 import { Router } from '@angular/router';
 import { throwIfEmpty } from 'rxjs/operators';
@@ -45,6 +45,7 @@ export class StudentHomePage implements OnInit {
   profileImageLoaded: boolean = false;
 
   private currentDateTime = new Date();
+  subscription: any;
 
   constructor(
     public navCtrl: NavController,
@@ -57,6 +58,8 @@ export class StudentHomePage implements OnInit {
     private studentProfileService: StudentProfileService,
     private studentClassSceduleService: StudentClassScheduleService,
     private router: Router,
+    private platform: Platform,
+    private alertController: AlertController,
     private notificationService: NotificationService) {
   }
 
@@ -174,4 +177,5 @@ export class StudentHomePage implements OnInit {
    openSectionNotice(sectionId: number){
     this.router.navigate(['student-notice', sectionId]);
   }
+  
 }

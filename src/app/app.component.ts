@@ -13,7 +13,7 @@ import { Network } from '@ionic-native/network/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
-  
+  isAppResume:boolean = false;
   isConnected:any;
   flag=true;
   constructor(
@@ -34,7 +34,10 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // this.statusBar.styleDefault();
+      this.platform.resume.subscribe((res) => {
+        this.isAppResume = true;
+        });
+      // this.statusBar.styleDefault(); 
       setTimeout(()=>{
         this.splashScreen.hide();  
       },1000);
