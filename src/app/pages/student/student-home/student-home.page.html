@@ -30,7 +30,7 @@
             <ion-ripple-effect></ion-ripple-effect>
             <button ion-button icon-only clear shape="round" class="notifButton" (click)="openNotification()">
               <ion-icon class="tabIcon" name="notifications"></ion-icon>
-              <ion-badge class="notifBadge" [hidden]="notificationCount == 0" >{{notificationCount}}</ion-badge>
+              <ion-badge class="notifBadge" [hidden]="notificationCount == 0">{{notificationCount}}</ion-badge>
             </button>
           </div>
         </ion-row>
@@ -68,7 +68,6 @@
       </div>
     </ion-item-divider>
 
-
     <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
       <div style="margin-left: 7px;
           border-left: 3px solid #014ea2; margin-top: 3px;">
@@ -97,7 +96,7 @@
     <mat-expansion-panel-header class="menuTileHeader">
       <mat-panel-title class="menuTileHeaderTitle">
         <div class="package-rating-detail">
-          <mat-icon class="material-icons">insert_chart</mat-icon>
+          <ion-icon name="flash"></ion-icon>
           <label>Registration</label>
         </div>
       </mat-panel-title>
@@ -106,9 +105,7 @@
     </mat-expansion-panel-header>
 
     <mat-panel-description class="subMenuPanel">
-
       <ion-progress-bar [hidden]="semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
-
       <ion-item style="width: 100%; padding-bottom: 10px; padding-top: 10px;">
         <ion-label style="width:20%;">Semester: </ion-label>
         <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
@@ -116,6 +113,7 @@
             {{semester.Title}}</ion-select-option>
         </ion-select>
       </ion-item>
+
       <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="semesterData"></mat-progress-bar>
       <div [hidden]="semesterData">
           <ngx-content-loading [width]="222">
@@ -146,28 +144,52 @@
 
       <mat-card *ngFor="let item of semesterData" style="margin-bottom:10px">
         <mat-card-content>
-          <mat-card-title class="card_title">
-            <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!item.Valid"></ion-icon>
-            <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="item.Valid"></ion-icon>
-            {{item.Section.ID}} - {{item.Section.Description}}
-            <!-- <ion-icon name="ios-close-circle" class="courseIcon" color="danger"></ion-icon> -->
-          </mat-card-title>
 
-          <!-- <mat-card-subtitle>Status : <ion-chip [color]="item.Valid? 'success': 'warning'">
-              {{item.Valid ? 'Valid' : 'Invalid'}} </ion-chip>
-          </mat-card-subtitle> -->
+          <!-- icon in different column design -->
+          <!-- <ion-row>
+            <ion-col align-self-start align-items-center fixed="false" class="my-thin-col">
+              <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!item.Valid"></ion-icon>
+              <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="item.Valid"></ion-icon>
+            </ion-col>
+            <ion-col align-self-end align-items-start fixed="false">
+              <ion-text class="card_title">{{item.Section.ID}} - {{item.Section.Description}}</ion-text><br />
+              <ion-text>Result : {{item.Result?.ResultantGrade.Grade}}
+                {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</ion-text>
+            </ion-col>
+          </ion-row> -->
+
+
+          <mat-card-title class="card_title">
+            <!-- <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!item.Valid"></ion-icon>
+            <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="item.Valid"></ion-icon> -->
+            {{item.Section.ID}} - {{item.Section.Description}}
+          </mat-card-title>
           <mat-card-subtitle>Result : {{item.Result?.ResultantGrade.Grade}}
             {{item.Result?.TotalMark != null ? '(' + item.Result.TotalMark + ')' : 'Pending' }}</mat-card-subtitle>
+          <mat-card-subtitle class="status-padding">Status :
+            <ion-chip color="success" outline="true" [hidden]="!item.Valid" class="status-chips">
+              <ion-label color="success">Valid</ion-label>
+            </ion-chip>
+            <ion-chip color="warning" outline="true" [hidden]="item.Valid" class="status-chips">
+              <ion-label color="warning">Invalid</ion-label>
+            </ion-chip>
+            <ion-chip color="danger" outline="true" [hidden]="!item.Dropped" class="status-chips">
+              <ion-label color="danger">Dropped</ion-label>
+            </ion-chip>
+            <ion-chip color="dark" outline="true" [hidden]="!item.NonCredit" class="status-chips">
+              <ion-label color="dark">Non Credit</ion-label>
+            </ion-chip>
+          </mat-card-subtitle>
           <mat-divider></mat-divider>
           <div class="example-button-row">
-            <button mat-stroked-button color="primary" disabled="true">
-                <ion-icon name="calendar" class="courseIcon" ></ion-icon> TSF
+            <button mat-stroked-button color="primary" disabled="true" class="course-button">
+              <ion-icon name="calendar" class="courseIcon"></ion-icon> TSF
             </button>
-            <button mat-stroked-button color="primary" (click)="openSectionNotes(item?.Section?.ID)">
-                <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
+            <button mat-stroked-button color="primary" class="course-button" (click)="openSectionNotes(item?.Section?.ID)">
+              <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
             </button>
-            <button mat-stroked-button color="primary" (click)="openSectionNotice(item?.Section?.ID)">
-                <ion-icon name="ios-megaphone" class="courseIcon" ></ion-icon> Notice
+            <button mat-stroked-button color="primary" class="course-button" (click)="openSectionNotice(item?.Section?.ID)">
+              <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notice
             </button>
           </div>
         </mat-card-content>

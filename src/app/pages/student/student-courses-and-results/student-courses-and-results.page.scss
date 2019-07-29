@@ -1,50 +1,9 @@
-.divider{
-    background-color:rgb(33, 73, 194);
-    color: white;
+.subMenuPanel {
+  display: unset;
+  margin: 0px !important;
+  background-color: whitesmoke;
 }
 
-.sub-divider{
-    background-color:rgb(51, 100, 247);
-    color: white;
+ion-select{
+    max-width: 80% !important;
 }
-
-.align-right{
-    text-align: right;
-}
-
-.list_padding{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.courseName_padding{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.term-head1{
-    width:75%;
-    text-align:left;
-}
-
-.term-head2{
-    width:25%;
-    text-align: center;
-    padding-right: 2%;
-}
-
-.left-desc{
-    width:80%;
-    text-align: left;
-    padding-left: 1%;
-}
-.right-desc{
-    width:20%;
-    text-align: right;
-    padding-right: 1%;
-}
-
-ion-select {
-    max-width: 100% !important;
-    text-align: right;
-  }

@@ -153,6 +153,7 @@ export class StudentHomePage implements OnInit {
     if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== ""){
       this.commonService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
         this.semesterData = res.Data;
+        console.log(this.semesterData);
       });
     }
   }

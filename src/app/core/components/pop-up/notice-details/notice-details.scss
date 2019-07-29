@@ -1,59 +1,69 @@
-.title{
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #5a5ba7;
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #5a5ba7;
 }
 
-.notif-title{
-    font-size: 20px;
-    margin: 5px;
-    color: #042f61;
-    font-weight: 600;
+.notif-title {
+  font-size: 20px;
+  margin: 5px;
+  color: #042f61;
+  font-weight: 600;
 }
 
-.message{
-    font-size: 17px;
-    text-align: center;
+.message {
+  font-size: 17px;
+  text-align: left;
 }
 
-.time{
-    margin-top: 10px;
-    font-size: 13px;
+.time {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
-.modalImage{
-    width: 25%;
+.modalImage {
+  width: 25%;
 }
 
 @media (orientation: landscape) {
-    .modalImage{
-        width: 15%;
-    }
+  .modalImage {
+    width: 15%;
+  }
 }
 
-.successButton{
-    font-size: 16px;
-    --color: #ffffff !important;
-    --background: #5a5ba7;
+.successButton {
+  font-size: 16px;
+  --color: #ffffff !important;
+  --background: #5a5ba7;
 }
 
-.modal-content{
-    padding: 0px !important;
+.body {
+  padding-left: 8px;
+  padding-right: 8px;
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+
+.selectable_text {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 #container {
-    min-height:100%;
-    position:relative;
- }
- #header {
-    padding:5px;
- }
- 
- #footer {
-    /* position:absolute; */
-    bottom:0;
-    width:100%;
-    background: white;
- }
+  min-height: 100%;
+  position: relative;
+}
 
+#header {
+  padding: 5px;
+}
+
+#footer {
+  /* position:absolute; */
+  bottom: 0;
+  width: 100%;
+  background: white;
+}

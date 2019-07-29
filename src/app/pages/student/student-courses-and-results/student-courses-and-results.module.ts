@@ -9,7 +9,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatRippleModule} from '@angular/material/core';
 
 const routes: Routes = [
   {
@@ -27,6 +27,7 @@ const routes: Routes = [
     MatSelectModule,
     MatExpansionModule,
     MatCardModule,
+    MatRippleModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
