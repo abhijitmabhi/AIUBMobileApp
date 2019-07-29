@@ -6,6 +6,10 @@
 
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content refreshingSpinner="circles">
+      </ion-refresher-content>
+  </ion-refresher>
   <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
   <ion-progress-bar [hidden]="attendanceList" type="indeterminate" color="danger" value="0.5" ></ion-progress-bar>
   <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">

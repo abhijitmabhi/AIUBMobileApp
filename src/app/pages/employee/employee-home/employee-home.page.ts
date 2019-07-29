@@ -47,15 +47,8 @@ export class EmployeeHomePage implements OnInit {
     private commonService: CommonService,
     private modalController:ModalController,
     private notificationService:NotificationService,
-    private employeeHomeService: EmployeeHomeService,
-    private platform: Platform
-  ) {
-      this.platform.backButton.subscribe(()=>{
-        if(this.router.url == "/employee-tab/tabs/employeeHome"){
-          navigator['app'].exitApp();
-        }
-      });
-  }
+    private employeeHomeService: EmployeeHomeService
+  ) {}
 
   ngOnInit() {
     this.pushNotification.getPlayerID();

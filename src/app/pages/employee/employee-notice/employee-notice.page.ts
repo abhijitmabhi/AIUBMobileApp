@@ -1,5 +1,5 @@
-import { ModalController, Platform } from '@ionic/angular';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { ActivatedRoute, Params } from '@angular/router';
 import { EmployeeSectionService } from './../../../services/employee/employee-section.service';
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from 'src/app/core/loader/loading.service';
@@ -17,14 +17,8 @@ export class EmployeeNoticePage implements OnInit {
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
-    private modalController: ModalController,
-    private platform: Platform,
-    private router: Router
-    ) { 
-      this.platform.backButton.subscribe(()=>{
-        this.router.navigate(['/employee-tab/tabs/employeeHome']);
-      });
-    }
+    private modalController: ModalController
+    ) {}
 
   ngOnInit() {
     this.getSectionNoticesByID();

@@ -30,8 +30,6 @@ export class CoursesAndResultsDetailsPage implements OnInit {
     private dataService: DataService) { }
 
   ngOnInit() {
-    
-
     this.onChangeCourse();
   }
 

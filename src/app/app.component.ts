@@ -34,23 +34,18 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
+
       this.platform.resume.subscribe((res) => {
         this.isAppResume = true;
-        });
+      });
+      //Hardware backbutton event
+      this.isPressedHardwareBackButton();
       // this.statusBar.styleDefault(); 
       setTimeout(()=>{
         this.splashScreen.hide();  
       },1000);
-      
-      if (localStorage.getItem('token')) {
-        let user_type = localStorage.getItem('userType');
-        if(user_type == "3" || user_type == "1") {
-          this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
-        }
-        if(user_type == "0" ) {
-          this.router.navigateByUrl('/student-tab/tabs/studentHome');
-        }
-      }
+      //Navigate to home page if logged in
+      this.navigateToHomePage();
       
       this.statusBar.styleLightContent();
     });
@@ -78,5 +73,46 @@ export class AppComponent implements OnInit {
             this.toast.presentToast(msg);
           }
       });
+  }
+
+  isPressedHardwareBackButton(){
+    this.platform.backButton.subscribe(()=>{
+
+      let user_type = localStorage.getItem('userType');
+
+      if(!user_type){
+        navigator['app'].exitApp();
+      }
+      
+      if(user_type == "3" || user_type == "1") {
+        if(this.router.url !== "/employee-tab/tabs/employeeHome"){
+          this.router.navigate(['/employee-tab/tabs/employeeHome']);
+        }
+        else{
+          navigator['app'].exitApp();
+        }
+      }
+      if(user_type == "0" ) {
+        if(this.router.url !== "/student-tab/tabs/studentHome"){
+          this.router.navigate(['/student-tab/tabs/studentHome']);
+        }
+        else{
+          navigator['app'].exitApp();
+        }
+      }
+      
+    });
+  }
+
+  navigateToHomePage(){
+    if (localStorage.getItem('token')) {
+      let user_type = localStorage.getItem('userType');
+      if(user_type == "3" || user_type == "1") {
+        this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
+      }
+      if(user_type == "0" ) {
+        this.router.navigateByUrl('/student-tab/tabs/studentHome');
+      }
+    }
   }
 }

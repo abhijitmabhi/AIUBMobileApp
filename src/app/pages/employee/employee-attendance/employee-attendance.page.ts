@@ -1,8 +1,6 @@
 import { EmployeeAttendanceService } from './../../../services/employee/employee-attendance.service';
 import { Component, OnInit } from '@angular/core';
-import { DatePipe, Location  } from '@angular/common';
-import { Router } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-employee-attendance',
@@ -31,14 +29,7 @@ export class EmployeeAttendancePage implements OnInit {
 
   constructor(
     public employeeAttendanceService: EmployeeAttendanceService, 
-    private datePipe: DatePipe,
-    private router: Router,
-    private platform: Platform,
-    private location: Location) {
-      this.platform.backButton.subscribe(()=>{
-        this.router.navigate(['/employee-tab/tabs/employeeHome']);
-      });
-    }
+    private datePipe: DatePipe) {}
   
   ngOnInit() {
     this.getPayroll();
@@ -85,5 +76,10 @@ export class EmployeeAttendancePage implements OnInit {
     let mlist = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return mlist[dt.getMonth()];
   };
+
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
+  }
 
 }

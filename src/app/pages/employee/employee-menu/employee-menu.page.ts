@@ -2,8 +2,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 import { LoadingService } from './../../../core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location  } from '@angular/common';
-import { Platform } from '@ionic/angular';
+import { NotificationService } from 'src/app/core/localNotification/notification.service';
 
 @Component({
   selector: 'app-employee-menu',
@@ -17,15 +16,11 @@ export class EmployeeMenuPage implements OnInit {
   constructor(private router:Router,
     private loginService: LoginService,
     private loadingService: LoadingService,
-    private platform: Platform,
-    private location: Location) { 
-      this.platform.backButton.subscribe(()=>{
-        this.location.back();
-      });
-    }
+    private localNotification: NotificationService) {}
 
 
   ngOnInit() {
+    this.localNotification.showNotification();
     this.playerId = localStorage.getItem('playerId');
   }
 
@@ -36,6 +31,10 @@ export class EmployeeMenuPage implements OnInit {
       this.loadingService.loadingDismiss();
       this.router.navigate(['']);
     });
+  }
+
+  showNotification(){
+    this.localNotification.showNotification();
   }
 
 }

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ClassScheduleService } from 'src/app/services/employee/class-schedule.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
-import { Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-class-schedule',
@@ -17,14 +15,8 @@ export class EmployeeClassSchedulePage implements OnInit {
   constructor(
     private datePipe: DatePipe,
     private classSceduleService: ClassScheduleService,
-    private loadingService: LoadingService,
-    private platform: Platform,
-    private router: Router
-  ) {
-    this.platform.backButton.subscribe(()=>{
-      this.router.navigate(['/employee-tab/tabs/employeeHome']);
-    });
-   }
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
     this.getClassSchedule();
