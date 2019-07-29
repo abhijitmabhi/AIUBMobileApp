@@ -19,8 +19,11 @@ const routes: Routes = [
   { path: 'student-notice/:sectionId', loadChildren: './pages/student/student-notice/student-notice.module#StudentNoticePageModule' },
 
   // common
-  {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' }
+  {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
+  { path: 'courses-and-results-details', loadChildren: './pages/student/student-courses-and-results/courses-and-results-details/courses-and-results-details.module#CoursesAndResultsDetailsPageModule' }
 
+  // { path: 'student-courses-and-results', loadChildren: './pages/student/student-courses-and-results/student-courses-and-results.module#StudentCoursesAndResultsPageModule' },
+  
   // { path: 'employee-home', loadChildren: './pages/employee/employee-home/employee-home.module#EmployeeHomePageModule' },
   // { path: 'student-profile', loadChildren: './pages/student/student-profile/student-profile.module#StudentProfilePageModule' },
   // { path: 'student-menu', loadChildren: './pages/student/student-menu/student-menu.module#StudentMenuPageModule' },

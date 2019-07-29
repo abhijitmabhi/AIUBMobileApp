@@ -1,7 +1,9 @@
+import { Platform } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { StudentProfileService } from 'src/app/services/student/student-profile.service';
 import { LoadingService } from 'src/app/core/loader/loading.service';
 import { AlertService } from 'src/app/core/alert/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-profile',
@@ -24,7 +26,15 @@ export class StudentProfilePage implements OnInit {
     private profileService: StudentProfileService,
     private loadingService: LoadingService,
     private alertService: AlertService,
-  ) { }
+    private platform: Platform,
+    private router: Router
+  ) {
+    this.platform.backButton.subscribe(()=>{
+      if(this.router.url == "/student-tab/tabs/studentHome"){
+        navigator['app'].exitApp();
+      }
+    });
+   }
 
   ngOnInit() {
     this.currentview = "academic";

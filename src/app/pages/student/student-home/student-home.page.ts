@@ -38,13 +38,13 @@ export class StudentHomePage implements OnInit {
   nrSelect: any;
   invalidUserMessage: any;
 
-  private userImage: string = null;
-  private appUserInfo: any;
-  private notificationCount: number;
-  private classSchedules: any;
+   userImage: string = null;
+   appUserInfo: any;
+   notificationCount: number;
+   classSchedules: any;
   profileImageLoaded: boolean = false;
 
-  private currentDateTime = new Date();
+   currentDateTime = new Date();
   subscription: any;
 
   constructor(
@@ -177,5 +177,7 @@ export class StudentHomePage implements OnInit {
    openSectionNotice(sectionId: number){
     this.router.navigate(['student-notice', sectionId]);
   }
+
+  ShowProfile(){}
   
 }

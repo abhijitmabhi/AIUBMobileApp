@@ -35,6 +35,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'studentCoursesANDresults',
+        children: [
+          {
+            path: '',
+            loadChildren: '../student-courses-and-results/student-courses-and-results.module#StudentCoursesAndResultsPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/studentHome',
         pathMatch: 'full'

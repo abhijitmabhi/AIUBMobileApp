@@ -35,13 +35,10 @@ export class EmployeeAttendancePage implements OnInit {
     private router: Router,
     private platform: Platform,
     private location: Location) {
+      this.platform.backButton.subscribe(()=>{
+        this.router.navigate(['/employee-tab/tabs/employeeHome']);
+      });
     }
-  
-  ionViewWillEnter(){
-    this.platform.backButton.subscribe(()=>{
-      this.router.navigate(['/employee-tab/tabs/employeeHome']);
-    });
-  }
   
   ngOnInit() {
     this.getPayroll();

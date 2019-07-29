@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeSectionService } from 'src/app/services/employee/employee-section.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LoadingService } from 'src/app/core/loader/loading.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
 
 @Component({
@@ -18,8 +18,16 @@ export class StudentNoticePage implements OnInit {
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
-    private modalController: ModalController
-    ) { }
+    private modalController: ModalController,
+    private platform: Platform,
+    private router: Router
+    ) {
+      this.platform.backButton.subscribe(()=>{
+        if(this.router.url == "/student-tab/tabs/studentHome"){
+          navigator['app'].exitApp();
+        }
+      });
+     }
 
   ngOnInit() {
     this.getSectionNoticesByID();
