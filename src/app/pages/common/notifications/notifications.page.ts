@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./notifications.page.scss'],
 })
 export class NotificationsPage implements OnInit {
-  private notificationList: any = [];
+  notificationList: any = [];
   constructor(
     private modalController: ModalController,
     private notificationService: NotificationService,

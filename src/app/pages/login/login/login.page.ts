@@ -50,32 +50,19 @@ export class LoginPage implements OnInit {
 
   async Login() {
 
-    if (this.User.username) {
-      if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))
-        || (/^[0-9]{4}-[0-9]{3,4}-[1-3]$/i.test(this.User.username))) {
-        // if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username))) {
-        //   await this.showAlert('Warning', 'Student version is coming soon!');
-        //   return;
-        
-        // }
-      } else {
-        await this.alert.alertErrorLogin('Error', 'Invalid Username!');
-        return;
-      }
-    } else {
+    if (this.User.username == '' || this.User.username == undefined || this.User.username == null ) {
       await this.alert.alertErrorLogin('Warning', 'Username is requried!');
       return;
     }
-    if (this.User.password) {
-      // await this.showAlert('Info', this.User.password);
-    } else {
-      await this.alert.alertErrorLogin('Warning', 'Password is requried!');
+
+    if ((/^[0-9]{2}-[0-9]{5}-[1-3]$/i.test(this.User.username.trim())) == false && (/^[0-9]{4}-[0-9]{3,4}-[1-3]$/i.test(this.User.username.trim())) == false) {
+      await this.alert.alertErrorLogin('Error', 'Invalid Username!');
       return;
     }
-    if (this.User.isRemember) {
-      // await this.showAlert('Info', 'Store User Info');
-    } else {
-      // await this.showAlert('Info', 'Clear User Info');
+
+    if (this.User.password == '' || this.User.password == undefined || this.User.password == null) {
+      await this.alert.alertErrorLogin('Warning', 'Password is requried!');
+      return;
     }
 
     this.loadingService.loadingStart();

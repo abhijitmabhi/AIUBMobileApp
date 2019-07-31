@@ -76,8 +76,8 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Email -->
-              <!-- <ion-row>
+              <!-- Email  -->
+               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Email : </ion-label>
                 </ion-col>
@@ -85,9 +85,9 @@
                   <ion-label>{{studentProfile?.Email.toLowerCase()}}</ion-label>
                 </ion-col>
               </ion-row>
-              <mat-divider style="padding: 2px;"></mat-divider> -->
+              <mat-divider style="padding: 2px;"></mat-divider> 
   
-              <!-- Father Name -->
+              <!-- Father Name  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Father Name : </ion-label>
@@ -98,7 +98,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Mother Name -->
+               <!-- Mother Name  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Mother Name : </ion-label>
@@ -109,7 +109,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Present Address -->
+               <!-- Present Address -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Present Address : </ion-label>
@@ -120,7 +120,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Permanent Address -->
+              <!-- Permanent Address  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Permanent Address : </ion-label>
@@ -131,7 +131,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Date of Birth -->
+              <!-- Date of Birth  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Date of Birth : </ion-label>
@@ -142,7 +142,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Gender -->
+              <!-- Gender  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Gender : </ion-label>
@@ -153,7 +153,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Blood Group -->
+               <!-- Blood Group -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Blood Group : </ion-label>
@@ -164,7 +164,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Marital Status -->
+              <!-- Marital Status  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Marital Status : </ion-label>
@@ -175,7 +175,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Religion -->
+              <!-- Religion  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Religion : </ion-label>
@@ -186,7 +186,7 @@
               </ion-row>
               <mat-divider style="padding: 2px;"></mat-divider>
   
-              <!-- Nationality -->
+               <!-- Nationality  -->
               <ion-row>
                 <ion-col class="dataLabel">
                   <ion-label>Nationality : </ion-label>
@@ -195,6 +195,57 @@
                   <ion-label>{{studentProfile?.Nationality}}</ion-label>
                 </ion-col>
               </ion-row>
+
+              <!-- <table class="table">
+                <tr>
+                    <th>Phone Number</th>
+                    <td>{{studentProfile?.Phone}}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{studentProfile?.Email.toLowerCase()}}</td>
+                </tr>
+                <tr>
+                    <th>Father Name</th>
+                    <td>{{ studentProfile?.FatherName ? studentProfile?.FatherName : "N/A" }}</td>
+                </tr>
+                <tr>
+                    <th>Mother Name</th>
+                    <td>{{ studentProfile?.MotherName ? studentProfile?.MotherName : "N/A" }}</td>
+                </tr>
+                <tr>
+                    <th>Present Address</th>
+                    <td>{{ studentProfile?.PresentAddress ? studentProfile?.PresentAddress : "N/A" }}</td>
+                </tr>
+                <tr>
+                    <th>Permanent Address </th>
+                    <td>{{ studentProfile?.PermanentAddress ? studentProfile?.PermanentAddress : "N/A" }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth </th>
+                    <td>{{ studentProfile?.DOB | date:"dd-MMM-yy" }}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{ studentProfile?.Sex }}</td>
+                </tr>
+                <tr>
+                    <th>Blood Group</th>
+                    <td>{{ studentProfile?.BloodGroup }}</td>
+                </tr>
+                <tr>
+                    <th>Marital Status</th>
+                    <td>{{ studentProfile?.MaritalStatus }}</td>
+                </tr>
+                <tr>
+                    <th>Religion</th>
+                    <td>{{ studentProfile?.Religion }}</td>
+                </tr>
+                <tr>
+                    <th>Nationality</th>
+                    <td>{{ studentProfile?.Nationality }}</td>
+                </tr>
+              </table> -->
   
             </div>
   

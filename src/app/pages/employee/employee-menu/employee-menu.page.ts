@@ -20,21 +20,24 @@ export class EmployeeMenuPage implements OnInit {
 
 
   ngOnInit() {
-    this.localNotification.showNotification();
     this.playerId = localStorage.getItem('playerId');
   }
 
   logout(){
-    this.loadingService.loadingStart();
+    // this.loadingService.loadingStart();
     this.loginService.logMeOut(this.playerId).subscribe(res => {
       localStorage.clear();
-      this.loadingService.loadingDismiss();
+      // this.loadingService.loadingDismiss();
       this.router.navigate(['']);
     });
   }
 
-  showNotification(){
-    this.localNotification.showNotification();
-  }
+  // showNotification(){
+  //   this.localNotification.showNotification();
+  // }
+
+  // redirectToFeedback(){
+  //   this.router.navigate(['user-feedback']);
+  // }
 
 }

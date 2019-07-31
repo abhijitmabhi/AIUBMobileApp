@@ -66,7 +66,7 @@ export class EmployeeHomePage implements OnInit {
     let fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
     let toDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+1),'yyyy-MM-dd HH:mm:ss.SSS');
 
-    this.loadingService.loadingStart();
+    // this.loadingService.loadingStart();
 
     this.classSceduleService.getTeacherClassSchedule(fromDateTime, toDateTime).subscribe(response => {
       this.loadingService.loadingDismiss();
@@ -78,7 +78,7 @@ export class EmployeeHomePage implements OnInit {
       }
     },
       error => {
-        this.loadingService.loadingDismiss();
+        // this.loadingService.loadingDismiss();
         let errorResponse = error;
         console.log(errorResponse.error.Message);
     });

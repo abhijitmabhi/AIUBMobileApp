@@ -17,10 +17,12 @@ const routes: Routes = [
   { path: 'student-notes/:sectionId', loadChildren: './pages/student/student-notes/student-notes.module#StudentNotesPageModule' },
   { path: 'student-class-schedule', loadChildren: './pages/student/student-class-schedule/student-class-schedule.module#StudentClassSchedulePageModule' },
   { path: 'student-notice/:sectionId', loadChildren: './pages/student/student-notice/student-notice.module#StudentNoticePageModule' },
+  { path: 'courses-and-results-details', loadChildren: './pages/student/student-courses-and-results/courses-and-results-details/courses-and-results-details.module#CoursesAndResultsDetailsPageModule' },
 
   // common
   {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
-  { path: 'courses-and-results-details', loadChildren: './pages/student/student-courses-and-results/courses-and-results-details/courses-and-results-details.module#CoursesAndResultsDetailsPageModule' }
+  { path: 'user-feedback', loadChildren: './pages/common/user-feedback/user-feedback.module#UserFeedbackPageModule' }
+
 
   // { path: 'student-courses-and-results', loadChildren: './pages/student/student-courses-and-results/student-courses-and-results.module#StudentCoursesAndResultsPageModule' },
   

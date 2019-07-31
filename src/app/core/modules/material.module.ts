@@ -16,7 +16,9 @@ import {
   MatCardModule,
   MatIconModule,
   MatRippleModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatRadioButton,
+  MatRadioGroup
 } from "@angular/material";
  
 @NgModule({
