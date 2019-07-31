@@ -9,7 +9,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content style="--background: #f7f1fe;">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content refreshingSpinner="circles">
@@ -43,13 +42,11 @@
       <ion-row justify-content-center align-items-center>
         <div class="shortInfoCard">
           <ion-row justify-content-center align-items-center>
-            <ion-col class="infoHeaderTitle" text-center><span>Designation</span></ion-col>
-            <ion-col class="infoHeaderTitle" text-center>Department</ion-col>
-            <ion-col class="infoHeaderTitle" text-center>Year of Service</ion-col>
+            <ion-col class="left-infoHeaderTitle" text-center >Department</ion-col>
+            <ion-col class="right-infoHeaderTitle" text-center>Year of Service</ion-col>
           </ion-row>
           <ion-row justify-content-center align-items-center>
-            <ion-col text-center>{{employeeProfile?.Designation}}</ion-col>
-            <ion-col text-center>{{employeeProfile?.Department}}</ion-col>
+            <ion-col text-center style=""{{employeeProfile?.Department}}</ion-col>
             <ion-col text-center [innerHtml]="employeeProfile?.YearOfService | customYearOfService"></ion-col>
           </ion-row>
         </div>
@@ -228,7 +225,7 @@
             <mat-divider style="padding: 2px;"></mat-divider>
 
             <!-- Designation -->
-            <!-- <ion-row>
+            <ion-row>
               <ion-col class="dataLabel">
                 <ion-label>Designation : </ion-label>
               </ion-col>
@@ -236,7 +233,7 @@
                 <ion-label>{{employeeProfile?.Designation}}</ion-label>
               </ion-col>
             </ion-row>
-            <mat-divider style="padding: 2px;"></mat-divider> -->
+            <mat-divider style="padding: 2px;"></mat-divider>
 
             <!-- Department -->
             <!-- <ion-row>
