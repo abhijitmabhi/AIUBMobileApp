@@ -1,28 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-        <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-    <ion-title>Feedback</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Create Contact Form</mat-card-title>
-        </mat-card-header>
-        
-            <mat-card-content>
-                <form>
-                    <mat-form-field>
-                        <mat-label>Contact Address</mat-label>
-                        <textarea [(ngModel)]="feedback.Description"  matInput></textarea>
-                    </mat-form-field>
-                </form>
-            </mat-card-content>
-            <mat-card-actions>
-            <!-- put buttons here -->
-            </mat-card-actions>
-        </mat-card>
-</ion-content>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+              <ion-back-button text=""></ion-back-button>
+          </ion-buttons>
+          <ion-title>Feedback</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content>
+          <mat-card>
+              
+                  <mat-card-content>
+                      <ion-item >
+                          <ion-label>Feedback Type: </ion-label>
+                          <ion-select placeholder="Select One" [(ngModel)]='feedback.TypeID'>
+                              <ion-select-option *ngFor="let type of Type" [value]="type.value"> {{type.title}}</ion-select-option>
+                          </ion-select>
+                      </ion-item>
+                      <ion-item >
+                          <ion-textarea [(ngModel)]='feedback.Description' placeholder="Enter feedback here..."></ion-textarea>
+                      </ion-item>
+                      <div text-center>
+                          <ion-button class="margin-top-10" shape="round" (click)="Submit()">Submit</ion-button>
+                      </div>
+                  </mat-card-content>
+                  <mat-card-actions>
+                  <!-- put buttons here -->
+                  </mat-card-actions>
+              </mat-card>
+      </ion-content>

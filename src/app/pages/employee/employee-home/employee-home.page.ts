@@ -88,8 +88,8 @@ export class EmployeeHomePage implements OnInit {
     this.loginService.currentUserInfo().subscribe(res => {
       let result = res;
       if(result.HasError){
-        console.log(result.Messages);
       }else{
+        localStorage.setItem('UserID',res.Data.User.ID);
         this.appUserInfo = result.Data;
         this.notificationCount = this.appUserInfo.UnReadNotificationCount;
       }
@@ -200,5 +200,10 @@ export class EmployeeHomePage implements OnInit {
     this.router.navigate(['employee-notice', sectionId]);
   }
 
+   /* Get Section Note */
+
+  openSectionNote(sectionId: number){
+    //this.router.navigate(['employee-notes', sectionId]);
+  }
 
 }

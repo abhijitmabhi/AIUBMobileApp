@@ -36,8 +36,8 @@ export class EmployeeMenuPage implements OnInit {
   //   this.localNotification.showNotification();
   // }
 
-  // redirectToFeedback(){
-  //   this.router.navigate(['user-feedback']);
-  // }
+  redirectToFeedback(){
+    this.router.navigate(['user-feedback']);
+  }
 
 }

@@ -22,6 +22,7 @@ export class CoursesAndResultsDetailsPage implements OnInit {
   courseName:any;
   courseId:any;
   sectionId:any;
+  facultyNames:any;
 
 
   constructor(
@@ -48,6 +49,7 @@ export class CoursesAndResultsDetailsPage implements OnInit {
     this.coursesResultsService.getCoursesAndResults(this.sectionId, this.courseId).subscribe(res =>{
       this.midtermResult = res.Data.Exams[0];
       this.finaltermResult = res.Data.Exams[1];
+      this.facultyNames = res.Data.Section.FacaltyNames;
 
       console.log(res);
     });

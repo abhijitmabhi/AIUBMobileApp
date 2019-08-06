@@ -6,7 +6,7 @@ import { Platform } from '@ionic/angular';
 })
 export class DataService {
   serviceData: any;
-  
+  test:any;
   constructor(public platform: Platform){
 
   }
@@ -20,5 +20,27 @@ export class DataService {
       platformType = 'android';
      }
      return platformType;
+  }
+
+  isToken(){
+    return localStorage.getItem('token') ? true : false;
+  }
+
+  getUserType(){
+    if(this.isToken()){
+      return localStorage.getItem('userType');
+    }
+  }
+
+  getToken(){
+    if(this.isToken()){
+      return localStorage.getItem('token');
+    }
+  }
+
+  getUserId(){
+    if(this.isToken()){
+      return localStorage.getItem('UserID');
+    }
   }
 }

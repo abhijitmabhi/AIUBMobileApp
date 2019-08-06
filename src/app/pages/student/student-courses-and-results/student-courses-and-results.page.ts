@@ -75,6 +75,17 @@ export class StudentCoursesAndResultsPage implements OnInit {
   onChangeSemester(){
       this.commonService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
         this.courseList = res.Data;
+
+        let course = this.courseList.map((obj)=>{
+          if(obj.MidtermResult == null)
+            obj.MidtermResult = "Pending";
+          if(obj.FinaltermResult == null)
+            obj.FinaltermResult = "Pending";
+          if(obj.Result == null)
+            obj.Result = "Pending";
+          return obj;
+        });
+        this.courseList = course;
         console.log(this.courseList);
       });
     }

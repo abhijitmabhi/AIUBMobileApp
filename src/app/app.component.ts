@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { NetworkService } from './core/network/network.service';
 import { debounceTime } from 'rxjs/operators';
 import { Network } from '@ionic-native/network/ngx';
+import { DataService } from './core/dataService/data-service.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private networkService : NetworkService,
     private toast: ToastService,
-    public network: Network
+    public network: Network,
+    public dataService: DataService
   ) {
     this.initializeApp();
   }
@@ -78,7 +80,8 @@ export class AppComponent implements OnInit {
   isPressedHardwareBackButton(){
     this.platform.backButton.subscribe(()=>{
 
-      let user_type = localStorage.getItem('userType');
+      // let user_type = localStorage.getItem('userType');
+      let user_type = this.dataService.getUserType();
 
       if(!user_type){
         navigator['app'].exitApp();
@@ -105,8 +108,8 @@ export class AppComponent implements OnInit {
   }
 
   navigateToHomePage(){
-    if (localStorage.getItem('token')) {
-      let user_type = localStorage.getItem('userType');
+    if (this.dataService.isToken()) {
+      let user_type = this.dataService.getUserType();
       if(user_type == "3" || user_type == "1") {
         this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
       }

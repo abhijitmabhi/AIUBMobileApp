@@ -2,13 +2,14 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IResult } from 'src/app/core/result/result';
+import { DataService } from '../../core/dataService/data-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
 
-  constructor(public httpClient: HttpClient) { }
+  constructor(public httpClient: HttpClient, private dataService: DataService) { }
 
   public savePLayerIDIntoDatabase(PlayerID, hasWarning){
     const dt = new HttpParams()
@@ -38,5 +39,12 @@ export class CommonService {
     return this.httpClient.get<IResult>(`Student/GetCourseList?semesterID=${semesterId}`);
   }
 
- 
+  public saveUserFeedback(objFeedback){
+    const dt = new HttpParams()
+    .set('TypeID', objFeedback.TypeID)
+    .set('UserID', this.dataService.getUserId())
+    .set('Description', objFeedback.Description);
+    return this.httpClient.post<IResult>(`Common/UserFeedback`, dt);
+  }
+
 }

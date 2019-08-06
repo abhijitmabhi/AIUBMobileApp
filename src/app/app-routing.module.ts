@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'employee-class-schedule', loadChildren: './pages/employee/employee-class-schedule/employee-class-schedule.module#EmployeeClassSchedulePageModule' },
   { path: 'get-student-list/:sectionId', loadChildren: './pages/employee/get-student-list/get-student-list.module#GetStudentListPageModule' },
   { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notice/employee-notice.module#EmployeeNoticePageModule' },
+  // { path: 'employee-notes', loadChildren: './pages/employee/employee-note/employee-notes/employee-notes.module#EmployeeNotesPageModule' },
+
 
   //Student
   { path: 'student-tab', loadChildren: './pages/student/student-tab/student-tab.module#StudentTabPageModule' },
@@ -22,6 +24,7 @@ const routes: Routes = [
   // common
   {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
   { path: 'user-feedback', loadChildren: './pages/common/user-feedback/user-feedback.module#UserFeedbackPageModule' }
+
 
 
   // { path: 'student-courses-and-results', loadChildren: './pages/student/student-courses-and-results/student-courses-and-results.module#StudentCoursesAndResultsPageModule' },

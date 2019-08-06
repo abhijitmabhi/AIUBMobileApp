@@ -19,17 +19,24 @@
 
     <div style="background-color: whitesmoke;">
       <mat-card style="margin:0px 10px 10px;" matRipple *ngFor="let course of courseList"
-        (click)="details(course.Section.ID, course.Section.Description, course?.Result?.ResultantGrade.Grade,course?.Result?.Mark,course?.Result?.Bouns  )">
+        (click)="details(course.Section.ID, course.Section.Description, course?.Result?.ResultantGrade?.Grade,course?.Result?.Mark,course?.Result?.Bouns  )">
         <mat-card-content>
           <ion-label>
             <h2>{{course?.Section?.Description}}</h2>
-            Mid term<p>
-              {{course?.MidtermResult?.ResultantGrade.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})
-            </p>
-            Final term:<p>
-              {{course?.FinaltermResult?.ResultantGrade.Grade}}({{course?.FinaltermResult?.Mark}}/+{{course?.FinaltermResult?.Bonus}})
-            </p>
-            Total: <p>{{course?.Result?.ResultantGrade.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})</p>
+            <div>
+                <span class="a">Mid term</span>
+                <span class="a">Final term</span>
+                <span class="a">Total</span>
+            </div>
+            <div>
+                <span class="a" *ngIf="course?.MidtermResult != 'Pending'">{{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})</span>
+                <span class="a" *ngIf="course?.MidtermResult == 'Pending'">{{ course?.MidtermResult }}</span>
+                <span class="a" *ngIf="course?.FinaltermResult != 'Pending'">{{course?.FinaltermResult?.ResultantGrade?.Grade}}({{course?.FinaltermResult?.Mark}}/+{{course?.FinaltermResult?.Bonus}})</span>
+                <span class="a" *ngIf="course?.FinaltermResult == 'Pending'">{{ course?.FinaltermResult }}</span>
+                <span class="a" *ngIf="course?.Result != 'Pending'">{{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})</span>
+                <span class="a" *ngIf="course?.Result == 'Pending'">{{ course?.Result }}</span>
+            </div>
+              
           </ion-label>
         </mat-card-content>
       </mat-card>
