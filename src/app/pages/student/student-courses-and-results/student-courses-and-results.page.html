@@ -16,28 +16,94 @@
       </ion-select>
     </ion-item>
 
-
     <div style="background-color: whitesmoke;">
       <mat-card style="margin:0px 10px 10px;" matRipple *ngFor="let course of courseList"
         (click)="details(course.Section.ID, course.Section.Description, course?.Result?.ResultantGrade?.Grade,course?.Result?.Mark,course?.Result?.Bouns  )">
         <mat-card-content>
-          <ion-label>
+
+          <ion-row>
+            <ion-col class="strip-col"></ion-col>
+            <ion-col>
+              <ion-row>
+                <ion-label color="primary">
+                  <h4>{{course?.Section?.Description}}</h4>
+                </ion-label>
+              </ion-row>
+              <ion-row>
+                <!-- <ion-col>Mid term</ion-col>
+                <ion-col>Final term</ion-col>
+                <ion-col>Total</ion-col> -->
+                <ion-label>Course Teacher(s): {{ course?.Section?.FacaltyNames }}</ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-col class="grade-col">
+                  <ion-chip class="grade-chip" color="primary">
+                    <ion-label class="grade-text" align="center" *ngIf="course?.MidtermResult != 'Pending'">
+                        Mid: {{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})
+                    </ion-label>
+                    <ion-label class="grade-text" *ngIf="course?.MidtermResult == 'Pending'">
+                      Mid: {{ course?.MidtermResult }}
+                    </ion-label>
+                  </ion-chip>
+                  <!-- <span class="a"
+                    *ngIf="course?.MidtermResult != 'Pending'">{{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})</span>
+                  <span class="a" *ngIf="course?.MidtermResult == 'Pending'">{{ course?.MidtermResult }}</span> -->
+                </ion-col>
+                <ion-col class="grade-col">
+                  <ion-chip class="grade-chip" color="primary">
+                    <ion-label class="grade-text" *ngIf="course?.FinaltermResult != 'Pending'">
+                      Final:
+                      {{course?.FinaltermResult?.ResultantGrade?.Grade}}({{course?.FinaltermResult?.Mark}}/+{{course?.FinaltermResult?.Bonus}})
+                    </ion-label>
+                    <ion-label class="grade-text" *ngIf="course?.FinaltermResult == 'Pending'">
+                      Final: {{ course?.FinaltermResult }}
+                    </ion-label>
+                  </ion-chip>
+                  <!-- <span class="a"
+                    *ngIf="course?.FinaltermResult != 'Pending'">{{course?.FinaltermResult?.ResultantGrade?.Grade}}({{course?.FinaltermResult?.Mark}}/+{{course?.FinaltermResult?.Bonus}})</span>
+                  <span class="a" *ngIf="course?.FinaltermResult == 'Pending'">{{ course?.FinaltermResult }}</span> -->
+                </ion-col>
+                <ion-col class="grade-col">
+                  <ion-chip class="grade-chip" color="primary">
+                    <ion-label class="grade-text" *ngIf="course?.Result != 'Pending'">
+                      Total:
+                      {{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})
+                    </ion-label>
+                    <ion-label class="grade-text" *ngIf="course?.Result == 'Pending'">
+                      Total: {{ course?.Result }}
+                    </ion-label>
+                  </ion-chip>
+                  <!-- <span class="a"
+                    *ngIf="course?.Result != 'Pending'">{{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})</span>
+                  <span class="a" *ngIf="course?.Result == 'Pending'">{{ course?.Result }}</span> -->
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col class="icon-col">
+              <ion-icon name="ios-arrow-forward" class="arrow-icon"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+          <!-- <ion-label>
             <h2>{{course?.Section?.Description}}</h2>
             <div>
-                <span class="a">Mid term</span>
-                <span class="a">Final term</span>
-                <span class="a">Total</span>
+              <span class="a">Mid term</span>
+              <span class="a">Final term</span>
+              <span class="a">Total</span>
             </div>
             <div>
-                <span class="a" *ngIf="course?.MidtermResult != 'Pending'">{{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})</span>
-                <span class="a" *ngIf="course?.MidtermResult == 'Pending'">{{ course?.MidtermResult }}</span>
-                <span class="a" *ngIf="course?.FinaltermResult != 'Pending'">{{course?.FinaltermResult?.ResultantGrade?.Grade}}({{course?.FinaltermResult?.Mark}}/+{{course?.FinaltermResult?.Bonus}})</span>
-                <span class="a" *ngIf="course?.FinaltermResult == 'Pending'">{{ course?.FinaltermResult }}</span>
-                <span class="a" *ngIf="course?.Result != 'Pending'">{{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})</span>
-                <span class="a" *ngIf="course?.Result == 'Pending'">{{ course?.Result }}</span>
+              <span class="a"
+                *ngIf="course?.MidtermResult != 'Pending'">{{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})</span>
+              <span class="a" *ngIf="course?.MidtermResult == 'Pending'">{{ course?.MidtermResult }}</span>
+              <span class="a"
+                *ngIf="course?.FinaltermResult != 'Pending'">{{course?.FinaltermResult?.ResultantGrade?.Grade}}({{course?.FinaltermResult?.Mark}}/+{{course?.FinaltermResult?.Bonus}})</span>
+              <span class="a" *ngIf="course?.FinaltermResult == 'Pending'">{{ course?.FinaltermResult }}</span>
+              <span class="a"
+                *ngIf="course?.Result != 'Pending'">{{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})</span>
+              <span class="a" *ngIf="course?.Result == 'Pending'">{{ course?.Result }}</span>
             </div>
-              
-          </ion-label>
+
+          </ion-label> -->
         </mat-card-content>
       </mat-card>
     </div>

@@ -4,15 +4,59 @@
   background-color: whitesmoke;
 }
 
-ion-select{
-    max-width: 80% !important;
+//Select Semester
+
+ion-select {
+  max-width: 80% !important;
 }
 
-.a{
+//Card Design
+
+ion-col.strip-col {
+  flex: 0 0 4px;
+  padding: 0;
+  margin-right: 0px;
+  background-color: #014ea2;
+}
+
+ion-col.icon-col {
+  flex: 0 0 25px;
+  padding: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.arrow-icon {
+  color: #014ea2;
+  height: 25px;
+  width: 25px;
+  margin-top: 100%;
+}
+
+.a {
   align-self: center;
   margin-right: 2%;
   margin-left: 2%;
   margin-top: 4%;
   width: 29.33%;
   outline: 0 !important;
+}
+
+.grade-chip{
+  width: 100%;
+  display: flex;
+}
+
+.grade-text {
+  font-size: 10px;
+  margin: auto;
+  text-align: center !important;
+}
+
+.mat-card-content, .mat-card-subtitle {
+  font-size: 12px;
+}
+
+ion-col.grade-col{
+  padding: 2px;
 }
