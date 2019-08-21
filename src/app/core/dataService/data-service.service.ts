@@ -7,6 +7,7 @@ import { Platform } from '@ionic/angular';
 export class DataService {
   serviceData: any;
   test:any;
+  isModalOn = false;
   constructor(public platform: Platform){
 
   }
@@ -42,5 +43,9 @@ export class DataService {
     if(this.isToken()){
       return localStorage.getItem('UserID');
     }
+  }
+
+  validateString(str){
+    if(str === null || str === undefined || str === '' ) return true;
   }
 }

@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'employee-tab', loadChildren: './pages/employee/employee-tab/employee-tab.module#EmployeeTabPageModule' },
   { path: 'employee-class-schedule', loadChildren: './pages/employee/employee-class-schedule/employee-class-schedule.module#EmployeeClassSchedulePageModule' },
   { path: 'get-student-list/:sectionId', loadChildren: './pages/employee/get-student-list/get-student-list.module#GetStudentListPageModule' },
-  { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notice/employee-notice.module#EmployeeNoticePageModule' },
+  { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notices/employee-notice/employee-notice.module#EmployeeNoticePageModule' },
+  { path: 'employee-note-upload', loadChildren: './pages/employee/employee-note/employee-note-upload/employee-note-upload.module#EmployeeNoteUploadPageModule' },
   // { path: 'employee-notes', loadChildren: './pages/employee/employee-note/employee-notes/employee-notes.module#EmployeeNotesPageModule' },
 
 
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'courses-and-results-details', loadChildren: './pages/student/student-courses-and-results/courses-and-results-details/courses-and-results-details.module#CoursesAndResultsDetailsPageModule' },
 
   // common
-  {  path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
+  { path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
   { path: 'user-feedback', loadChildren: './pages/common/user-feedback/user-feedback.module#UserFeedbackPageModule' }
 
 

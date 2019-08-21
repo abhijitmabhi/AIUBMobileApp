@@ -8,6 +8,11 @@
   </ion-header>
 
 <ion-content>
+    <ion-fab class="fabButton" vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="Upload()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <ion-list style="padding: 0px;">
         <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
           <ion-thumbnail slot="start">

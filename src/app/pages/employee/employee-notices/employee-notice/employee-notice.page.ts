@@ -1,9 +1,11 @@
 import { ModalController } from '@ionic/angular';
-import { ActivatedRoute, Params } from '@angular/router';
-import { EmployeeSectionService } from './../../../services/employee/employee-section.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { EmployeeSectionService } from '../../../../services/employee/employee-section.service';
 import { Component, OnInit } from '@angular/core';
-import { LoadingService } from 'src/app/core/loader/loading.service';
-import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
+import { LoadingService } from '../../../../core/loader/loading.service';
+import { NoticeDetails } from '../../../../core/components/pop-up/notice-details/notice-details';
+import { DataService } from '../../../../core/dataService/data-service.service';
+import { NoticeUpload } from '../../../../modals/notice-upload/notice-upload';
 
 @Component({
   selector: 'app-employee-notice',
@@ -17,7 +19,9 @@ export class EmployeeNoticePage implements OnInit {
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private dataService: DataService,
+    private router: Router
     ) {}
 
   ngOnInit() {
@@ -46,6 +50,7 @@ export class EmployeeNoticePage implements OnInit {
   }
 
   async readNotice(notice:any){
+    this.dataService.isModalOn = true;
     const myModal = await this.modalController.create({
       component: NoticeDetails,
       componentProps: { 
@@ -54,6 +59,18 @@ export class EmployeeNoticePage implements OnInit {
         Time: notice.PostDate
       },
       cssClass: 'popup-modal-css',
+      backdropDismiss:false,
+    });
+    return await myModal.present();
+  }
+
+  async Upload(){
+    this.dataService.serviceData = this.sectionId;
+    this.dataService.isModalOn = true;
+    //  this.router.navigate(['employee-notice-upload']);
+     const myModal = await this.modalController.create({
+      component: NoticeUpload,
+      // cssClass: 'popup-modal-css',
       backdropDismiss:false,
     });
     return await myModal.present();

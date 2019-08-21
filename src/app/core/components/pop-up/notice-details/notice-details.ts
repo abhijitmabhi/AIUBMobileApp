@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { ModalController, NavParams, Platform } from '@ionic/angular';
+import { DataService } from '../../../dataService/data-service.service';
 
 @Component({
   selector: 'app-notice-details',
@@ -10,7 +11,12 @@ export class NoticeDetails implements OnInit {
   title:string;
   message:string;
   time:string;
-  constructor(private modalController:ModalController, private navParams: NavParams) {
+  backButtonAction: any;
+
+  constructor(private modalController:ModalController, private navParams: NavParams, private dataService: DataService,private platform: Platform ) {
+    this.backButtonAction = this.platform.backButton.subscribeWithPriority(0, () => {
+    
+    });
   }
 
   ngOnInit() {
@@ -20,7 +26,9 @@ export class NoticeDetails implements OnInit {
   }
 
   async CloseModal() {
+    this.backButtonAction.unsubscribe();
     this.modalController.dismiss();
+    this.dataService.isModalOn = false;
   }
 
 }

@@ -1,8 +1,8 @@
 import { DataService } from './../../../core/dataService/data-service.service';
-import { CommonService } from 'src/app/Services/common/common.service';
-import { LoadingService } from 'src/app/Core/loader/loading.service';
+import { CommonService } from '../../../services/common/common.service';
+import { LoadingService } from '../../../core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
-import { CoursesResultsService } from 'src/app/services/student/courses-and-result.service';
+import { CoursesResultsService } from '../../../services/student/courses-and-result.service';
 import { Router } from '@angular/router';
 
 @Component({

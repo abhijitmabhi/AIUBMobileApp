@@ -1,16 +1,16 @@
-import { EmployeeHomeService } from 'src/app/services/employee/employee-home.service';
+import { EmployeeHomeService } from '../../../services/employee/employee-home.service';
 import { NotificationService } from './../../../services/notification/notification.service';
-import { LoginService } from 'src/app/services/login/login.service';
+import { LoginService } from '../../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PushNotificationService } from 'src/app/core/oneSignal/push-notification.service';
+import { PushNotificationService } from '../../../core/oneSignal/push-notification.service';
 import { DatePipe } from '@angular/common';
-import { LoadingService } from 'src/app/core/loader/loading.service';
-import { CommonService } from 'src/app/services/common/common.service';
-import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
-import { ClassScheduleService } from 'src/app/services/employee/class-schedule.service';
+import { LoadingService } from '../../../core/loader/loading.service';
+import { CommonService } from '../../../services/common/common.service';
+import { EmployeeProfileService } from '../../../services/employee/employee-profile.service';
+import { ClassScheduleService } from '../../../services/employee/class-schedule.service';
 import { ModalController, Platform } from '@ionic/angular';
-import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
+import { NotificationDetails } from '../../../core/components/pop-up/notification-details/notification-details';
 
 @Component({
   selector: 'app-employee-home',
@@ -125,19 +125,19 @@ export class EmployeeHomePage implements OnInit {
     });
   }
 
-  async ShowPopUpModal() {
-    const myModal = await this.modalController.create({
-      component: NotificationDetails,
-      componentProps: { 
-        Title: "Notification",
-        Message: "Notification Body",
-        Time: "02-Jul-19 02:30:33 PM"
-      },
-      cssClass: 'popup-modal-css',
-      backdropDismiss:false,
-    });
-    return await myModal.present();
-  }
+  // async ShowPopUpModal() {
+  //   const myModal = await this.modalController.create({
+  //     component: NotificationDetails,
+  //     componentProps: { 
+  //       Title: "Notification",
+  //       Message: "Notification Body",
+  //       Time: "02-Jul-19 02:30:33 PM"
+  //     },
+  //     cssClass: 'popup-modal-css',
+  //     backdropDismiss:false,
+  //   });
+  //   return await myModal.present();
+  // }
 
   /* Opne notification */
 

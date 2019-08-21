@@ -87,22 +87,24 @@ export class AppComponent implements OnInit {
         navigator['app'].exitApp();
       }
       
-      if(user_type == "3" || user_type == "1") {
-        if(this.router.url !== "/employee-tab/tabs/employeeHome"){
-          this.router.navigate(['/employee-tab/tabs/employeeHome']);
+      if(!this.dataService.isModalOn){
+        if(user_type == "3" || user_type == "1") {
+          if(this.router.url !== "/employee-tab/tabs/employeeHome"){
+            this.router.navigate(['/employee-tab/tabs/employeeHome']);
+          }
+          else{
+            navigator['app'].exitApp();
+          }
         }
-        else{
-          navigator['app'].exitApp();
+        if(user_type == "0" ) {
+          if(this.router.url !== "/student-tab/tabs/studentHome"){
+            this.router.navigate(['/student-tab/tabs/studentHome']);
+          }
+          else{
+            navigator['app'].exitApp();
+          }
         }
-      }
-      if(user_type == "0" ) {
-        if(this.router.url !== "/student-tab/tabs/studentHome"){
-          this.router.navigate(['/student-tab/tabs/studentHome']);
-        }
-        else{
-          navigator['app'].exitApp();
-        }
-      }
+     }
       
     });
   }
