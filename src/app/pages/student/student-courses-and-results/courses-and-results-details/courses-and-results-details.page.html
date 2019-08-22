@@ -8,91 +8,145 @@
 </ion-header>
 
 <ion-content>
-  <mat-list style="background-color:rgb(33, 73, 194); padding:3%; margin: 1%;">
-    <mat-list-item style="color: white; font-size: 14px; height: auto; padding-top: 2%;">
-      <b>{{ courseName }}</b>
-    </mat-list-item>
-    <mat-list-item style="color: white; font-size: 13px; height: auto;">
-      Total:100; Pass:50; Contributes:100%; {{ finalGradeText }}
-    </mat-list-item>
-    <mat-list-item style="color: white; font-size: 14px; height: auto; padding-bottom: 3%;">
-      <b>Course Teacher(s): {{ facultyNames }}</b>
-    </mat-list-item>
-  </mat-list>
+  <div class="top-background-div">
+    <mat-card>
+      <mat-card-content>
+        <ion-row>
+          <!-- course details column -->
+          <ion-col class="course-col">
+            <ion-row>
+              <ion-label color="primary" class="title">
+                {{ courseName }}
+              </ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-label class="marks-info">
+                <ion-text class="marks-info">
+                  Total:100; Pass:50; Contributes:100%;
+                </ion-text>
+              </ion-label>
+            </ion-row>
+          </ion-col>
+          <!-- grade column -->
+          <ion-col class="grade-col">
+            <ion-label color="primary" class="title">
+              {{ finalGradeText }}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <!-- TeacherName row -->
+        <ion-row>
 
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header
-      style="background-color:rgb(51, 100, 247); color: white; margin-left:5px; margin-right: 1%; padding-top:2%; padding-bottom: 2%;"
-      [collapsedHeight]="'auto'" [expandedHeight]="'auto'" class="menuTileHeader">
-      <div class="term-head1">
-        <div>
-          {{ midtermResult?.Title }}
-        </div>
-        <div style="font-size: 13px;">
-          Total: {{ midtermResult?.ExamCourse?.TotalMark  }}; Pass:{{ midtermResult?.ExamCourse?.PassMark  }};
-          Contributes:{{ midtermResult?.ExamCourse?.Percent  }}%
-        </div>
-      </div>
-      <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult === null">
-        {{ midtermResult?.ExamCourseResult?.ResultantGrade?.Grade }}
-        ({{ midtermResult?.ExamCourseResult?.TotalMark - midtermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}<span
-          [hidden]="midtermResult?.ExamCourseResult?.Bonus == 0">/{{ midtermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}</span>)
-      </div>
-      <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult !== null">- (-)</div>
-    </mat-expansion-panel-header>
-    <mat-list *ngFor="let midResult of midtermResult?.Components">
-      <mat-list-item>
-        <div class="left-desc">
-          <b>{{ midResult?.CourseComponent?.Title }}</b>
-        </div>
-        <div class="right-desc">
-          <b>{{ midResult?.Result?.Mark | number:'.0-2' }}</b>
-        </div>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-      <mat-list-item *ngFor="let element of midResult?.Elements">
-        <div class="left-desc" style="color: rgba(0,0,0,.54);">{{ element?.Element?.Title }}</div>
-        <div class="right-desc" style="color: rgba(0,0,0,.54);">{{ element?.Result?.Mark | number:'.0-2' }}</div>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
 
-  <mat-expansion-panel [expanded]="true">
-    <mat-expansion-panel-header
-      style="background-color:rgb(51, 100, 247); color: white; margin: 1%; padding-top:2%; padding-bottom: 2%;"
-      [collapsedHeight]="'auto'" [expandedHeight]="'auto'" class="menuTileHeader">
-      <div class="term-head1">
-        <div>
-          {{ finaltermResult?.Title }}
+
+
+
+          <mat-expansion-panel [expanded]="isExpanded(numberOfTeachers)" style="width:100%;" class="mat-elevation-z0">
+            <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'" style="padding: 0px; height: auto;">
+              Course Teacher(s):
+            </mat-expansion-panel-header>
+              <div *ngIf="numberOfTeachers != 0">
+                <mat-panel-description *ngFor="let teacher of teachers" style="padding: 0px;">
+                  {{ teacher.TeacherName }}
+                </mat-panel-description>
+              </div>
+              <div *ngIf="numberOfTeachers == 0">
+                <mat-panel-description style="padding: 0px;">
+                  <i>Teacher has not been assigned yet</i>
+                </mat-panel-description>
+              </div>
+          </mat-expansion-panel>
+
+
+
+
+
+        </ion-row>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="background-div">
+    <mat-expansion-panel style="padding-top:2%; padding-bottom: 2%;" [expanded]="true">
+      <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'" class="menuTileHeader">
+        <div class="term-head1">
+          <div class="exam-title">
+            {{ midtermResult?.Title }}
+          </div>
+          <div style="font-size: 13px;">
+            Total: {{ midtermResult?.ExamCourse?.TotalMark  }}; Pass:{{ midtermResult?.ExamCourse?.PassMark  }};
+            Contributes:{{ midtermResult?.ExamCourse?.Percent  }}%
+          </div>
         </div>
-        <div style="font-size: 13px;">
-          Total: {{ finaltermResult?.ExamCourse?.TotalMark  }};
-          Pass:{{ finaltermResult?.ExamCourse?.PassMark  }}; Contributes:{{ finaltermResult?.ExamCourse?.Percent  }}%
+        <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult === null">
+          {{ midtermResult?.ExamCourseResult?.ResultantGrade?.Grade }}
+          ({{ midtermResult?.ExamCourseResult?.TotalMark - midtermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}<span
+            [hidden]="midtermResult?.ExamCourseResult?.Bonus == 0">/{{ midtermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}</span>)
         </div>
-      </div>
-      <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult === null">
-        {{ finaltermResult?.ExamCourseResult?.ResultantGrade?.Grade }}
-        ({{ finaltermResult?.ExamCourseResult?.TotalMark - finaltermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}<span
-          [hidden]="finaltermResult?.ExamCourseResult?.Bonus == 0">/{{ finaltermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}</span>)
-      </div>
-      <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult !== null">- (-)</div>
-    </mat-expansion-panel-header>
-    <mat-list *ngFor="let finalResult of finaltermResult?.Components">
-      <mat-list-item>
-        <div class="left-desc">
-          <b>{{ finalResult?.CourseComponent?.Title }}</b>
+        <div class="term-head2" [hidden]="midtermResult?.ExamCourseResult !== null">- (-)</div>
+      </mat-expansion-panel-header>
+      <mat-list *ngFor="let midResult of midtermResult?.Components">
+        <mat-list-item>
+          <div class="left-desc">
+            <ion-label class="assessment-title">
+              {{ midResult?.CourseComponent?.Title }}
+            </ion-label>
+          </div>
+          <div class="right-desc">
+            <ion-label class="assessment-title">
+              {{ midResult?.Result?.Mark | number:'.0-2' }}
+            </ion-label>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item *ngFor="let element of midResult?.Elements">
+          <div class="left-desc assessment-subtitle" style="color: rgba(0,0,0,.54);">{{ element?.Element?.Title }}</div>
+          <div class="right-desc assessment-subtitle" style="color: rgba(0,0,0,.54);">
+            {{ element?.Result?.Mark | number:'.0-2' }}</div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
+  <div class="background-div">
+    <mat-expansion-panel style="padding-top:2%; padding-bottom: 2%;" [expanded]="true">
+      <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'" class="menuTileHeader">
+        <div class="term-head1">
+          <div class="exam-title">
+            {{ finaltermResult?.Title }}
+          </div>
+          <div style="font-size: 13px;">
+            Total: {{ finaltermResult?.ExamCourse?.TotalMark  }};
+            Pass:{{ finaltermResult?.ExamCourse?.PassMark  }}; Contributes:{{ finaltermResult?.ExamCourse?.Percent  }}%
+          </div>
         </div>
-        <div class="right-desc">
-          <b>{{ finalResult?.Result?.Mark | number:'.0-2' }}</b>
+        <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult === null">
+          {{ finaltermResult?.ExamCourseResult?.ResultantGrade?.Grade }}
+          ({{ finaltermResult?.ExamCourseResult?.TotalMark - finaltermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}<span
+            [hidden]="finaltermResult?.ExamCourseResult?.Bonus == 0">/{{ finaltermResult?.ExamCourseResult?.Bonus | number:'.0-2' }}</span>)
         </div>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-      <mat-list-item *ngFor="let element of finalResult?.Elements">
-        <div class="left-desc" style="color: rgba(0,0,0,.54);">{{ element?.Element?.Title }}</div>
-        <div class="right-desc" style="color: rgba(0,0,0,.54);">{{ element?.Result?.TotalMark | number:'.0-2' }}</div>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
-  </mat-expansion-panel>
+        <div class="term-head2" [hidden]="finaltermResult?.ExamCourseResult !== null">- (-)</div>
+      </mat-expansion-panel-header>
+      <mat-list *ngFor="let finalResult of finaltermResult?.Components">
+        <mat-list-item>
+          <div class="left-desc">
+            <ion-label class="assessment-title">
+              {{ finalResult?.CourseComponent?.Title }}
+            </ion-label>
+          </div>
+          <div class="right-desc">
+            <ion-label class="assessment-title">
+              {{ finalResult?.Result?.Mark | number:'.0-2' }}
+            </ion-label>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+        <mat-list-item *ngFor="let element of finalResult?.Elements">
+          <div class="left-desc assessment-subtitle" style="color: rgba(0,0,0,.54);">{{ element?.Element?.Title }}</div>
+          <div class="right-desc assessment-subtitle" style="color: rgba(0,0,0,.54);">
+            {{ element?.Result?.TotalMark | number:'.0-2' }}</div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
 </ion-content>

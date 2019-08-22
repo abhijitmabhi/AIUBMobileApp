@@ -9,7 +9,7 @@
 }
 
 ::ng-deep .menuTileHeader > .mat-expansion-indicator:after {
-  color: white;
+  color: var(--ion-color-primary);
 }
 
 .align-right {
@@ -26,16 +26,7 @@
   padding-right: 10px;
 }
 
-.term-head1 {
-  width: 75%;
-  text-align: left;
-}
 
-.term-head2 {
-  width: 25%;
-  text-align: center;
-  padding-right: 2%;
-}
 
 .left-desc {
   width: 80%;
@@ -51,4 +42,95 @@
 ion-select {
   max-width: 100% !important;
   text-align: right;
+}
+
+//new css
+ion-col.course-col {
+  flex: 0 0 80%;
+  padding: 0;
+  margin-right: 0px;
+}
+
+ion-col.grade-col {
+  flex: 0 0 20%;
+  padding: 0;
+  margin-right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.marks-info {
+  font-size: 13px;
+}
+
+.course-teacher {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.top-background-div {
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+.background-div {
+  background-color: whitesmoke;
+  padding: 0px 10px 10px 10px;
+}
+
+.term-head1 {
+  width: 75%;
+  text-align: left;
+}
+
+.term-head2 {
+  width: 25%;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding-right: 2%;
+  color: var(--ion-color-primary);
+}
+
+.exam-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+.assessment-title{
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.assessment-subtitle{
+  font-size: 13px;
+}
+
+.mat-expansion-panel-header {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+::ng-deep .mat-expansion-panel-content {
+  font: 400 13px Roboto,"Helvetica Neue",sans-serif !important;
+}
+
+.mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+  color: black;
+}
+
+.mat-expansion-panel-body {
+  padding: 0 0px 0px;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 0px 0px !important;
 }
