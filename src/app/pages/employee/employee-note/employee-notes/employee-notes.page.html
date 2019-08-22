@@ -1,9 +1,55 @@
+
 <ion-header>
   <ion-toolbar>
-    <ion-title>employee-notes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-button expand="block" fill="outline">Upload New File</ion-button>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content refreshingSpinner="circles">
+        </ion-refresher-content>
+      </ion-refresher>
+    <ion-progress-bar [hidden]="noteList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+    <div *ngIf="!noteList">
+        <ion-list>
+          <ion-item *ngFor="let item of [].constructor(10)">
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+  <ion-list style="padding: 0px;">
 
+     
+
+    <span *ngFor="let note of noteList">
+      <ion-item (click)="downloadFile(note.Id)">
+          <ion-thumbnail slot="start">
+              <ion-img class="Picture" src="{{ getImageSource(note.Extention) }}"></ion-img>
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap">
+            <h2 >{{note?.Title}}</h2>
+            <p >Uploaded at: {{note?.UploadDateTime2}}</p>
+            <p >Size: {{note?.Size2}}</p>
+          </ion-label>
+        </ion-item>
+      </span>
+  </ion-list>
 </ion-content>

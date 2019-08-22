@@ -203,7 +203,7 @@ export class EmployeeHomePage implements OnInit {
    /* Get Section Note */
 
   openSectionNote(sectionId: number){
-    //this.router.navigate(['employee-notes', sectionId]);
+    this.router.navigate(['employee-notes', sectionId]);
   }
 
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'employee-class-schedule', loadChildren: './pages/employee/employee-class-schedule/employee-class-schedule.module#EmployeeClassSchedulePageModule' },
   { path: 'get-student-list/:sectionId', loadChildren: './pages/employee/get-student-list/get-student-list.module#GetStudentListPageModule' },
   { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notices/employee-notice/employee-notice.module#EmployeeNoticePageModule' },
-  { path: 'employee-note-upload', loadChildren: './pages/employee/employee-note/employee-note-upload/employee-note-upload.module#EmployeeNoteUploadPageModule' },
+  { path: 'employee-notes/:sectionId', loadChildren: './pages/employee/employee-note/employee-notes/employee-notes.module#EmployeeNotesPageModule' },
   // { path: 'employee-notes', loadChildren: './pages/employee/employee-note/employee-notes/employee-notes.module#EmployeeNotesPageModule' },
 
 
