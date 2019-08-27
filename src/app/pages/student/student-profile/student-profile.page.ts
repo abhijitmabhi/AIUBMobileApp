@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentProfileService } from 'src/app/services/student/student-profile.service';
-import { LoadingService } from 'src/app/core/loader/loading.service';
-import { AlertService } from 'src/app/core/alert/alert.service';
+import { StudentProfileService } from '../../../services/student/student-profile.service';
+import { LoadingService } from '../../../core/loader/loading.service';
+import { AlertService } from '../../../core/alert/alert.service';
 
 @Component({
   selector: 'app-student-profile',

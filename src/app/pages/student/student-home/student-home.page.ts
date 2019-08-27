@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, Platform, AlertController } from '@ionic/angular';
 import { StudentProfileService } from '../../../services/student/student-profile.service';
 import { Router } from '@angular/router';
-import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-student-home',

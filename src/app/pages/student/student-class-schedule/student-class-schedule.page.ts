@@ -1,7 +1,7 @@
 import { StudentClassScheduleService } from './../../../services/student/student-class-schedule.service';
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { LoadingService } from 'src/app/core/loader/loading.service';
+import { LoadingService } from '../../../core/loader/loading.service';
 
 @Component({
   selector: 'app-student-class-schedule',

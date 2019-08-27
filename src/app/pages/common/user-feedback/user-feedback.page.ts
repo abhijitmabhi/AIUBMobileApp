@@ -23,29 +23,59 @@ export class UserFeedbackPage implements OnInit {
     },
     {
       title:"Comments",
-      value:0
+      value:1
     },
     {
       title:"BugReports",
-      value:0
+      value:2
     },
     {
       title:"Questions",
-      value:0
+      value:3
     }
 ];
 
-  constructor(private dataService : DataService, private alertController: AlertService, private commonService: CommonService) { }
+  constructor(
+    private dataService : DataService, 
+    private alertController: AlertService, 
+    private commonService: CommonService
+    ) { }
 
   ngOnInit() {
   }
 
-  getFeedbackType(){
-  }
-
   Submit(){
+
+    if(this.dataService.validateString(this.feedback.Description)) {
+      this.alertController.alertError('Description Required');
+      return;
+    } 
+    if(this.dataService.validateString(this.feedback.TypeID)) {
+      this.alertController.alertError('Feedback Type is required'); 
+      return;
+    }
     this.commonService.saveUserFeedback(this.feedback).subscribe(res =>{
-      console.log(res);
+      this.alertController.Success("Feedback sent!");
+      this.feedback.Description = null;
+      this.Type = null;
+      this.Type = [
+        {
+          title:"Suggestion",
+          value:0
+        },
+        {
+          title:"Comments",
+          value:1
+        },
+        {
+          title:"BugReports",
+          value:2
+        },
+        {
+          title:"Questions",
+          value:3
+        }
+    ];
     });
   }
 

@@ -9,7 +9,6 @@ export class DataService {
   test:any;
   isModalOn = false;
   constructor(public platform: Platform){
-
   }
 
   getPlatform(){
@@ -21,6 +20,10 @@ export class DataService {
       platformType = 'android';
      }
      return platformType;
+  }
+
+  getPlayerId(){
+    return localStorage.getItem('playerId');
   }
 
   isToken(){

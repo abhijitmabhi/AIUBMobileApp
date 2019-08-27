@@ -1,0 +1,23 @@
+<div class="modal-content">
+    <div id="container" class="modal-content-body">
+        <div id="header">
+            <ion-row style="margin-top: 5px;" justify-content-center align-items-center>
+                <img class="modalImage" src="assets/icon/reminder.png">
+            </ion-row>
+            <ion-row justify-content-center align-items-center>
+                <label class="notif-title">{{title}}</label>
+            </ion-row>
+        </div>
+        <div class="body">
+            <div id="body" class="body message selectable_text">{{message}}</div>
+            <ion-row justify-content-center align-items-center>
+                <ion-label class="time">{{time}}</ion-label>
+            </ion-row>
+        </div>
+        <div id="footer" style="margin-top: 5px; margin-bottom: 8px;">
+            <ion-row justify-content-center align-items-center>
+                <ion-button class="successButton" (click)="CloseModal()">OK</ion-button>
+            </ion-row>
+        </div>
+    </div>
+</div>

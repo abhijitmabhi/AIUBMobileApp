@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { ModalController, Platform, NavParams } from '@ionic/angular';
+import { DataService } from '../../core/dataService/data-service.service';
+
+@Component({
+  selector: 'app-notification-details',
+  templateUrl: './notification-details.html',
+  styleUrls: ['./notification-details.scss'],
+})
+export class NotificationDetails implements OnInit {
+  private unregisterBackButtonAction: any;
+  private title:string;
+  private message:string;
+  private time:string;
+  constructor(
+    private platform:Platform, 
+    private modalController:ModalController, 
+    private navParams: NavParams,
+    private dataService: DataService
+    ) {
+    this.unregisterBackButtonAction    = this.platform.backButton.subscribeWithPriority(0, () => {
+    });
+  }
+
+  ngOnInit() {
+    this.title = this.navParams.data.Title;
+    this.message = this.navParams.data.Message;
+    this.time = this.navParams.data.Time;
+  }
+
+  async CloseModal() {
+    this.unregisterBackButtonAction.unsubscribe();
+    this.modalController.dismiss();
+    this.dataService.isModalOn = false;
+  }
+
+}

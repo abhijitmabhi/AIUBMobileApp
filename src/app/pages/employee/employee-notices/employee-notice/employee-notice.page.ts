@@ -1,5 +1,5 @@
 import { ModalController } from '@ionic/angular';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { EmployeeSectionService } from '../../../../services/employee/employee-section.service';
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from '../../../../core/loader/loading.service';
@@ -20,8 +20,7 @@ export class EmployeeNoticePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
     private modalController: ModalController,
-    private dataService: DataService,
-    private router: Router
+    private dataService: DataService
     ) {}
 
   ngOnInit() {
@@ -34,10 +33,10 @@ export class EmployeeNoticePage implements OnInit {
       this.sectionId = params['sectionId'];
       this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(data => {
         this.loadingService.loadingDismiss();
-        // console.log(data);
         if(data && !data.HasError){
           if(data.Data){
-            this.notices = data.Data;
+            let Data = data.Data;
+            this.notices = Data.reverse();
           }
         }
       },
@@ -74,6 +73,11 @@ export class EmployeeNoticePage implements OnInit {
       backdropDismiss:false,
     });
     return await myModal.present();
+  }
+
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
   }
 
 }

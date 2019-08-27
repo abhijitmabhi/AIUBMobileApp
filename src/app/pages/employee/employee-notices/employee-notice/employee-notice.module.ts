@@ -30,6 +30,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [EmployeeNoticePage],
-  entryComponents: [NoticeDetails,NoticeUpload],
+  entryComponents: [NoticeUpload, NoticeDetails],
 })
 export class EmployeeNoticePageModule {}

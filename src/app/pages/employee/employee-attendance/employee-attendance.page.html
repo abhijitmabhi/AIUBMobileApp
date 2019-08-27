@@ -69,9 +69,10 @@
     </ion-refresher-content>
   </ion-refresher> -->
 
-  <mat-expansion-panel [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+  <mat-expansion-panel id="id" [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
     *ngFor="let attendance of attendanceList?.AttendanceDetailModels">
+
     <mat-expansion-panel-header [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}">
       <div class="attendance-list-head1">{{attendance?.Date}}</div>
@@ -85,7 +86,11 @@
     </mat-panel-description>
   </mat-expansion-panel>
 
+  <div style="height: 600px;"></div>
 
+  <p #target>Secret message!</p>
+
+  <div style="height: 600px;"></div>
   <!-- </mat-list> -->
   <!-- **Page Refresher**
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">

@@ -1,11 +1,11 @@
-import { AlertService } from 'src/app/core/alert/alert.service';
+import { AlertService } from '../../../core/alert/alert.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { LoadingService } from 'src/app/core/loader/loading.service';
-import { NotesService } from 'src/app/services/common/notes.service';
+import { LoadingService } from '../../../core/loader/loading.service';
+import { NotesService } from '../../../services/common/notes.service';
 import { File } from '@ionic-native/file/ngx';
 import { base64StringToBlob } from 'blob-util';
-import { ToastService } from 'src/app/core/toast/toast.service';
+import { ToastService } from '../../../core/toast/toast.service';
 
 @Component({
   selector: 'app-student-notes',
@@ -36,8 +36,8 @@ export class StudentNotesPage implements OnInit {
         this.loadingService.loadingDismiss();
         if(res && !res.HasError){
           if(res.Data){
-            this.noteList = res.Data;
-            console.log(this.noteList);
+            let Data = res.Data;
+            this.noteList = Data.reverse();
           }
         }
       },

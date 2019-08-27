@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeSectionService } from 'src/app/services/employee/employee-section.service';
+import { EmployeeSectionService } from '../../../services/employee/employee-section.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { LoadingService } from 'src/app/core/loader/loading.service';
+import { LoadingService } from '../../../core/loader/loading.service';
 import { ModalController } from '@ionic/angular';
-import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
+import { NoticeDetails } from '../../../modals/notice-details/notice-details';
+import { DataService } from '../../../core/dataService/data-service.service';
 
 @Component({
   selector: 'app-student-notice',
@@ -18,7 +19,8 @@ export class StudentNoticePage implements OnInit {
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private dataService: DataService
     ) {}
 
   ngOnInit() {
@@ -31,10 +33,10 @@ export class StudentNoticePage implements OnInit {
       this.sectionId = params['sectionId'];
       this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(data => {
         this.loadingService.loadingDismiss();
-        // console.log(data);
         if(data && !data.HasError){
           if(data.Data){
-            this.notices = data.Data;
+            let Data = data.Data;
+            this.notices = Data.reverse();
           }
         }
       },
@@ -47,6 +49,7 @@ export class StudentNoticePage implements OnInit {
   }
 
   async readNotice(notice:any){
+    this.dataService.isModalOn = true;
     const myModal = await this.modalController.create({
       component: NoticeDetails,
       componentProps: { 

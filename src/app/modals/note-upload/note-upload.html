@@ -1,51 +1,34 @@
+<ion-header>
+        <ion-toolbar color="primary">
+            <ion-buttons slot="end">
+                <ion-button  (click)="cancel()">
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-title>New Notice</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+        <ion-list padding>
+            <ion-item>
+                <ion-textarea [(ngModel)]='notice.Subject' placeholder="Subject"></ion-textarea>
+            </ion-item>
+    
+            <ion-item>
+                <ion-textarea placeholder="Description" [(ngModel)]="notice.Description" rows="3"></ion-textarea>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label>Valid Till</ion-label>
+                <ion-datetime  placeholder="Choose Date"  displayFormat="MM/DD/YYYY" pickerFormat="MMM D" [(ngModel)]="notice.ValidTill" [min]="minDate"></ion-datetime>
+            </ion-item>
+          
 
-<div class="modal-content">
-      <div id="container" class="modal-content-body">
-          <div id="header">
-              <ion-row style="margin-top: 5px;" justify-content-center align-items-center>
-                  <img class="modalImage" src="assets/icon/notification.png">
-              </ion-row>
-        
-              <ion-row justify-content-center align-items-center>
-                  <label class="notif-title">{{title}}</label>
-              </ion-row>
-          </div>
-          <div id="body">
-              <ion-row justify-content-center align-items-center>
-                  <label class="message">{{message}}</label>
-              </ion-row>
-              
-              <ion-row justify-content-center align-items-center>
-                    <ion-label class="time">{{time}}</ion-label>
-                </ion-row>
-          </div>
-          <div id="footer" style="margin-top: 5px; margin-bottom: 8px;">
-                <ion-row justify-content-center align-items-center>
-                        <ion-button class="successButton" (click)="CloseModal()">OK</ion-button>
-                    </ion-row>
-              
-          </div>
-      </div>
-      <!-- <div class="modal-content-body">
-          <ion-row style="margin-top: 5px;" justify-content-center align-items-center>
-              <img class="modalImage" src="../../../../assets/icon/error.png">
-          </ion-row>
+            <ion-button class="save" (click)="SaveNotice()" slot="center">
+                <ion-icon name="checkmark"></ion-icon> Save
+            </ion-button>
+
+        </ion-list>
     
-          <ion-row justify-content-center align-items-center>
-              <label class="subHead">Error!</label>
-          </ion-row>
-    
-          <hr style="border-top: 1px solid #f6897e;"/>
-    
-          <ion-row justify-content-center align-items-center>
-              <label class="message">Error Done!</label>
-          </ion-row>
-    
-          <hr style="border-top: 1px solid #f6897e;"/>
-    
-    
-        <ion-row style="margin-top: 5px;" justify-content-center align-items-center>
-            <ion-button class="successButton" fill="outline"(click)="CloseModal()">OK</ion-button>
-        </ion-row>
-      </div> -->
-    </div>  
+    </ion-content>

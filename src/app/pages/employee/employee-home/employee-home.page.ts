@@ -9,8 +9,6 @@ import { LoadingService } from '../../../core/loader/loading.service';
 import { CommonService } from '../../../services/common/common.service';
 import { EmployeeProfileService } from '../../../services/employee/employee-profile.service';
 import { ClassScheduleService } from '../../../services/employee/class-schedule.service';
-import { ModalController, Platform } from '@ionic/angular';
-import { NotificationDetails } from '../../../core/components/pop-up/notification-details/notification-details';
 
 @Component({
   selector: 'app-employee-home',
@@ -45,7 +43,6 @@ export class EmployeeHomePage implements OnInit {
     private loadingService: LoadingService,
     private classSceduleService: ClassScheduleService,
     private commonService: CommonService,
-    private modalController:ModalController,
     private notificationService:NotificationService,
     private employeeHomeService: EmployeeHomeService
   ) {}
@@ -66,8 +63,6 @@ export class EmployeeHomePage implements OnInit {
     let fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
     let toDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+1),'yyyy-MM-dd HH:mm:ss.SSS');
 
-    // this.loadingService.loadingStart();
-
     this.classSceduleService.getTeacherClassSchedule(fromDateTime, toDateTime).subscribe(response => {
       this.loadingService.loadingDismiss();
       let result = response;
@@ -78,7 +73,6 @@ export class EmployeeHomePage implements OnInit {
       }
     },
       error => {
-        // this.loadingService.loadingDismiss();
         let errorResponse = error;
         console.log(errorResponse.error.Message);
     });
@@ -124,20 +118,6 @@ export class EmployeeHomePage implements OnInit {
         console.log(errorResponse.error.Message);
     });
   }
-
-  // async ShowPopUpModal() {
-  //   const myModal = await this.modalController.create({
-  //     component: NotificationDetails,
-  //     componentProps: { 
-  //       Title: "Notification",
-  //       Message: "Notification Body",
-  //       Time: "02-Jul-19 02:30:33 PM"
-  //     },
-  //     cssClass: 'popup-modal-css',
-  //     backdropDismiss:false,
-  //   });
-  //   return await myModal.present();
-  // }
 
   /* Opne notification */
 

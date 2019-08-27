@@ -6,8 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { NotificationsPage } from './notifications.page';
-import { ComponentsModule } from 'src/app/core/components/components.module';
-import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
+import { ModalsModule } from '../../../modals/modals.module';
+import { NotificationDetails } from '../../../modals/notification-details/notification-details';
 
 const routes: Routes = [
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ComponentsModule
+    ModalsModule
   ],
   declarations: [NotificationsPage],
   entryComponents: [NotificationDetails],

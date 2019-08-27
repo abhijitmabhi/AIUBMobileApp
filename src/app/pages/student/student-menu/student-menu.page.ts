@@ -2,7 +2,7 @@ import { LoadingService } from './../../../core/loader/loading.service';
 import { LoginService } from './../../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PushNotificationService } from 'src/app/core/oneSignal/push-notification.service';
+import { DataService } from '../../../core/dataService/data-service.service';
 
 @Component({
   selector: 'app-student-menu',
@@ -15,10 +15,12 @@ export class StudentMenuPage implements OnInit {
 
   constructor(private router: Router,
     private loginService: LoginService,
-    private loadingService: LoadingService) { }
+    private loadingService: LoadingService,
+    private dataService: DataService
+    ) { }
 
   ngOnInit() {
-    this.playerId = localStorage.getItem('playerId');
+    this.playerId = this.dataService.getPlayerId();
   }
 
   logout(){
