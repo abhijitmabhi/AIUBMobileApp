@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { ClassScheduleService } from 'src/app/services/employee/class-schedule.service';
-import { LoadingService } from 'src/app/core/loader/loading.service';
+import { ClassScheduleService } from '../../../services/employee/class-schedule.service';
+import { LoadingService } from '../../../core/loader/loading.service';
 
 @Component({
   selector: 'app-employee-class-schedule',

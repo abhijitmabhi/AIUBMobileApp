@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmployeeProfileService } from 'src/app/services/employee/employee-profile.service';
-import { LoadingService } from 'src/app/core/loader/loading.service';
-import { AlertService } from 'src/app/core/alert/alert.service';
+import { EmployeeProfileService } from '../../../services/employee/employee-profile.service';
+import { LoadingService } from '../../../core/loader/loading.service';
+import { AlertService } from '../../../core/alert/alert.service';
 
 @Component({
   selector: 'app-employee-profile',

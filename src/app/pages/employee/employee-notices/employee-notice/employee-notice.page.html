@@ -8,6 +8,10 @@
   </ion-header>
 
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content refreshingSpinner="circles">
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-fab class="fabButton" vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="Upload()">
         <ion-icon name="add"></ion-icon>

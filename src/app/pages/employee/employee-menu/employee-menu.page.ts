@@ -1,8 +1,9 @@
-import { LoginService } from 'src/app/services/login/login.service';
+import { LoginService } from '../../../services/login/login.service';
 import { LoadingService } from './../../../core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/core/localNotification/notification.service';
+import { NotificationService } from '../../../core/localNotification/notification.service';
+import { DataService } from '../../../core/dataService/data-service.service';
 
 @Component({
   selector: 'app-employee-menu',
@@ -15,26 +16,24 @@ export class EmployeeMenuPage implements OnInit {
 
   constructor(private router:Router,
     private loginService: LoginService,
+    private dataService:DataService,
     private loadingService: LoadingService,
     private localNotification: NotificationService) {}
 
 
   ngOnInit() {
-    this.playerId = localStorage.getItem('playerId');
+    this.playerId = this.dataService.getPlayerId();
   }
 
   logout(){
-    // this.loadingService.loadingStart();
     this.loginService.logMeOut(this.playerId).subscribe(res => {
       localStorage.clear();
-      // this.loadingService.loadingDismiss();
+      this.router.navigate(['']);
+    },err =>{
+      localStorage.clear();
       this.router.navigate(['']);
     });
   }
-
-  // showNotification(){
-  //   this.localNotification.showNotification();
-  // }
 
   redirectToFeedback(){
     this.router.navigate(['user-feedback']);

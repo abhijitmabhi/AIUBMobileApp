@@ -1,8 +1,8 @@
 import { NotificationService } from './../../../services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, Platform, AlertController } from '@ionic/angular';
-import { NotificationDetails } from 'src/app/core/components/pop-up/notification-details/notification-details';
-import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { NotificationDetails } from '../../../modals/notification-details/notification-details';
+import { DataService } from '../../../core/dataService/data-service.service';
 
 @Component({
   selector: 'app-notifications',
@@ -14,16 +14,10 @@ export class NotificationsPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private notificationService: NotificationService,
-    private router: Router,
-    private platform: Platform
-    ) {
-      this.platform.backButton.subscribe(() => { 
-        this.redirectToHome();
-      });
-  }
+    private dataService: DataService
+    ) {}
 
   ngOnInit() {
-    // this.getNotifData();
     this.notificationByUser();
   }
 
@@ -57,6 +51,7 @@ export class NotificationsPage implements OnInit {
   };
 
   async ShowNotificationDetails(notification: any) {
+    this.dataService.isModalOn = true;
     const myModal = await this.modalController.create({
       component: NotificationDetails,
       componentProps: {
@@ -69,58 +64,6 @@ export class NotificationsPage implements OnInit {
     });
     return await myModal.present();
   }
-
-  // getNotifData() {
-  //   let notifData = [
-  //     {
-  //       "ID": 1,
-  //       "UserID": "16-31332-1",
-  //       "Title": "Notification",
-  //       "Message": "Notification 01",
-  //       "Url": null,
-  //       "StatusID": 0,
-  //       "TypeID": 0,
-  //       "Type": "Error",
-  //       "ReadDate": null,
-  //       "PostedDate": "2019-07-02T14:09:14.593",
-  //       "IsRead": false,
-  //       "PostDate": "02-Jul-19",
-  //       "PostTime": "02:09:14 PM"
-  //     }
-  //   ];
-
-  //   let data: any[] = [];
-  //   notifData.forEach(notif => {
-  //     data.push({
-  //       Id: notif.ID,
-  //       ContentCssClass: (notif.IsRead === true) ? "read" : "unread",
-  //       HeaderCssClass: (notif.IsRead === true) ? "read-notif-content read-title" : "unread-notif-content unread-title",
-  //       BodyCssClass: (notif.IsRead === true) ? "read-notif-content read-body" : 'unread-notif-content unread-body',
-  //       TimeCssClass: (notif.IsRead === true) ? "read-notif-content read-time" : 'unread-notif-content unread-time',
-  //       Title: notif.Title,
-  //       Message: notif.Message,
-  //       Time: `${notif.PostDate} ${notif.PostTime}`,
-  //       TypeID: notif.TypeID,
-  //       Type: notif.Type,
-  //       IsRead: notif.IsRead
-  //     });
-  //   });
-
-  //   this.notificationList = this.notificationList.concat(data);
-  // }
-
-  // loadData(event) {
-  //   setTimeout(() => {
-  //     console.log('Done');
-  //     this.getNotifData();
-  //     event.target.complete();
-  //     // App logic to determine if all data is loaded
-  //     // and disable the infinite scroll
-  //     // if (data.length == 1000) {
-  //     //   event.target.disabled = true;
-  //     // }
-  //   }, 500);
-  // }
 
   notificationByUser() {
     this.notificationService.getNotificationsByUser(0, 100).subscribe(res => {
@@ -158,16 +101,4 @@ export class NotificationsPage implements OnInit {
     });
   }
 
-  //Method for back button
-  redirectToHome(){
-    let user_type = localStorage.getItem('userType');
-    if(user_type == "3" || user_type == "1") {
-      this.router.navigateByUrl('/employee-tab/tabs/employeeHome');
-    }
-    if(user_type == "0" ) {
-      this.router.navigateByUrl('/student-tab/tabs/studentHome');
-    }
-  }
-
-  
 }

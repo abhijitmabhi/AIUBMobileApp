@@ -1,6 +1,7 @@
 import { EmployeeAttendanceService } from './../../../services/employee/employee-attendance.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
+// import { Content } from 'ionic-angular';
 
 @Component({
   selector: 'app-employee-attendance',
@@ -8,7 +9,9 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./employee-attendance.page.scss'],
 })
 export class EmployeeAttendancePage implements OnInit {
-
+  // @ViewChild(Content) content: Content;
+  // @ViewChild('target') target: any;
+  
   payrollList = [];
   attendanceList: any;
   nrSelect: any;
@@ -27,6 +30,8 @@ export class EmployeeAttendancePage implements OnInit {
   mode = 'indeterminate';
   value = 50;
 
+  public id;
+
   constructor(
     public employeeAttendanceService: EmployeeAttendanceService, 
     private datePipe: DatePipe) {}
@@ -36,7 +41,11 @@ export class EmployeeAttendancePage implements OnInit {
   }
 
   isExpanded(attendanceDate, today) {
-    return attendanceDate == today ? true : false;
+    let res = attendanceDate == today ? true : false;
+    if(res){
+      // this.content.scrollTo(0, this.target.nativeElement.offsetTop, 500);
+    }  
+    return res;
   }
 
   getPayroll() {

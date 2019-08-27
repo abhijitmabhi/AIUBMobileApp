@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { NoticeUpload } from '../modals/notice-upload/notice-upload';
 import { MaterialModule } from '../core/modules/material.module';
 import { FormsModule } from '@angular/forms';
+import { NoticeDetails } from './notice-details/notice-details';
+import { NotificationDetails } from './notification-details/notification-details';
 
 
 @NgModule({
@@ -14,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule
   ],
-  declarations: [NoteUpload, NoticeUpload],
-  exports: [NoteUpload, NoticeUpload]
+  declarations: [NoteUpload, NoticeUpload, NoticeDetails, NotificationDetails],
+  exports: [NoteUpload, NoticeUpload, NoticeDetails, NotificationDetails],
+  entryComponents:[ ]
 })
 export class ModalsModule { }

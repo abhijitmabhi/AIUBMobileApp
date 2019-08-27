@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login/login.service';
+import { LoginService } from '../../../services/login/login.service';
 import { DatePipe } from '@angular/common/src/common';
-import { LoadingService } from 'src/app/core/loader/loading.service';
+import { LoadingService } from '../../../core/loader/loading.service';
 import { MenuController, IonInput, AlertController } from '@ionic/angular';
 import { UserModel, CredModel } from './loginModel';
-import { PushNotificationService } from 'src/app/core/oneSignal/push-notification.service';
-import { AlertService } from 'src/app/core/alert/alert.service';
+import { PushNotificationService } from '../../../core/oneSignal/push-notification.service';
+import { AlertService } from '../../../core/alert/alert.service';
 
 @Component({
   selector: 'app-login',

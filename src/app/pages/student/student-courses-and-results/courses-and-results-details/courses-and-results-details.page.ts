@@ -1,7 +1,7 @@
 import { DataService } from './../../../../core/dataService/data-service.service';
-import { LoadingService } from 'src/app/Core/loader/loading.service';
+import { LoadingService } from '../../../../core/loader/loading.service';
 import { Component, OnInit } from '@angular/core';
-import { CoursesResultsService } from 'src/app/services/student/courses-and-result.service';
+import { CoursesResultsService } from '../../../../services/student/courses-and-result.service';
 
 @Component({
   selector: 'app-courses-and-results-details',
@@ -22,6 +22,7 @@ export class CoursesAndResultsDetailsPage implements OnInit {
   sectionId: any;
   teachers: any;
   numberOfTeachers: any;
+  facultyNames:any;
 
   constructor(
     private coursesResultsService: CoursesResultsService,
@@ -48,10 +49,7 @@ export class CoursesAndResultsDetailsPage implements OnInit {
     this.coursesResultsService.getCoursesAndResults(this.sectionId, this.courseId).subscribe(res => {
       this.midtermResult = res.Data.Exams[0];
       this.finaltermResult = res.Data.Exams[1];
-      this.teachers = res.Data.Section.Teachers;
-      this.numberOfTeachers = this.teachers.length;
-      console.log("Number of teachers: "+this.numberOfTeachers);
-      console.log(res);
+      this.facultyNames = res.Data.Section.FacaltyNames;
     });
 
     this.loadingService.loadingDismiss();

@@ -17,13 +17,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorService } from './core/interceptor/intercept.service';
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 import { NetworkService } from './core/network/network.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
+// import { Content } from 'ionic-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     BrowserAnimationsModule,
     IonicModule.forRoot(), 
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // Content
   ],
   providers: [
     Network,

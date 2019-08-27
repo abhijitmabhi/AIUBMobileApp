@@ -46,22 +46,15 @@ export class NoticeUpload implements OnInit {
       return;
     }
 
-    if(this.isValidToSave()){
-      this.notice.SectionID = this.dataService.serviceData;
-      this.noticeService.saveNotice(this.notice).subscribe(res=>{
-        if(res.HasError){
-          this.alertService.alertError(res.Messages);
-        }
-        else{
-          this.alertService.Success('Notice posted succesfully');
-        }
-      });
-    }
-  }
-
-  isValidToSave() {
-    if(!this.dataService.validateString(this.notice.Subject) && !this.dataService.validateString(this.notice.Description)) return true;
-    return false;
+    this.notice.SectionID = this.dataService.serviceData;
+    this.noticeService.saveNotice(this.notice).subscribe(res=>{
+      if(res.HasError){
+        this.alertService.alertError(res.Messages);
+      }
+      else{
+        this.alertService.Success('Notice posted succesfully');
+      }
+    });
   }
 
   cancel(){
