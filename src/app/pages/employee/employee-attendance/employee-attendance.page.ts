@@ -77,6 +77,7 @@ export class EmployeeAttendancePage implements OnInit {
     if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "") {
       this.employeeAttendanceService.getAttendance(this.nrSelect).subscribe(res => {
         this.attendanceList = res.Data;
+        this.scroll("scroll_here");
       });
     }
   }
@@ -89,6 +90,19 @@ export class EmployeeAttendancePage implements OnInit {
   doRefresh(event){
     this.ngOnInit();
     event.target.complete();
+  }
+
+  // ngAfterViewInit() {
+  //   this.scroll("panel-10");
+  // }
+  
+  scroll(id) {
+    console.log(`scrolling to ${id}`);
+    let el = document.getElementById(id);
+    if(el) {
+      el.scrollIntoView();
+    }
+    
   }
 
 }
