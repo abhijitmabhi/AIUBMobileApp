@@ -50,8 +50,7 @@ export class CoursesAndResultsDetailsPage implements OnInit {
       this.finaltermResult = res.Data.Exams[1];
       this.teachers = res.Data.Section.Teachers;
       this.numberOfTeachers = this.teachers.length;
-      console.log("Number of teachers: "+this.numberOfTeachers);
-      console.log(res);
+      // console.log(res);
     });
 
     this.loadingService.loadingDismiss();

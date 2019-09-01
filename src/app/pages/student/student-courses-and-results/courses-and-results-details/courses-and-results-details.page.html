@@ -35,32 +35,27 @@
           </ion-col>
         </ion-row>
         <!-- TeacherName row -->
+        <!-- <ion-item-divider></ion-item-divider> -->
+        <ion-row class="card-divider">
+          <mat-divider></mat-divider>
+        </ion-row>
         <ion-row>
-
-
-
-
-
           <mat-expansion-panel [expanded]="isExpanded(numberOfTeachers)" style="width:100%;" class="mat-elevation-z0">
-            <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'" style="padding: 0px; height: auto;">
+            <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'"
+              style="padding: 0px; height: auto;">
               Course Teacher(s):
             </mat-expansion-panel-header>
-              <div *ngIf="numberOfTeachers != 0">
-                <mat-panel-description *ngFor="let teacher of teachers" style="padding: 0px;">
-                  {{ teacher.TeacherName }}
-                </mat-panel-description>
-              </div>
-              <div *ngIf="numberOfTeachers == 0">
-                <mat-panel-description style="padding: 0px;">
-                  <i>Teacher has not been assigned yet</i>
-                </mat-panel-description>
-              </div>
+            <div *ngIf="numberOfTeachers != 0">
+              <mat-panel-description *ngFor="let teacher of teachers" style="padding: 0px;">
+                {{ teacher.TeacherName }}
+              </mat-panel-description>
+            </div>
+            <div *ngIf="numberOfTeachers == 0">
+              <mat-panel-description style="padding: 0px;">
+                <i>Teacher has not been assigned yet</i>
+              </mat-panel-description>
+            </div>
           </mat-expansion-panel>
-
-
-
-
-
         </ion-row>
       </mat-card-content>
     </mat-card>

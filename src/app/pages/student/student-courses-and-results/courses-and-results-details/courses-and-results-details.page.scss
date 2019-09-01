@@ -1,50 +1,19 @@
-.divider {
-  background-color: rgb(33, 73, 194);
-  color: white;
-}
-
-.sub-divider {
-  background-color: rgb(51, 100, 247);
-  color: white;
-}
-
 ::ng-deep .menuTileHeader > .mat-expansion-indicator:after {
   color: var(--ion-color-primary);
 }
-
-.align-right {
-  text-align: right;
-}
-
-.list_padding {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.courseName_padding {
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-
 
 .left-desc {
   width: 80%;
   text-align: left;
   padding-left: 1%;
 }
+
 .right-desc {
   width: 20%;
   text-align: right;
   padding-right: 1%;
 }
 
-ion-select {
-  max-width: 100% !important;
-  text-align: right;
-}
-
-//new css
 ion-col.course-col {
   flex: 0 0 80%;
   padding: 0;
@@ -90,7 +59,10 @@ ion-col.grade-col {
 }
 
 .term-head2 {
-  width: 25%;
+  flex: 0 0 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
@@ -104,26 +76,27 @@ ion-col.grade-col {
   color: var(--ion-color-primary);
 }
 
-.assessment-title{
+.assessment-title {
   font-size: 13px;
   font-weight: bold;
 }
 
-.assessment-subtitle{
+.assessment-subtitle {
   font-size: 13px;
 }
 
 .mat-expansion-panel-header {
-  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 13px;
   font-weight: 400;
 }
 
 ::ng-deep .mat-expansion-panel-content {
-  font: 400 13px Roboto,"Helvetica Neue",sans-serif !important;
+  font: 400 13px Roboto, "Helvetica Neue", sans-serif !important;
 }
 
-.mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+.mat-expansion-indicator::after,
+.mat-expansion-panel-header-description {
   color: black;
 }
 
@@ -133,4 +106,12 @@ ion-col.grade-col {
 
 ::ng-deep .mat-expansion-panel-body {
   padding: 0 0px 0px !important;
+}
+
+.card-divider {
+  height: 12px;
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
