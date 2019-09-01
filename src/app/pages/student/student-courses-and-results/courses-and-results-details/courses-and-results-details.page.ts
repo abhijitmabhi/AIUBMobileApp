@@ -60,3 +60,4 @@ export class CoursesAndResultsDetailsPage implements OnInit {
     return numberOfTeachers == 0 || numberOfTeachers == 1 ? true : false;
   }
 }
+

@@ -4,7 +4,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content refreshingSpinner="circles">
@@ -68,6 +67,7 @@
     <ion-refresher-content>
     </ion-refresher-content>
   </ion-refresher> -->
+  
 
   <mat-expansion-panel id="id" [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
@@ -86,8 +86,6 @@
       <div style="width:100%; text-align:center;" [innerHTML]="attendance?.InOut"></div>
     </mat-panel-description>
   </mat-expansion-panel>
-
- 
   <!-- </mat-list> -->
   <!-- **Page Refresher**
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">

@@ -101,4 +101,9 @@ export class NotificationsPage implements OnInit {
     });
   }
 
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
+  }
+
 }
