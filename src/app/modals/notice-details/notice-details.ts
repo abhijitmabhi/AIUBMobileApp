@@ -15,6 +15,7 @@ export class NoticeDetails implements OnInit {
 
   constructor(private modalController:ModalController, private navParams: NavParams, private dataService: DataService,private platform: Platform ) {
     this.backButtonAction = this.platform.backButton.subscribeWithPriority(0, () => {
+    
     });
   }
 

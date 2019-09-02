@@ -8,7 +8,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { StudentNoticePage } from './student-notice.page';
-import { NoticeDetails } from 'src/app/core/components/pop-up/notice-details/notice-details';
+import { ModalsModule } from 'src/app/modals/modals.module';
+import { NoticeDetails } from 'src/app/modals/notice-details/notice-details';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     IonicModule,
     MaterialModule,
     ComponentsModule,
+    ModalsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [StudentNoticePage],

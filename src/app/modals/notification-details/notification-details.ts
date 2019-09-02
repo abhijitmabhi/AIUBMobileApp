@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, Platform, NavParams } from '@ionic/angular';
-import { DataService } from '../../core/dataService/data-service.service';
+import { DataService } from 'src/app/core/dataService/data-service.service';
 
 @Component({
   selector: 'app-notification-details',
@@ -15,10 +15,10 @@ export class NotificationDetails implements OnInit {
   constructor(
     private platform:Platform, 
     private modalController:ModalController, 
-    private navParams: NavParams,
+    private navParams: NavParams, 
     private dataService: DataService
     ) {
-    this.unregisterBackButtonAction    = this.platform.backButton.subscribeWithPriority(0, () => {
+    this.unregisterBackButtonAction = this.platform.backButton.subscribeWithPriority(0, () => {
     });
   }
 

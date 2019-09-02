@@ -1,5 +1,4 @@
 import { ComponentsModule } from '../../../../core/components/components.module';
-import { NoticeDetails } from '../../../../core/components/pop-up/notice-details/notice-details';
 import { MaterialModule } from '../../../../core/modules/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,8 +8,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EmployeeNoticePage } from './employee-notice.page';
-import { ModalsModule } from '../../../../modals/modals.module';
-import { NoticeUpload } from '../../../../modals/notice-upload/notice-upload';
+import { ModalsModule } from 'src/app/modals/modals.module';
+import { NotificationDetails } from 'src/app/modals/notification-details/notification-details';
+import { NoticeDetails } from 'src/app/modals/notice-details/notice-details';
+import { NoticeUpload } from 'src/app/modals/notice-upload/notice-upload';
 
 const routes: Routes = [
   {
@@ -30,6 +31,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [EmployeeNoticePage],
-  entryComponents: [NoticeUpload, NoticeDetails],
+  entryComponents: [NoticeDetails, NotificationDetails, NoticeUpload],
 })
 export class EmployeeNoticePageModule {}

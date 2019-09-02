@@ -3,9 +3,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { EmployeeSectionService } from '../../../../services/employee/employee-section.service';
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from '../../../../core/loader/loading.service';
-import { NoticeDetails } from '../../../../core/components/pop-up/notice-details/notice-details';
 import { DataService } from '../../../../core/dataService/data-service.service';
-import { NoticeUpload } from '../../../../modals/notice-upload/notice-upload';
+import { NoticeDetails } from 'src/app/modals/notice-details/notice-details';
+import { NoticeUpload } from 'src/app/modals/notice-upload/notice-upload';
 
 @Component({
   selector: 'app-employee-notice',

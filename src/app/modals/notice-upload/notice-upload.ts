@@ -53,6 +53,8 @@ export class NoticeUpload implements OnInit {
       }
       else{
         this.alertService.Success('Notice posted succesfully');
+        this.notice.Description = null;
+        this.notice.Subject = null;
       }
     });
   }

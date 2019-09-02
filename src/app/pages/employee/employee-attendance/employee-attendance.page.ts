@@ -1,6 +1,7 @@
 import { EmployeeAttendanceService } from './../../../services/employee/employee-attendance.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
+// import { Content } from 'ionic-angular';
 
 @Component({
   selector: 'app-employee-attendance',
@@ -8,6 +9,9 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./employee-attendance.page.scss'],
 })
 export class EmployeeAttendancePage implements OnInit {
+  // @ViewChild(Content) content: Content;
+  // @ViewChild('target') target: any;
+  
   payrollList = [];
   attendanceList: any;
   nrSelect: any;
@@ -36,8 +40,12 @@ export class EmployeeAttendancePage implements OnInit {
     this.getPayroll();
   }
 
-  isExpanded(attendanceDate, today) {  
-    return attendanceDate == today ? true : false;
+  isExpanded(attendanceDate, today) {
+    let res = attendanceDate == today ? true : false;
+    if(res){
+      // this.content.scrollTo(0, this.target.nativeElement.offsetTop, 500);
+    }  
+    return res;
   }
 
   getPayroll() {
@@ -69,9 +77,9 @@ export class EmployeeAttendancePage implements OnInit {
     if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "") {
       this.employeeAttendanceService.getAttendance(this.nrSelect).subscribe(res => {
         this.attendanceList = res.Data;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.scroll("scroll_here");
-        },1000);
+        }, 1000);
       });
     }
   }
@@ -81,16 +89,6 @@ export class EmployeeAttendancePage implements OnInit {
     return mlist[dt.getMonth()];
   };
 
-  scroll(id) {
-    console.log(`scrolling to ${id}`);
-    console.log(document.getElementById(id));
-    let el = document.getElementById(id);
-    if(el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center"});
-    }
-    
-  }
-
   doRefresh(event){
     this.ngOnInit();
     event.target.complete();
@@ -99,5 +97,16 @@ export class EmployeeAttendancePage implements OnInit {
   // ngAfterViewInit() {
   //   this.scroll("panel-10");
   // }
+  
+  scroll(id) {
+    console.log(`scrolling to ${id}`);
+    let el = document.getElementById(id);
+    if(el) {
+      el.scrollIntoView({
+        behavior : "smooth"
+      });
+    }
+  
+  }
 
 }

@@ -3,8 +3,8 @@ import { EmployeeSectionService } from '../../../services/employee/employee-sect
 import { ActivatedRoute, Params } from '@angular/router';
 import { LoadingService } from '../../../core/loader/loading.service';
 import { ModalController } from '@ionic/angular';
-import { NoticeDetails } from '../../../modals/notice-details/notice-details';
 import { DataService } from '../../../core/dataService/data-service.service';
+import { NoticeDetails } from 'src/app/modals/notice-details/notice-details';
 
 @Component({
   selector: 'app-student-notice',
@@ -48,6 +48,21 @@ export class StudentNoticePage implements OnInit {
    
   }
 
+  // async readNotice(notice:any){
+  //   this.dataService.isModalOn = true;
+  //   const myModal = await this.modalController.create({
+  //     component: NoticeDetails,
+  //     componentProps: { 
+  //       Title: notice.Subject,
+  //       Message: notice.Description,
+  //       Time: notice.PostDate
+  //     },
+  //     cssClass: 'popup-modal-css',
+  //     backdropDismiss:true
+  //   });
+  //   return await myModal.present();
+  // }
+
   async readNotice(notice:any){
     this.dataService.isModalOn = true;
     const myModal = await this.modalController.create({
@@ -58,7 +73,7 @@ export class StudentNoticePage implements OnInit {
         Time: notice.PostDate
       },
       cssClass: 'popup-modal-css',
-      backdropDismiss:true
+      backdropDismiss:false,
     });
     return await myModal.present();
   }

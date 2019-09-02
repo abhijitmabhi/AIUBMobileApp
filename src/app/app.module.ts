@@ -23,7 +23,6 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
 import { NetworkService } from './core/network/network.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-
 // import { Content } from 'ionic-angular';
 
 @NgModule({

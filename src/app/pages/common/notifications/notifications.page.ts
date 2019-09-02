@@ -1,8 +1,8 @@
 import { NotificationService } from './../../../services/notification/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { NotificationDetails } from '../../../modals/notification-details/notification-details';
 import { DataService } from '../../../core/dataService/data-service.service';
+import { NotificationDetails } from 'src/app/modals/notification-details/notification-details';
 
 @Component({
   selector: 'app-notifications',
@@ -27,6 +27,7 @@ export class NotificationsPage implements OnInit {
   }
 
   readNotification(notification: any) {
+    this.dataService.isModalOn = true;
     var index = this.notificationList.findIndex(x => x.Id === notification.Id);
     notification.HeaderCssClass = 'read-notif-content read-title';
     notification.BodyCssClass = 'read-notif-content read-body';

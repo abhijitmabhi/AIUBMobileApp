@@ -80,7 +80,6 @@ export class AppComponent implements OnInit {
   isPressedHardwareBackButton(){
     this.platform.backButton.subscribe(()=>{
 
-      // let user_type = localStorage.getItem('userType');
       let user_type = this.dataService.getUserType();
 
       if(!user_type){

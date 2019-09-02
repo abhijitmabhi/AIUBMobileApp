@@ -60,14 +60,7 @@
           </ion-item>
         </ion-list>
       </div>
-
   </mat-list>
-  <!-- **Page Refresher**
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content>
-    </ion-refresher-content>
-  </ion-refresher> -->
-  
 
   <mat-expansion-panel id="id" [expanded]="isExpanded(attendance?.Date, today)" [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
@@ -87,10 +80,5 @@
     </mat-panel-description>
   </mat-expansion-panel>
   <!-- </mat-list> -->
-  <!-- **Page Refresher**
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content>
-    </ion-refresher-content>
-  </ion-refresher> -->
   <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
 </ion-content>
