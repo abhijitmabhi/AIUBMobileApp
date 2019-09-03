@@ -152,7 +152,6 @@ export class StudentHomePage implements OnInit {
     if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== ""){
       this.commonService.registeredCoursesBySemester(this.nrSelect).subscribe(res => {
         this.semesterData = res.Data;
-        console.log(this.semesterData);
       });
     }
   }
@@ -178,6 +177,11 @@ export class StudentHomePage implements OnInit {
     this.router.navigate(['student-notice', sectionId]);
   }
 
-  ShowProfile(){}
-  
+  /* Refresh the whole page */
+
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
+  }
+
 }

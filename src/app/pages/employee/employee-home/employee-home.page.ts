@@ -186,6 +186,8 @@ export class EmployeeHomePage implements OnInit {
     this.router.navigate(['employee-notes', sectionId]);
   }
 
+  /* Refresh the whole page */
+  
   doRefresh(event){
     this.ngOnInit();
     event.target.complete();

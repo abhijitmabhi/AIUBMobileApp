@@ -70,14 +70,24 @@
 
   <!-- Class Schedule -->
   <ion-row class="ClassSchedule">
-    <ion-item-divider style="padding-left: 2px;">
+    <!-- <ion-item-divider style="padding-left: 2px;">
       <div style="width: 100%;" class="package-rating-detail">
         <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
         <label class="menuDividerTile">Next Two Days Class Schedule</label>
         <mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerRightSideIcon">launch
         </mat-icon>
       </div>
-    </ion-item-divider>
+    </ion-item-divider> -->
+
+    <ion-item-divider class="custom_divider">
+      <table class="titleTable">
+      <tr>
+      <td><mat-icon class="material-icons menuDividerIcon">date_range</mat-icon></td>
+      <td style="width: 100%; vertical-align: middle;padding-left: 2px; padding-bottom: 7px;"><ion-text class="menuDividerTile">Class Schedule</ion-text></td>
+      <td><mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerIcon" style="margin-right: 8px">launch</mat-icon></td>
+      </tr>
+      </table>
+      </ion-item-divider>
 
     <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
       <div style="margin-left: 7px;

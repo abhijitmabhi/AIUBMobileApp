@@ -42,6 +42,7 @@ export class CoursesAndResultsDetailsPage implements OnInit {
 
     this.courseName = this.course.courseName;
     this.finalGradeText = this.course.finalTermGrade;
+    
     this.courseId = this.course.courseId;
     this.sectionId = this.course.sectionId;
 

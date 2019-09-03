@@ -41,6 +41,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
   <!-- Announcements -->
   <!-- <ion-row class="announcement" *ngFor="let announcement of announcements">
@@ -59,13 +63,31 @@
 
   <!-- Class Schedule -->
   <ion-row class="ClassSchedule">
-    <ion-item-divider style="padding-left: 2px;">
+    <!-- <ion-item-divider style="padding-left: 2px;">
       <div style="width: 100%;" class="package-rating-detail">
         <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
         <label class="menuDividerTile">Next Two Days Class Schedule</label>
         <mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerRightSideIcon">launch
         </mat-icon>
       </div>
+    </ion-item-divider> -->
+
+
+    <ion-item-divider class="custom_divider">
+      <table class="titleTable">
+        <tr>
+          <td>
+            <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
+          </td>
+          <td style="width: 100%; vertical-align: middle;padding-left: 2px; padding-bottom: 7px;">
+            <ion-text class="menuDividerTile">Class Schedule</ion-text>
+          </td>
+          <td>
+            <mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerIcon"
+              style="margin-right: 8px">launch</mat-icon>
+          </td>
+        </tr>
+      </table>
     </ion-item-divider>
 
     <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
@@ -185,10 +207,12 @@
             <button mat-stroked-button color="primary" disabled="true" class="course-button">
               <ion-icon name="calendar" class="courseIcon"></ion-icon> TSF
             </button>
-            <button mat-stroked-button color="primary" class="course-button" (click)="openSectionNotes(item?.Section?.ID)">
+            <button mat-stroked-button color="primary" class="course-button"
+              (click)="openSectionNotes(item?.Section?.ID)">
               <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
             </button>
-            <button mat-stroked-button color="primary" class="course-button" (click)="openSectionNotice(item?.Section?.ID)">
+            <button mat-stroked-button color="primary" class="course-button"
+              (click)="openSectionNotice(item?.Section?.ID)">
               <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notice
             </button>
           </div>
