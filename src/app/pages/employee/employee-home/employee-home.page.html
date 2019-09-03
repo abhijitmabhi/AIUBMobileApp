@@ -206,7 +206,7 @@
                 <!-- <button mat-stroked-button color="primary" (click)="openSectionNote(item?.Section?.ID)"> -->
                   <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
               </button>
-              <button mat-stroked-button color="primary" (click)="openSectionNotice(item?.Section?.ID)">
+              <button mat-stroked-button [disabled]="item.Status != 'Publish'" color="primary" (click)="openSectionNotice(item?.Section?.ID)">
                   <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notices
               </button>
             </div>
