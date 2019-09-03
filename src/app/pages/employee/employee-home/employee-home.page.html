@@ -10,7 +10,7 @@
             <div *ngIf="!profileImageLoaded" class="spinner-box">
               <div class="spinner spinner3"></div>
             </div>
-            <ion-img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}" ></ion-img>
+            <ion-img *ngIf="profileImageLoaded" src="{{'data:image/jpg;base64,' + userImage}}"></ion-img>
           </ion-avatar>
         </ion-row>
       </ion-col>
@@ -43,7 +43,7 @@
 </ion-header>
 
 <!-- Progress Bar -->
-<ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5" ></ion-progress-bar>
+<ion-progress-bar [hidden]="classSchedules" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
 
 <ion-content>
   <!-- Announcements -->
@@ -66,11 +66,9 @@
     </ion-col>
   </ion-row>
 
-  
-
   <!-- Class Schedule -->
-  <ion-row class="ClassSchedule">
-    <!-- <ion-item-divider style="padding-left: 2px;">
+  <ion-row class="ClassSchedule" [hidden]="!teacherFlag">
+    <ion-item-divider style="padding-left: 2px;">
       <div style="width: 100%;" class="package-rating-detail">
         <mat-icon class="material-icons menuDividerIcon">date_range</mat-icon>
         <label class="menuDividerTile">Next Two Days Class Schedule</label>
@@ -110,109 +108,134 @@
           </mat-list-item>
         </mat-list>
       </div>
-
-      <!-- <div style="margin-left: 7px;
-          border-left: 3px solid #014ea2; margin-top: 3px;">
-              <mat-list>
-                <mat-list-item class="matListItem" style="height: auto;">
-                  <div style="width: 50%;" class="day-title">
-                      Tomorrow
-                  </div>
-                  <div style="width: 50%;"></div>
-                </mat-list-item>
-                <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
-                  <div class="schedule-desc-left">
-                    Software Engineering (A)
-                  </div>
-                  <div class="schedule-desc-right">
-                    09:30 AM - 10:30 AM [3103]
-                  </div>
-                </mat-list-item>
-                <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
-                  <div class="schedule-desc-left">
-                      Complex Variable, Laplace & Z-Transformation (O)
-                  </div>
-                  <div class="schedule-desc-right">
-                    11:30 AM - 01:30 PM [3104]
-                  </div>
-                </mat-list-item>
-              </mat-list>
-            </div> -->
     </div>
   </ion-row>
 
   <mat-expansion-panel [expanded]="true" class="menuTile" *ngIf="semesterList?.length != 0">
-      <mat-expansion-panel-header class="menuTileHeader">
-        <mat-panel-title class="menuTileHeaderTitle">
-          <div class="package-rating-detail">
-            <mat-icon class="material-icons">insert_chart</mat-icon>
-            <label>Courses</label>
-          </div>
-        </mat-panel-title>
-        <mat-panel-description>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <mat-panel-description class="subMenuPanel">
-  
-        <ion-progress-bar [hidden]="semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
-  
-        <ion-item style="width: 100%; padding-bottom: 10px; padding-top: 10px;">
-          <ion-label style="width:20%;">Semester: </ion-label>
-          <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
-            <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester?.ID">
-              {{semester.Title}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-  
-        <div *ngIf="!semesterData">
-          <ion-list>
-            <ion-item *ngFor="let item of [].constructor(5)">
-              <ion-thumbnail slot="start">
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </ion-thumbnail>
-              <ion-label>
-                <h3>
-                  <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-                </h3>
-                <p>
-                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                </p>
-                <p>
-                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                </p>
-              </ion-label>
-            </ion-item>
-          </ion-list>
+    <mat-expansion-panel-header class="menuTileHeader">
+      <mat-panel-title class="menuTileHeaderTitle">
+        <div class="package-rating-detail">
+          <mat-icon class="material-icons">insert_chart</mat-icon>
+          <label>Courses</label>
         </div>
-  
-        <mat-card *ngFor="let item of semesterData" style="margin-bottom:10px">
-          <mat-card-content>
-            <mat-card-title class="card_title">
-              <!-- <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!item.Valid"></ion-icon>
-              <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="item.Valid"></ion-icon> -->
-              {{item.Section.ClassID}} - {{item.Section.Description }}
-            </mat-card-title>
-
-            <mat-card-subtitle> {{item.Type}}
-              <span *ngIf="item.Status === 'Confirm'" style="font-weight: bold"> [On Process] </span>
-             </mat-card-subtitle>
-            <mat-divider></mat-divider>
-            <div class="example-button-row">
-              <button mat-stroked-button color="primary" (click)="openStudentList(item?.Section?.ID)">
-                  <ion-icon name="people" class="courseIcon" ></ion-icon> Students
-              </button>
-              <button mat-stroked-button disabled color="primary" (click)="openSectionNotice(item?.Section?.ID)">
-                <!-- <button mat-stroked-button color="primary" (click)="openSectionNote(item?.Section?.ID)"> -->
-                  <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
-              </button>
-              <button mat-stroked-button [disabled]="item.Status != 'Publish'" color="primary" (click)="openSectionNotice(item?.Section?.ID)">
-                  <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notices
-              </button>
-            </div>
-          </mat-card-content>
-        </mat-card>
+      </mat-panel-title>
+      <mat-panel-description>
       </mat-panel-description>
-    </mat-expansion-panel>
+    </mat-expansion-panel-header>
 
+    <mat-panel-description class="subMenuPanel">
+
+      <ion-progress-bar [hidden]="semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+
+      <ion-item style="width: 100%; padding-bottom: 10px; padding-top: 10px;">
+        <ion-label style="width:20%;">Semester: </ion-label>
+        <ion-select width="100%" placeholder="Select Semester" [(ngModel)]='nrSelect' (ionChange)="onChangeSemester()">
+          <ion-select-option style="width: 100%;" *ngFor="let semester of semesterList" [value]="semester?.ID">
+            {{semester.Title}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div *ngIf="!semesterData">
+        <ion-list>
+          <ion-item *ngFor="let item of [].constructor(5)">
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <mat-card *ngFor="let item of semesterData" style="margin-bottom:10px">
+        <mat-card-content>
+          <mat-card-title class="card_title">
+            <!-- <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!item.Valid"></ion-icon>
+              <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="item.Valid"></ion-icon> -->
+            {{item.Section.ClassID}} - {{item.Section.Description }}
+          </mat-card-title>
+
+          <mat-card-subtitle> {{item.Type}}
+            <span *ngIf="item.Status === 'Confirm'" style="font-weight: bold"> [On Process] </span>
+          </mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <div class="example-button-row">
+            <button mat-stroked-button color="primary" (click)="openStudentList(item?.Section?.ID)">
+              <ion-icon name="people" class="courseIcon"></ion-icon> Students
+            </button>
+            <!-- <button mat-stroked-button color="primary" (click)="openSectionNotice(item?.Section?.ID)"> -->
+            <button mat-stroked-button color="primary" (click)="openSectionNote(item?.Section?.ID)">
+              <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
+            </button>
+            <button mat-stroked-button color="primary" (click)="openSectionNotice(item?.Section?.ID)">
+              <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notices
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-panel-description>
+  </mat-expansion-panel>
+
+  <!-- One Week Attendance Horizontal Bar Chart -->
+  <div [hidden]="teacherFlag">
+    <ion-item-divider style="padding-left: 2px;">
+      <div style="width: 100%;" class="package-rating-detail">
+        <mat-icon class="material-icons menuDividerIcon">insert_chart_outlined</mat-icon>
+        <label class="menuDividerTile">Attendance of Last 7 Days</label>
+      </div>
+    </ion-item-divider>
+    <div *ngIf="!oneWeekAttendanceData">
+      <ion-list>
+        <ion-item *ngFor="let item of [].constructor(4)">
+          <ion-label slot="start">
+            <h3>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </h3>
+            <h3>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div [hidden]="teacherFlag" style="padding: 5px;">
+      <canvas style="min-height: 220px;" #horizontalBarChart></canvas>
+    </div>
+  </div>
+
+  <!-- Leave Allocation Pie Chart -->
+  <div [hidden]="teacherFlag">
+    <ion-item-divider style="padding-left: 2px;">
+      <div style="width: 100%;" class="package-rating-detail">
+        <mat-icon class="material-icons menuDividerIcon">pie_chart</mat-icon>
+        <label class="menuDividerTile">Attendance of Last 7 Days</label>
+      </div>
+    </ion-item-divider>
+    <div *ngIf="!leaveAllocationData">
+      <ion-list>
+        <ion-item *ngFor="let item of [].constructor(1)">
+          <ion-thumbnail slot="center" style="height: 200px; width:200px;">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-thumbnail>
+          <ion-label slot="center">
+            <h3>
+              <ion-skeleton-text animated style="width: 10%; align-self: center;"></ion-skeleton-text>
+            </h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div [hidden]="teacherFlag" style="padding: 5px;">
+      <canvas #pieChart></canvas>
+    </div>
+  </div>
 </ion-content>

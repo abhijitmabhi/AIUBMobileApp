@@ -21,5 +21,4 @@ export class EmployeeHomeService {
   public getEmployeeCourseList(semesterId: number): Observable<IResult> {
     return this.httpClient.get<IResult>(`Employee/GetCourseList?semesterID=${semesterId}`);
   }
-
 }

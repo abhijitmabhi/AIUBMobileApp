@@ -1,7 +1,7 @@
 import { EmployeeHomeService } from '../../../services/employee/employee-home.service';
 import { NotificationService } from './../../../services/notification/notification.service';
 import { LoginService } from '../../../services/login/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PushNotificationService } from '../../../core/oneSignal/push-notification.service';
 import { DatePipe } from '@angular/common';
@@ -9,6 +9,10 @@ import { LoadingService } from '../../../core/loader/loading.service';
 import { CommonService } from '../../../services/common/common.service';
 import { EmployeeProfileService } from '../../../services/employee/employee-profile.service';
 import { ClassScheduleService } from '../../../services/employee/class-schedule.service';
+import { ChartService } from '../../../services/employee/chart.service';
+import { Chart } from 'chart.js';
+import * as ChartDataLabels from 'chartjs-plugin-datalabels';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-employee-home',
@@ -16,6 +20,11 @@ import { ClassScheduleService } from '../../../services/employee/class-schedule.
   styleUrls: ['./employee-home.page.scss'],
 })
 export class EmployeeHomePage implements OnInit {
+  //chart
+  @ViewChild('horizontalBarChart', null) horizontalBarChart;
+  @ViewChild('pieChart', null) pieChart;
+  bars: any;
+
   public schedule: any;
   userInfo: any;
   userImage: string = null;
@@ -27,7 +36,10 @@ export class EmployeeHomePage implements OnInit {
   semesterList: any;
   nrSelect: any;
   semesterData: any;
-  
+  oneWeekAttendanceData: any;
+  leaveAllocationData: any;
+  teacherFlag: any;
+
 
   //ProgressBar
   color = 'warn';
@@ -43,9 +55,10 @@ export class EmployeeHomePage implements OnInit {
     private loadingService: LoadingService,
     private classSceduleService: ClassScheduleService,
     private commonService: CommonService,
-    private notificationService:NotificationService,
-    private employeeHomeService: EmployeeHomeService
-  ) {}
+    private notificationService: NotificationService,
+    private employeeHomeService: EmployeeHomeService,
+    private chartService: ChartService
+  ) { }
 
   ngOnInit() {
     this.pushNotification.getPlayerID();
@@ -55,36 +68,60 @@ export class EmployeeHomePage implements OnInit {
     this.getCurrentUserInfo();
     this.getUserProfileImage();
     this.getSemesterList();
+
   }
 
   private currentDateTime = new Date();
 
   getClassSchedule() {
-    let fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
-    let toDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+1),'yyyy-MM-dd HH:mm:ss.SSS');
+    let fromDateTime = this.datePipe.transform(this.currentDateTime, 'yyyy-MM-dd HH:mm:ss.SSS');
+    let toDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate() + 1), 'yyyy-MM-dd HH:mm:ss.SSS');
 
     this.classSceduleService.getTeacherClassSchedule(fromDateTime, toDateTime).subscribe(response => {
       this.loadingService.loadingDismiss();
       let result = response;
-      if(result.HasError){
+      if (result.HasError) {
         console.log(result.Messages);
-      }else{
+      } else {
         this.classSchedules = result.Data;
       }
     },
       error => {
         let errorResponse = error;
         console.log(errorResponse.error.Message);
+      });
+  }
+
+  getChartData() {
+    this.chartService.getOneWeekAttendanceData().subscribe(res => {
+      let result = res;
+      if (res.HasError) {
+      } else {
+        this.oneWeekAttendanceData = result.Data;
+        this.createHorizontalBarChart();
+      }
+    });
+    this.chartService.getLeaveAllocationData().subscribe(res => {
+      let result = res;
+      if (res.HasError) {
+      } else {
+        this.leaveAllocationData = result.Data;
+        this.createPieChart();
+      }
     });
   }
 
   getCurrentUserInfo() {
     this.loginService.currentUserInfo().subscribe(res => {
       let result = res;
-      if(result.HasError){
-      }else{
-        localStorage.setItem('UserID',res.Data.User.ID);
+      if (result.HasError) {
+      } else {
+        localStorage.setItem('UserID', res.Data.User.ID);
         this.appUserInfo = result.Data;
+        this.teacherFlag = this.appUserInfo.User.IsTeacher;
+        if (this.appUserInfo.User.IsTeacher == false) {
+          this.getChartData();
+        }
         this.notificationCount = this.appUserInfo.UnReadNotificationCount;
       }
     })
@@ -97,69 +134,67 @@ export class EmployeeHomePage implements OnInit {
     })
   }
 
-  ShowProfile(){
+  ShowProfile() {
     this.router.navigate(['/employee-profile']);
   }
 
-  ShowClassSchedule(){
+  ShowClassSchedule() {
     this.router.navigate(['/employee-class-schedule']);
   }
 
   getUserWarningList() {
     this.commonService.getUserWarnings().subscribe(response => {
-      if(response.HasError){
+      if (response.HasError) {
         console.log(response.Messages);
-      }else{
+      } else {
         this.announcements = response.Data;
       }
     },
       error => {
         let errorResponse = error;
         console.log(errorResponse.error.Message);
-    });
+      });
   }
 
   /* Opne notification */
 
   openNotification() {
     this.notificationCount = 0;
-    this.notificationService.seenAllNotifications().subscribe( res => {
+    this.notificationService.seenAllNotifications().subscribe(res => {
     });
     this.router.navigate(['/notifications']);
   }
 
   /* Employee Course List */
-  
-  getSemesterList(){
+
+  getSemesterList() {
     this.employeeHomeService.getEmployeeSemesterList().subscribe(semesterLists => {
       this.semesterList = semesterLists.Data;
       let currentSemesterId;
       let isCurrentSemesterEnrolled = false;
       // console.log(this.semesterList);
-      if(this.semesterList.length != 0){
+      if (this.semesterList.length != 0) {
         this.semesterList.forEach(semester => {
-          if(semester.IsCurrent === true){
+          if (semester.IsCurrent === true) {
             currentSemesterId = semester.ID;
             isCurrentSemesterEnrolled = true;
           }
         });
-        if(isCurrentSemesterEnrolled){
+        if (isCurrentSemesterEnrolled) {
           this.nrSelect = currentSemesterId;
-        }else {
+        } else {
           this.nrSelect = this.semesterList[0].ID;
         }
         this.onChangeSemester();
       }
-
     });
-    
   }
 
   /* Student Registraton Semester List Dropdown */
 
-  onChangeSemester(){
+  onChangeSemester() {
     this.semesterData = null;
-    if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== ""){
+    if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "") {
       this.employeeHomeService.getEmployeeCourseList(this.nrSelect).subscribe(res => {
         this.semesterData = res.Data.Courses;
         // console.log(this.semesterData);
@@ -171,26 +206,117 @@ export class EmployeeHomePage implements OnInit {
 
   openStudentList(sectionId: number) {
     this.router.navigate(["/get-student-list", sectionId]);
-                           
+
   }
 
   /* Get Section Notice */
 
-  openSectionNotice(sectionId: number){
+  openSectionNotice(sectionId: number) {
     this.router.navigate(['employee-notice', sectionId]);
   }
 
-   /* Get Section Note */
+  /* Get Section Note */
 
-  openSectionNote(sectionId: number){
+  openSectionNote(sectionId: number) {
     this.router.navigate(['employee-notes', sectionId]);
   }
 
-  /* Refresh the whole page */
-  
-  doRefresh(event){
-    this.ngOnInit();
-    event.target.complete();
+  //Chart Codes
+  createHorizontalBarChart() {
+    let hrzBarChart = this.horizontalBarChart.nativeElement;
+
+    this.bars = new Chart(hrzBarChart, {
+      plugins: [ChartDataLabels],
+      type: 'horizontalBar',
+      data: {
+        labels: this.oneWeekAttendanceData.ChartLabels,
+        datasets: [{
+          label: 'Working Hours',
+          data: this.oneWeekAttendanceData.ChartValues,
+          backgroundColor: this.oneWeekAttendanceData.ChartColors,
+          borderColor: 'rgb(237, 246, 255)',// array should have same number of elements as number of dataset
+          borderWidth: 0
+        }]
+      },
+      options: {
+        plugins: {
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
+          }
+        },
+        scales: {
+          xAxes: [{
+            ticks: {
+              beginAtZero: true,
+              suggestedMax: 15,
+              stepSize: 5
+            },
+            gridLines: {
+              display: false
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              display: false
+            },
+            barThickness: 'flex'
+          }]
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true
+        },
+        tooltips: {
+          enabled: true
+        },
+        legend: {
+          display: false
+        },
+        maintainAspectRatio: true,
+        responsive: true
+      }
+    });
   }
 
+  createPieChart() {
+    this.bars = new Chart(this.pieChart.nativeElement, {
+      plugins: [ChartDataLabels],
+      type: 'pie',
+      data: {
+        labels: this.leaveAllocationData.ChartData.ChartLabels,
+        datasets: [{
+          // label: 'Viewers in millions',
+          data: this.leaveAllocationData.ChartData.ChartValues,
+          backgroundColor: this.leaveAllocationData.ChartData.ChartColors,
+          borderColor: 'rgb(237, 246, 255)',// array should have same number of elements as number of dataset
+          borderWidth: 0
+        }]
+      },
+      options: {
+        plugins: {
+          datalabels: {
+            align: 'start',
+            anchor: 'end',
+            color: '#ffffff',
+            display: function (context) {
+              return context.dataset.data[context.dataIndex] !== "0"; // or >= 1 or ...
+            }
+          }
+        },
+        animation: {
+          animateScale: true,
+          animateRotate: true,
+        },
+        tooltips: {
+          enabled: true
+        },
+        legend: {
+          position: 'bottom',
+        },
+        maintainAspectRatio: true,
+        responsive: true,
+      }
+    });
+  }
 }
