@@ -57,8 +57,9 @@ export class EmployeeHomePage implements OnInit {
     private commonService: CommonService,
     private notificationService: NotificationService,
     private employeeHomeService: EmployeeHomeService,
-    private chartService: ChartService
-  ) { }
+    private chartService: ChartService,
+  ) {
+  }
 
   ngOnInit() {
     this.pushNotification.getPlayerID();
@@ -318,5 +319,12 @@ export class EmployeeHomePage implements OnInit {
         responsive: true,
       }
     });
+  }
+
+  /* Refresh the whole page */
+
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
   }
 }

@@ -311,3 +311,10 @@ ion-select {
   width: 100%;
   table-layout: auto;
 }
+
+::ng-deep .refresher-md .refresher-pulling-icon, 
+::ng-deep .refresher-md .refresher-pulling-text, 
+::ng-deep .refresher-md .refresher-refreshing-icon .spinner-circles, 
+::ng-deep .refresher-md .refresher-refreshing-text {
+color: var(--ion-color-primary) !important;
+}
