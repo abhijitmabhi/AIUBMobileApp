@@ -48,8 +48,8 @@
 <ion-content>
   <!-- Announcements -->
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content refreshingSpinner="circles">
-      </ion-refresher-content>
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
   </ion-refresher>
 
   <ion-row class="announcement" *ngFor="let announcement of announcements">
@@ -79,13 +79,20 @@
 
     <ion-item-divider class="custom_divider">
       <table class="titleTable">
-      <tr>
-      <td><mat-icon class="material-icons menuDividerIconLine">date_range</mat-icon></td>
-      <td style="width: 100%; vertical-align: middle;padding-left: 2px; padding-bottom: 7px;"><ion-text class="menuDividerTileLine">Class Schedule</ion-text></td>
-      <td><mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerIconLine" style="margin-right: 8px">launch</mat-icon></td>
-      </tr>
+        <tr>
+          <td>
+            <mat-icon class="material-icons menuDividerIconLine">date_range</mat-icon>
+          </td>
+          <td style="width: 100%; vertical-align: middle;padding-left: 2px; padding-bottom: 7px;">
+            <ion-text class="menuDividerTileLine">Class Schedule</ion-text>
+          </td>
+          <td>
+            <mat-icon (click)="ShowClassSchedule()" matRipple class="material-icons menuDividerIconLine"
+              style="margin-right: 8px">launch</mat-icon>
+          </td>
+        </tr>
       </table>
-      </ion-item-divider>
+    </ion-item-divider>
 
     <div style="width: 100%;" *ngFor="let classSchedule of classSchedules">
       <div style="margin-left: 7px;
@@ -176,7 +183,8 @@
             <button mat-stroked-button color="primary" disabled (click)="openSectionNote(item?.Section?.ID)">
               <ion-icon name="copy" class="courseIcon"></ion-icon> Notes
             </button>
-            <button mat-stroked-button color="primary" [disabled]="item.Status!='Publish'" (click)="openSectionNotice(item?.Section?.ID)">
+            <button mat-stroked-button color="primary" [disabled]="item.Status!='Publish'"
+              (click)="openSectionNotice(item?.Section?.ID)">
               <ion-icon name="ios-megaphone" class="courseIcon"></ion-icon> Notices
             </button>
           </div>
@@ -193,15 +201,40 @@
         <label class="menuDividerTile">Working Hours (Current Week)</label>
       </div>
     </ion-item-divider>
+
     <div *ngIf="!oneWeekAttendanceData">
       <ion-list>
-        <ion-item *ngFor="let item of [].constructor(4)">
-          <ion-label slot="start">
+        <ion-item *ngFor="let item of [].constructor(1)">
+          <ion-label>
             <h3>
-              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
             </h3>
-            <h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
               <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
             </h3>
           </ion-label>
         </ion-item>
@@ -220,22 +253,53 @@
         <label class="menuDividerTile">Leave Allocation</label>
       </div>
     </ion-item-divider>
+
     <div *ngIf="!leaveAllocationData">
       <ion-list>
         <ion-item *ngFor="let item of [].constructor(1)">
-          <ion-thumbnail slot="center" style="height: 200px; width:200px;">
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-thumbnail>
-          <ion-label slot="center">
+          <ion-label>
             <h3>
-              <ion-skeleton-text animated style="width: 10%; align-self: center;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
             </h3>
           </ion-label>
         </ion-item>
       </ion-list>
     </div>
-    <div [hidden]="teacherFlag" style="padding: 5px;">
-      <canvas #pieChart></canvas>
+
+    <div [hidden]="teacherFlag" style="padding: 5px; text-align: center;">
+      <canvas #pieChart [hidden]="noLeave"></canvas>
+      <p>
+        <b>
+          No Allocation Found!
+        </b>
+      </p>
     </div>
   </div>
 </ion-content>

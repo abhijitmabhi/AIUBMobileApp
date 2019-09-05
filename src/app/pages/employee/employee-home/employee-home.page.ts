@@ -46,6 +46,7 @@ export class EmployeeHomePage implements OnInit {
   color = 'warn';
   mode = 'indeterminate';
   value = 50;
+  noLeave: any;
 
   constructor(
     private router: Router,
@@ -111,7 +112,13 @@ export class EmployeeHomePage implements OnInit {
       if (res.HasError) {
       } else {
         this.leaveAllocationData = result.Data;
-        this.createPieChart();
+        if (this.leaveAllocationData.TotalLeave == null) {
+          this.noLeave = true;
+        }
+        else {
+          this.noLeave = false;
+          this.createPieChart();
+        }
       }
     });
   }
@@ -327,7 +334,7 @@ export class EmployeeHomePage implements OnInit {
 
   /* Refresh the whole page */
 
-  doRefresh(event){
+  doRefresh(event) {
     this.ngOnInit();
     event.target.complete();
   }
