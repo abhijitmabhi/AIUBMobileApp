@@ -8,6 +8,7 @@ export class DataService {
   serviceData: any;
   test:any;
   isModalOn = false;
+  isFirstTime = false;
   constructor(public platform: Platform){
   }
 

@@ -7,6 +7,7 @@ import { MenuController, IonInput, AlertController } from '@ionic/angular';
 import { UserModel, CredModel } from './loginModel';
 import { PushNotificationService } from '../../../core/oneSignal/push-notification.service';
 import { AlertService } from '../../../core/alert/alert.service';
+import { DataService } from 'src/app/core/dataService/data-service.service';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +31,8 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     private loadingService: LoadingService,
     private pushNotification: PushNotificationService,
-    private alert: AlertService
+    private alert: AlertService,
+    private dataService: DataService
   ) {
     this.menuCtrl.enable(false);
     this.User = UserModel;
@@ -91,9 +93,11 @@ export class LoginPage implements OnInit {
   redirect() {
     let user_type = localStorage.getItem('userType');
     if (user_type == "0") {
+      this.dataService.isFirstTime = true;
       this.router.navigate(['/student-tab/tabs/studentHome']);
     }
     if (user_type == "3" || user_type == "1") {
+      this.dataService.isFirstTime = true;
       this.router.navigate(['/employee-tab/tabs/employeeHome']);
     }
   }

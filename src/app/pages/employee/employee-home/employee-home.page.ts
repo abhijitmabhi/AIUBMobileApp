@@ -13,6 +13,7 @@ import { ChartService } from '../../../services/employee/chart.service';
 import { Chart } from 'chart.js';
 import * as ChartDataLabels from 'chartjs-plugin-datalabels';
 import { from } from 'rxjs';
+import { DataService } from 'src/app/core/dataService/data-service.service';
 
 @Component({
   selector: 'app-employee-home',
@@ -58,18 +59,21 @@ export class EmployeeHomePage implements OnInit {
     private notificationService: NotificationService,
     private employeeHomeService: EmployeeHomeService,
     private chartService: ChartService,
+    private dataService: DataService
   ) {
   }
 
-  ngOnInit() {
-    this.pushNotification.getPlayerID();
-    this.pushNotification.oneSignalSubscription();
-    this.getUserWarningList();
-    this.getClassSchedule();
-    this.getCurrentUserInfo();
-    this.getUserProfileImage();
-    this.getSemesterList();
-
+  ionViewWillEnter() {
+    if(this.dataService.isFirstTime){
+      this.dataService.isFirstTime = false;
+      this.pushNotification.getPlayerID();
+      this.pushNotification.oneSignalSubscription();
+      this.getUserWarningList();
+      this.getClassSchedule();
+      this.getCurrentUserInfo();
+      this.getUserProfileImage();
+      this.getSemesterList();
+    }
   }
 
   private currentDateTime = new Date();

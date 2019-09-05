@@ -50,11 +50,11 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    redirectTo: '/tabs/employeeHome',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: '',
+  //   redirectTo: '/tabs/employeeHome',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({

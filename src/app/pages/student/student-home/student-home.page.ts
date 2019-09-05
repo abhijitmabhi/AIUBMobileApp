@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, Platform, AlertController } from '@ionic/angular';
 import { StudentProfileService } from '../../../services/student/student-profile.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/core/dataService/data-service.service';
 
 @Component({
   selector: 'app-student-home',
@@ -59,16 +60,20 @@ export class StudentHomePage implements OnInit {
     private router: Router,
     private platform: Platform,
     private alertController: AlertController,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private dataService: DataService) {
   }
 
-  ngOnInit() {
-    this.pushNotification.getPlayerID();
-    this.pushNotification.oneSignalSubscription();
-    this.getSemesterList();
-    this.getClassSchedule();
-    this.getCurrentUserInfo();
-    this.getUserProfileImage();
+  ionViewWillEnter(){
+    if(this.dataService.isFirstTime){
+      this.dataService.isFirstTime = false;
+      this.pushNotification.getPlayerID();
+      this.pushNotification.oneSignalSubscription();
+      this.getSemesterList();
+      this.getClassSchedule();
+      this.getCurrentUserInfo();
+      this.getUserProfileImage();
+    }
   }
 
   /* Student Profile Picture */
