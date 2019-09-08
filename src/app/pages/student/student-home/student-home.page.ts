@@ -64,8 +64,10 @@ export class StudentHomePage implements OnInit {
     private dataService: DataService) {
   }
 
+  ngOnInit() {
+  }
+
   ionViewWillEnter(){
-    if(this.dataService.isFirstTime){
       this.dataService.isFirstTime = false;
       this.pushNotification.getPlayerID();
       this.pushNotification.oneSignalSubscription();
@@ -73,7 +75,6 @@ export class StudentHomePage implements OnInit {
       this.getClassSchedule();
       this.getCurrentUserInfo();
       this.getUserProfileImage();
-    }
   }
 
   /* Student Profile Picture */
@@ -185,7 +186,7 @@ export class StudentHomePage implements OnInit {
   /* Refresh the whole page */
 
   doRefresh(event){
-    this.ngOnInit();
+    this.ionViewWillEnter();
     event.target.complete();
   }
 

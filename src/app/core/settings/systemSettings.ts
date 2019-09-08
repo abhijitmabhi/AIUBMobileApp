@@ -1,6 +1,6 @@
 export const settings = {
-    baseUrl: 'https://testapi.aiub.edu/ums-public-api/api/',
-    tokenUrl:'https://testapi.aiub.edu/ums-auth-api/Token'
+    // baseUrl: 'https://testapi.aiub.edu/ums-public-api/api/',
+    // tokenUrl:'https://testapi.aiub.edu/ums-auth-api/Token'
 
     //Jaowat
     // baseUrl:'http://172.16.22.161:1374/api/',
@@ -9,4 +9,8 @@ export const settings = {
     //Raihan
     // baseUrl:'http://172.16.22.117:60003/api/',
     // tokenUrl:'http://172.16.22.117:60002/Token'
+
+    //Abhi
+    baseUrl:'http://172.16.22.160:22420/api/',
+    tokenUrl:'http://172.16.22.160:11420/Token'
 }

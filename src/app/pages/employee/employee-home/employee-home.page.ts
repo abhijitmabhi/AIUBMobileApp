@@ -64,17 +64,19 @@ export class EmployeeHomePage implements OnInit {
   ) {
   }
 
+  
+  ngOnInit() {
+  }
+
   ionViewWillEnter() {
-    if(this.dataService.isFirstTime){
       this.dataService.isFirstTime = false;
       this.pushNotification.getPlayerID();
       this.pushNotification.oneSignalSubscription();
       this.getUserWarningList();
-      this.getClassSchedule();
+      this.getClassSchedule(); 
       this.getCurrentUserInfo();
       this.getUserProfileImage();
       this.getSemesterList();
-    }
   }
 
   private currentDateTime = new Date();
@@ -334,8 +336,8 @@ export class EmployeeHomePage implements OnInit {
 
   /* Refresh the whole page */
 
-  doRefresh(event) {
-    this.ngOnInit();
+  doRefresh(event){
+    this.ionViewWillEnter();
     event.target.complete();
   }
 }
