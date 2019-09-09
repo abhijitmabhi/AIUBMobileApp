@@ -9,6 +9,10 @@
 </ion-header>
 
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
     <ion-progress-bar [hidden]="studentList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
     <div *ngIf="!studentList">
         <ion-list>

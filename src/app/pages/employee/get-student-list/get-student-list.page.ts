@@ -40,4 +40,9 @@ export class GetStudentListPage implements OnInit {
     });
   }
 
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
+  }
+
 }
