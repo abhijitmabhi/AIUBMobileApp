@@ -26,6 +26,14 @@ export class GetStudentListPage implements OnInit {
       this.sectionService.getStudentBySection(this.sectionId, 0 , 100).subscribe(res => {
         this.studentList = res.Data;
         this.studentCount = res.Count;
+
+        this.studentList.forEach(element => {
+          this.sectionService.GetStudentPhoto(element.User.PictureLocation).subscribe(res => {
+            // console.log(res);
+            element.User.PictureLocation = res;
+          })
+        });
+
         console.log(this.studentList);
         this.loadingService.loadingDismiss();
       });

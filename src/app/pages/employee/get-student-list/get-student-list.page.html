@@ -36,19 +36,18 @@
       <ion-label color="dark">Total Student: {{studentCount}}</ion-label>
     </ion-chip>
 
-    <span *ngFor="let stdList of studentList">
+    <span *ngFor="let student of studentList">
       <ion-item >
           <ion-thumbnail slot="end">
-              <ion-img class="Picture" src="{{'data:image/jpg;base64,' + stdList.PictureAsBase64}}"></ion-img>
+              <ion-img class="Picture" src="{{'data:image/jpg;base64,' + student.User.PictureLocation}}"></ion-img>
           </ion-thumbnail>
           <ion-label class="ion-text-wrap">
-            <h2 >{{stdList?.Student?.FullName}}
-                <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success" [hidden]="!stdList.Valid"></ion-icon>
-                <ion-icon name="ios-alert" class="courseIcon" color="warning" [hidden]="stdList.Valid"></ion-icon>
+            <h2 >{{student?.User?.FullName}}
+                <ion-icon name="ios-checkmark-circle" class="courseIcon" color="success"></ion-icon>
             </h2>
-            <p >{{stdList?.Student?.StudentID}}</p>
-            <p >CGPA: {{stdList?.Student?.Cgpa}} Credit Completed: {{stdList?.Student?.CreditCompleted}}</p>
-            <p >Program: {{stdList?.Student?.ShortProgram}}</p>
+            <p >{{student?.StudentID}}</p>
+            <p >CGPA: {{student?.Cgpa}} Credit Completed: {{student?.CreditCompleted}}</p>
+            <p >Program: {{student?.Major?.Title}}</p>
           </ion-label>
         </ion-item>
       </span>

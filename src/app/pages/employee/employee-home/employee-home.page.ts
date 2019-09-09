@@ -63,20 +63,22 @@ export class EmployeeHomePage implements OnInit {
     private dataService: DataService
   ) {
   }
-
   
   ngOnInit() {
+    this.pushNotification.getPlayerID();
+    this.pushNotification.oneSignalSubscription();
+    this.getUserWarningList();
+    this.getClassSchedule(); 
+    this.getCurrentUserInfo();
+    this.getUserProfileImage();
+    this.getSemesterList();
   }
 
   ionViewWillEnter() {
+    if(this.dataService.isFirstTime){
       this.dataService.isFirstTime = false;
-      this.pushNotification.getPlayerID();
-      this.pushNotification.oneSignalSubscription();
-      this.getUserWarningList();
-      this.getClassSchedule(); 
-      this.getCurrentUserInfo();
-      this.getUserProfileImage();
-      this.getSemesterList();
+      this.ngOnInit();
+    }
   }
 
   private currentDateTime = new Date();

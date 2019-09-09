@@ -17,4 +17,8 @@ export class EmployeeSectionService {
   public getStudentBySection(sectionId:number, page:number, pageSize:number): Observable<IResult> {
     return this.httpClient.get<IResult>(`Section/GetStudentList?sectionID=${sectionId}&page=${page}&pageSize=${pageSize}`);
   }
+
+  public GetStudentPhoto(picPath: string){
+    return this.httpClient.get(`Section/GetStudentPhoto?picPath=${picPath}`);
+  }
 }
