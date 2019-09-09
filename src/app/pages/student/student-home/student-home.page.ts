@@ -65,16 +65,21 @@ export class StudentHomePage implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  ionViewWillEnter(){
-      this.dataService.isFirstTime = false;
+    if(!this.dataService.isFirstTime){
       this.pushNotification.getPlayerID();
       this.pushNotification.oneSignalSubscription();
       this.getSemesterList();
       this.getClassSchedule();
       this.getCurrentUserInfo();
       this.getUserProfileImage();
+    }
+  }
+
+  ionViewWillEnter(){
+      if(this.dataService.isFirstTime){
+        this.dataService.isFirstTime = false;
+        this.ngOnInit();
+      }
   }
 
   /* Student Profile Picture */

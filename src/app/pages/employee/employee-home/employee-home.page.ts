@@ -65,13 +65,15 @@ export class EmployeeHomePage implements OnInit {
   }
   
   ngOnInit() {
-    this.pushNotification.getPlayerID();
-    this.pushNotification.oneSignalSubscription();
-    this.getUserWarningList();
-    this.getClassSchedule(); 
-    this.getCurrentUserInfo();
-    this.getUserProfileImage();
-    this.getSemesterList();
+    if(!this.dataService.isFirstTime){
+      this.pushNotification.getPlayerID();
+      this.pushNotification.oneSignalSubscription();
+      this.getUserWarningList();
+      this.getClassSchedule(); 
+      this.getCurrentUserInfo();
+      this.getUserProfileImage();
+      this.getSemesterList();
+    }
   }
 
   ionViewWillEnter() {
