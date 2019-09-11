@@ -146,7 +146,7 @@ export class EmployeeHomePage implements OnInit {
   }
 
   getUserProfileImage() {
-    this.profileService.getImage().subscribe(response => {
+    this.commonService.getImage().subscribe(response => {
       this.profileImageLoaded = true;
       this.userImage = response;
     })

@@ -85,7 +85,7 @@ export class StudentHomePage implements OnInit {
   /* Student Profile Picture */
 
   getUserProfileImage() {
-    this.studentProfileService.getImage().subscribe(response => {
+    this.commonService.getImage().subscribe(response => {
       this.profileImageLoaded = true;
       this.userImage = response;
     })

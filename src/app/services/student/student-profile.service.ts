@@ -11,12 +11,9 @@ export class StudentProfileService {
 
   constructor(public httpClient: HttpClient) { }
   
-  public getEmployeeProfile(): Observable<IResult> {
+  public getStudentProfile(): Observable<IResult> {
     return this.httpClient.get<IResult>(`Student/GetStudentProfile`);
   }
 
-  public getImage(): Observable<any> {
-    return this.httpClient.get<any>(`Common/GetProfileImage`);
-  }
 }
 

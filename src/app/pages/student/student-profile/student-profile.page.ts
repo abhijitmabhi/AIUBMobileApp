@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentProfileService } from '../../../services/student/student-profile.service';
 import { LoadingService } from '../../../core/loader/loading.service';
 import { AlertService } from '../../../core/alert/alert.service';
+import { CommonService } from 'src/app/services/common/common.service';
 
 @Component({
   selector: 'app-student-profile',
@@ -23,7 +24,8 @@ export class StudentProfilePage implements OnInit {
   constructor(
     private profileService: StudentProfileService,
     private loadingService: LoadingService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private commonService: CommonService
   ) {}
 
   ngOnInit() {
@@ -48,7 +50,7 @@ export class StudentProfilePage implements OnInit {
 
   getProfile() {
     this.loadingService.loadingStart();
-    this.profileService.getEmployeeProfile().subscribe(res => {
+    this.profileService.getStudentProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
     },
@@ -59,7 +61,7 @@ export class StudentProfilePage implements OnInit {
   }
 
   getUserProfileImage() {
-    this.profileService.getImage().subscribe(res => {
+    this.commonService.getImage().subscribe(res => {
       this.userImage = res;
     })
   }

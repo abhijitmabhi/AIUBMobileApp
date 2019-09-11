@@ -39,6 +39,10 @@ export class CommonService {
     return this.httpClient.get<IResult>(`Student/GetCourseList?semesterID=${semesterId}`);
   }
 
+  public getImage(): Observable<any> {
+    return this.httpClient.get<any>(`Common/GetProfileImage`);
+  }
+
   public saveUserFeedback(objFeedback){
     const dt = new HttpParams()
     .set('TypeID', objFeedback.TypeID)

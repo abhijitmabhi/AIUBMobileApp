@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { EmployeeProfileService } from '../../../services/employee/employee-profile.service';
 import { LoadingService } from '../../../core/loader/loading.service';
 import { AlertService } from '../../../core/alert/alert.service';
+import { CommonService } from 'src/app/services/common/common.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -26,7 +27,8 @@ export class EmployeeProfilePage implements OnInit {
     private router: Router,
     private profileService: EmployeeProfileService,
     private loadingService: LoadingService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private commonService: CommonService
   ) {
    }
 
@@ -69,7 +71,7 @@ export class EmployeeProfilePage implements OnInit {
   }
 
   getUserProfileImage() {
-    this.profileService.getImage().subscribe(res => {
+    this.commonService.getImage().subscribe(res => {
       this.userImage = res;
     })
   }
