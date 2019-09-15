@@ -3,25 +3,24 @@ import { ModalController, NavParams, Platform } from '@ionic/angular';
 import { DataService } from '../../core/dataService/data-service.service';
 
 @Component({
-  selector: 'app-notice-details',
-  templateUrl: './notice-details.html',
-  styleUrls: ['./notice-details.scss'],
+  selector: 'app-student-details',
+  templateUrl: './student-details.component.html',
+  styleUrls: ['./student-details.component.scss'],
 })
-export class NoticeDetails implements OnInit {
-  title: string;
-  message: string;
-  time: string;
+export class StudentDetailsComponent implements OnInit {
+  Name: any;
+  ID: any;
   backButtonAction: any;
 
-  constructor(private modalController: ModalController, private navParams: NavParams, private dataService: DataService, private platform: Platform) {
+  constructor(private modalController: ModalController, private navParams: NavParams, private platform: Platform, private dataService: DataService) {
     this.backButtonAction = this.platform.backButton.subscribeWithPriority(0, () => {
+      this.CloseModal();
     });
   }
 
   ngOnInit() {
-    this.title = this.navParams.data.Title;
-    this.message = this.navParams.data.Message;
-    this.time = this.navParams.data.Time;
+    this.Name = this.navParams.data.Name;
+    this.ID = this.navParams.data.ID;
   }
 
   async CloseModal() {

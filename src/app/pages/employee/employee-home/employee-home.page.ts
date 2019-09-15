@@ -123,6 +123,7 @@ export class EmployeeHomePage implements OnInit {
         }
         else {
           this.noLeave = false;
+          console.log(this.leaveAllocationData);
           this.createPieChart();
         }
       }
@@ -308,7 +309,7 @@ export class EmployeeHomePage implements OnInit {
           data: this.leaveAllocationData.ChartData.ChartValues,
           backgroundColor: this.leaveAllocationData.ChartData.ChartColors,
           borderColor: 'rgb(237, 246, 255)',// array should have same number of elements as number of dataset
-          borderWidth: 0
+          borderWidth: 2
         }]
       },
       options: {

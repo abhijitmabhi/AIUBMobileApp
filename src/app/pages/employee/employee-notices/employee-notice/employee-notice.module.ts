@@ -4,9 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
 import { EmployeeNoticePage } from './employee-notice.page';
 import { ModalsModule } from 'src/app/modals/modals.module';
 import { NotificationDetails } from 'src/app/modals/notification-details/notification-details';

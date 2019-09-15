@@ -293,9 +293,31 @@
       </ion-list>
     </div>
 
-    <div [hidden]="teacherFlag" style="padding: 5px; text-align: center;">
+    <div [hidden]="teacherFlag" style="padding: 5px; text-align: center;" *ngIf="leaveAllocationData">
+      <ion-row [hidden]="noLeave">
+        <ion-col class="label-col">
+          <ion-label>Total Leave</ion-label>
+        </ion-col>
+        <ion-col class="separator-col">
+          <ion-label>:</ion-label>
+        </ion-col>
+        <ion-col class="value-col">
+          <ion-label>{{ leaveAllocationData?.TotalLeave }}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row [hidden]="noLeave">
+        <ion-col class="label-col">
+          <ion-label>Leave Available</ion-label>
+        </ion-col>
+        <ion-col class="separator-col">
+          <ion-label>:</ion-label>
+        </ion-col>
+        <ion-col class="value-col">
+          <ion-label>{{ leaveAllocationData?.TotalLeaveAvailable }}</ion-label>
+        </ion-col>
+      </ion-row>
       <canvas #pieChart [hidden]="noLeave"></canvas>
-      <p>
+      <p [hidden]="!noLeave">
         <b>
           No Allocation Found!
         </b>
