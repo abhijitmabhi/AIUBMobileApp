@@ -31,7 +31,6 @@ export class GetStudentListPage implements OnInit {
       this.sectionService.getStudentBySection(this.sectionId, 0, 100).subscribe(res => {
         this.studentList = res.Data;
         this.studentCount = res.Count;
-<<<<<<< Updated upstream
 
         this.studentList.forEach(element => {
           this.sectionService.GetStudentPhoto(element.User.PictureLocation).subscribe(res => {
@@ -41,30 +40,26 @@ export class GetStudentListPage implements OnInit {
         });
 
         console.log(this.studentList);
-=======
->>>>>>> Stashed changes
         this.loadingService.loadingDismiss();
       });
     });
   }
 
-<<<<<<< Updated upstream
   doRefresh(event){
     this.ngOnInit();
     event.target.complete();
   }
 
-}
-=======
-  //MODAL
-  viewStudentDetails(stdList: any) {
+   //MODAL
+   viewStudentDetails(stdList: any) {
     this.dataService.isModalOn = true;
+    console.log(stdList);
     this.modalController.create({
       component: StudentDetailsComponent,
       componentProps: {
-        Name: stdList.Student.FullName,
-        ID: stdList.Student.StudentID,
-        Image: stdList.PictureAsBase64
+        Name: stdList.User.FullName,
+        ID: stdList.StudentID,
+        Image: stdList.User.PictureLocation
       },
       cssClass: 'popup-modal-css',
       backdropDismiss: false,
@@ -72,5 +67,5 @@ export class GetStudentListPage implements OnInit {
       modal.present();
     });
   }
+
 }
->>>>>>> Stashed changes
