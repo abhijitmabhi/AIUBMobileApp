@@ -137,21 +137,24 @@ export class StudentHomePage implements OnInit {
   getSemesterList(){
     this.commonService.semesterList().subscribe(semesterLists => {
       this.semesterList = semesterLists.Data;
-      this.commonService.currentSemester().subscribe(currentSemester => {
-        let currentSemesterId = currentSemester.Data.ID;
-        let isCurrentSemesterEnrolled = false;
+      let currentSemesterId;
+      let isCurrentSemesterEnrolled = false;
+
+      if (this.semesterList.length != 0) {
         this.semesterList.forEach(semester => {
-          if(semester.ID === currentSemesterId){
+          if (semester.IsCurrent === true) {
+            currentSemesterId = semester.ID;
             isCurrentSemesterEnrolled = true;
           }
         });
-        if(isCurrentSemesterEnrolled){
+        if (isCurrentSemesterEnrolled) {
           this.nrSelect = currentSemesterId;
-        }else {
+        } else {
           this.nrSelect = this.semesterList[0].ID;
         }
         this.onChangeSemester();
-      })
+      }
+
     });
     
   }

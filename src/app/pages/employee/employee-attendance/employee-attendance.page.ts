@@ -77,6 +77,7 @@ export class EmployeeAttendancePage implements OnInit {
     if (this.nrSelect !== null && this.nrSelect !== undefined && this.nrSelect !== "") {
       this.employeeAttendanceService.getAttendance(this.nrSelect).subscribe(res => {
         this.attendanceList = res.Data;
+        console.log(this.attendanceList);
         setTimeout(() => {
           this.scroll("scroll_here");
         }, 1000);
