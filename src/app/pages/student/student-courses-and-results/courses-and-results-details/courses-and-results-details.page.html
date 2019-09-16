@@ -40,9 +40,9 @@
           <mat-divider></mat-divider>
         </ion-row>
         <ion-row>
-          <mat-expansion-panel [expanded]="isExpanded(numberOfTeachers)" style="width:100%;" class="mat-elevation-z0">
+          <mat-expansion-panel [expanded]="true" style="width:100%;" class="mat-elevation-z0" hideToggle="true">
             <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'"
-              style="padding: 0px; height: auto;">
+              style="padding: 0px; height: auto; font-size: 14px;">
               Course Teacher(s):
             </mat-expansion-panel-header>
             <div *ngIf="numberOfTeachers != 0">
@@ -61,7 +61,7 @@
     </mat-card>
   </div>
   <div class="background-div">
-    <mat-expansion-panel style="padding-top:2%; padding-bottom: 2%;" [expanded]="true">
+    <mat-expansion-panel style="padding-top:2%; padding-bottom: 2%;" [expanded]="true"  hideToggle="{{!midtermResult?.Components.length > 0}}">
       <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'" class="menuTileHeader">
         <div class="term-head1">
           <div class="exam-title">
@@ -103,7 +103,7 @@
     </mat-expansion-panel>
   </div>
   <div class="background-div">
-    <mat-expansion-panel style="padding-top:2%; padding-bottom: 2%;" [expanded]="true">
+    <mat-expansion-panel style="padding-top:2%; padding-bottom: 2%;" [expanded]="true" hideToggle="{{!finaltermResult?.Components.length > 0}}">
       <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'" class="menuTileHeader">
         <div class="term-head1">
           <div class="exam-title">
