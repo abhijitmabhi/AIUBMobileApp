@@ -53,7 +53,6 @@ export class StudentProfilePage implements OnInit {
     this.profileService.getStudentProfile().subscribe(res => {
       this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
-      console.log(this.studentProfile);
     },
       error => {
         this.loadingService.loadingDismiss();

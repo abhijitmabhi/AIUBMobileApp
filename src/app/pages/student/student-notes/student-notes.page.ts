@@ -15,6 +15,8 @@ import { ToastService } from '../../../core/toast/toast.service';
 export class StudentNotesPage implements OnInit {
   sectionId:any;
   noteList:any[] = [];
+  extraData: any;
+  flag: boolean = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
@@ -35,7 +37,11 @@ export class StudentNotesPage implements OnInit {
       this.notesService.getNotesBySection(this.sectionId,0,100).subscribe(res => {
         this.loadingService.loadingDismiss();
         if(res && !res.HasError){
+          this.extraData = res.ExtraData;
           if(res.Data){
+            if(res.Count == 0){
+              this.flag = true;
+            }
             let Data = res.Data;
             this.noteList = Data.reverse();
           }

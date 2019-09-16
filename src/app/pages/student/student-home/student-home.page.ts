@@ -137,6 +137,7 @@ export class StudentHomePage implements OnInit {
   getSemesterList(){
     this.commonService.semesterList().subscribe(semesterLists => {
       this.semesterList = semesterLists.Data;
+      this.semesterList.reverse();
       let currentSemesterId;
       let isCurrentSemesterEnrolled = false;
 

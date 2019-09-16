@@ -15,6 +15,8 @@ export class StudentNoticePage implements OnInit {
 
   sectionId:any;
   notices:any[] = [];
+  extraData: any;
+  flag: boolean = false;
   constructor(
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
@@ -31,11 +33,16 @@ export class StudentNoticePage implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.loadingService.loadingStart();
       this.sectionId = params['sectionId'];
-      this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(data => {
+      this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(res => {
         this.loadingService.loadingDismiss();
-        if(data && !data.HasError){
-          if(data.Data){
-            let Data = data.Data;
+        this.extraData = res.ExtraData;
+        if(res && !res.HasError){
+          if(res.Data){
+            if(res.Count == 0){
+              this.flag = true;
+            }
+           
+            let Data = res.Data;
             this.notices = Data.reverse();
           }
         }

@@ -26,10 +26,9 @@ export class StudentMenuPage implements OnInit {
   logout(){
     this.loadingService.loadingStart();
     this.loginService.logMeOut(this.playerId).subscribe(res => {
-      localStorage.clear();
-      this.loadingService.loadingDismiss();
-      this.router.navigate(['']);
     });
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
 }

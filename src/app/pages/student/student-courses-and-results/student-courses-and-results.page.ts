@@ -86,7 +86,6 @@ export class StudentCoursesAndResultsPage implements OnInit {
           return obj;
         });
         this.courseList = course;
-        console.log(this.courseList);
       });
     }
 
