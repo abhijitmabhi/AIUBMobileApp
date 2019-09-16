@@ -188,7 +188,7 @@ export class EmployeeHomePage implements OnInit {
 
   getSemesterList() {
     this.employeeHomeService.getEmployeeSemesterList().subscribe(semesterLists => {
-      this.semesterList = semesterLists.Data;
+      this.semesterList = semesterLists.Data.reverse();
       let currentSemesterId;
       let isCurrentSemesterEnrolled = false;
       // console.log(this.semesterList);

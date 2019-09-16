@@ -14,7 +14,7 @@
 
   <!-- <ion-button (click)="redirectToFeedback()">Feedback</ion-button> -->
 
-  <ion-card button="true" color="warning">
+  <ion-card button="true" color="warning" [hidden]="true">
     <ion-card-header>
       <ion-card-subtitle>Message <ion-icon name="mail"></ion-icon>
       </ion-card-subtitle>
@@ -26,13 +26,65 @@
             </ion-card-content> -->
   </ion-card>
 
-  <ion-card button="true" color="success" (click)="goToDepartmentLeaveCalendar()">
+  <!-- <ion-card button="true" color="success" (click)="goToDepartmentLeaveCalendar()">
     <ion-card-header>
       <ion-card-subtitle>Department Leave Calendar <ion-icon name="calendar"></ion-icon>
       </ion-card-subtitle>
       <ion-card-title>Moja hobe!</ion-card-title>
     </ion-card-header>
-  </ion-card>
+  </ion-card> -->
+
+  <!-- Manage Leave Manu -->
+  <ion-row class="horizontalListMenu">
+    <ion-item-divider>
+      <div class="package-rating-detail">
+        <mat-icon class="material-icons menuDividerIcon">notes</mat-icon>
+        <label class="menuDividerTile">Manage Leave</label>
+      </div>
+    </ion-item-divider>
+    <div class="scrolling-wrapper">
+      <div class="card firstCard">
+        <div class="menu-div">
+          <ion-card class="ion-activatable horizontalMenuCard" button="true" (click)="goToDepartmentLeaveCalendar()">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-card-header class="subMenuHeader">
+              <ion-card-title class="hTitle">
+                <ion-icon class="subMenuIcon" name="ios-stats"></ion-icon>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="menu-card-content">
+              <div class="icContent">
+                <span class="menu-title">Dept. Leave Calendar</span>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="menu-div">
+          <ion-card class="ion-activatable horizontalMenuCard">
+            <ion-ripple-effect></ion-ripple-effect>
+            <ion-card-header class="subMenuHeader">
+              <ion-card-title class="hTitle">
+                <ion-icon class="subMenuIcon" name="ios-list-box"></ion-icon>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="menu-card-content">
+              <div class="icContent">
+                <span class="menu-title">Application</span>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+    </div>
+  </ion-row>
+
+
+
+
 
   <span [hidden]="true">
     <!-- Academics Manu -->

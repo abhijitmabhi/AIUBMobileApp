@@ -59,13 +59,10 @@ export class EmployeeProfilePage implements OnInit {
   }
 
   getProfile() {
-    this.loadingService.loadingStart();
     this.profileService.getEmployeeProfile().subscribe(res => {
-      this.loadingService.loadingDismiss();
       this.employeeProfile = res.Data;
     },
       error => {
-        this.loadingService.loadingDismiss();
         this.alertService.alertError("Something went wrong");
       });
   }

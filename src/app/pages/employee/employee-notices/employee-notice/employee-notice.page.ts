@@ -29,10 +29,8 @@ export class EmployeeNoticePage implements OnInit {
 
   getSectionNoticesByID() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.loadingService.loadingStart();
       this.sectionId = params['sectionId'];
       this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(data => {
-        this.loadingService.loadingDismiss();
         if(data && !data.HasError){
           if(data.Data){
             let Data = data.Data;

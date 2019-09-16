@@ -41,10 +41,7 @@ export class EmployeeAttendancePage implements OnInit {
   }
 
   isExpanded(attendanceDate, today) {
-    let res = attendanceDate == today ? true : false;
-    if(res){
-      // this.content.scrollTo(0, this.target.nativeElement.offsetTop, 500);
-    }  
+    let res = this.datePipe.transform(attendanceDate, 'dd-MMM-yyyy') == today ? true : false;
     return res;
   }
 
@@ -94,12 +91,8 @@ export class EmployeeAttendancePage implements OnInit {
     event.target.complete();
   }
 
-  // ngAfterViewInit() {
-  //   this.scroll("panel-10");
-  // }
-  
   scroll(id) {
-    console.log(`scrolling to ${id}`);
+    // console.log(`scrolling to ${id}`);
     let el = document.getElementById(id);
     if(el) {
       el.scrollIntoView({

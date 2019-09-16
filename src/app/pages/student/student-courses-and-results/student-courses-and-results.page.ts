@@ -52,6 +52,7 @@ export class StudentCoursesAndResultsPage implements OnInit {
 
       //get all semesters
       this.semesterList = semesterLists.Data;
+      this.semesterList.reverse();
 
       //get current semester if exist
       this.commonService.currentSemester().subscribe(currentSemester => {

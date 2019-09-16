@@ -10,7 +10,7 @@ import { LoadingService } from '../../../core/loader/loading.service';
 })
 export class EmployeeClassSchedulePage implements OnInit {
 
-  classSchedules: any;
+  classSchedules: any[] = [];
 
   constructor(
     private datePipe: DatePipe,
@@ -31,20 +31,16 @@ export class EmployeeClassSchedulePage implements OnInit {
     let currentDateTime = new Date();
     let fromDateTime = this.datePipe.transform(currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
     let toDateTime = this.datePipe.transform(currentDateTime.setDate(currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
-    this.loadingService.loadingStart();
     this.classSceduleService.getTeacherClassSchedule(fromDateTime, toDateTime).subscribe(response => {
-      this.loadingService.loadingDismiss();
       let result = response;
       if(result.HasError){
-        console.log(result.Messages);
       }else{
         this.classSchedules = result.Data;
       }
     },
       error => {
-        this.loadingService.loadingDismiss();
         let errorResponse = error;
-        console.log(errorResponse.error.Message);
+        // console.log(errorResponse.error.Message);
     });
   }
 

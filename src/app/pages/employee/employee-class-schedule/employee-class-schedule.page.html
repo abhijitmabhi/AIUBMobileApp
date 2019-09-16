@@ -16,7 +16,27 @@
     refreshingSpinner="circles">
   </ion-refresher-content>
     </ion-refresher>
-
+    <ion-progress-bar *ngIf="classSchedules.length == 0" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+    <div *ngIf="classSchedules.length == 0">
+      <ion-list>
+        <ion-item *ngFor="let item of [].constructor(10)">
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
   <!-- Class Schedule -->
  <ion-row class="ClassSchedule">
     <ion-item-divider style="padding-left: 2px;">

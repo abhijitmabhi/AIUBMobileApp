@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-progress-bar [hidden]="studentList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
-  <div *ngIf="!studentList">
+  <ion-progress-bar *ngIf="studentList.length == 0" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+  <div *ngIf="studentList.length == 0">
     <ion-list>
       <ion-item *ngFor="let item of [].constructor(10)">
         <ion-thumbnail slot="start">
@@ -48,7 +48,7 @@
             {{student?.User?.FullName}}
           </h2>
           <p>{{student?.StudentID}}</p>
-          <p>CGPA: {{student?.Cgpa}} Credit Completed: {{student?.CreditCompleted}}</p>
+          <p>CGPA: {{student?.CGPA}} Credit Completed: {{student?.CreditCompleted}}</p>
           <p>Program: {{student?.Major?.Title}}</p>
         </ion-label>
       </ion-item>

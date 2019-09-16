@@ -1,31 +1,52 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button text=""></ion-back-button>
-      </ion-buttons>
-      <ion-title>Notice</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notice</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content refreshingSpinner="circles">
-        </ion-refresher-content>
-    </ion-refresher>
-    <ion-fab class="fabButton" vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="Upload()">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <ion-list style="padding: 0px;">
-        <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
-          <ion-thumbnail slot="start">
-            <img src="assets/icon/reminder.png">
-          </ion-thumbnail>
-          <ion-label>
-            <h2>{{notice.Subject}}</h2>
-            <p>{{notice.PostDate}}</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-progress-bar *ngIf="notices.length == 0" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+  <div *ngIf="notices.length == 0">
+    <ion-list>
+      <ion-item *ngFor="let item of [].constructor(10)">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-fab class="fabButton" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="Upload()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list style="padding: 0px;">
+    <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
+      <ion-thumbnail slot="start">
+        <img src="assets/icon/reminder.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{notice.Subject}}</h2>
+        <p>{{notice.PostDate}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

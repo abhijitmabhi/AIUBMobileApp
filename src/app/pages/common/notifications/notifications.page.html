@@ -12,7 +12,8 @@
       <ion-refresher-content refreshingSpinner="circles">
       </ion-refresher-content>
     </ion-refresher>
-  <div *ngIf="!notificationList">
+    <ion-progress-bar *ngIf="notificationList.length == 0" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+  <div *ngIf="notificationList.length == 0">
     <ion-list>
       <ion-item *ngFor="let item of [].constructor(10)">
         <ion-thumbnail slot="start">

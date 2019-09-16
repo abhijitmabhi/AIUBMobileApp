@@ -24,11 +24,13 @@ export class StudentMenuPage implements OnInit {
   }
 
   logout(){
-    this.loadingService.loadingStart();
     this.loginService.logMeOut(this.playerId).subscribe(res => {
+      localStorage.clear();
+      this.router.navigate(['']);
+    },err =>{
+      localStorage.clear();
+      this.router.navigate(['']);
     });
-    localStorage.clear();
-    this.router.navigate(['']);
   }
 
 }

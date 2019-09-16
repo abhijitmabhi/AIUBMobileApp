@@ -66,10 +66,10 @@
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}"
     *ngFor="let attendance of attendanceList?.AttendanceDetails" id="{{isExpanded(attendance?.Date, today) ? 'scroll_here' : ''}}">
 
-    <mat-expansion-panel-header [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == '' && attendance?.AllShift == 0 ? 'red' : '',
+    <mat-expansion-panel-header [ngStyle]="{'color': isCurrentPayroll && attendance?.Date < today && attendance?.InOut == ''  ? 'red' : '',
                 'background-color': isExpanded(attendance?.Date, today) ? '#f4f5f8' : ''}">
               
-      <div class="attendance-list-head1">{{attendance?.Date| date:'dd-MMM-yyyy'}}</div>
+      <div class="attendance-list-head1">{{attendance?.Date | date:'dd-MMM-yyyy'}}</div>
       <div class="attendance-list-head1">{{attendance?.Date | date:'E'}}</div>
       <div class="attendance-list-head2">{{attendance?.AllShift}}</div>
       <!-- <div class="attendance-list-head3">{{attendance?.Filo}}</div> -->
