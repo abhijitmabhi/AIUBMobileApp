@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: 'employee-notice/:sectionId', loadChildren: './pages/employee/employee-notices/employee-notice/employee-notice.module#EmployeeNoticePageModule' },
   { path: 'employee-notes/:sectionId', loadChildren: './pages/employee/employee-note/employee-notes/employee-notes.module#EmployeeNotesPageModule' },
   // { path: 'employee-notes', loadChildren: './pages/employee/employee-note/employee-notes/employee-notes.module#EmployeeNotesPageModule' },
+  { path: 'employee-department-leave-calendar', loadChildren: './pages/employee/employee-department-leave-calendar/employee-department-leave-calendar.module#EmployeeDepartmentLeaveCalendarPageModule' },
+
 
 
   //Student
@@ -24,7 +26,9 @@ const routes: Routes = [
 
   // common
   { path: 'notifications', loadChildren: './pages/common/notifications/notifications.module#NotificationsPageModule' },
-  { path: 'user-feedback', loadChildren: './pages/common/user-feedback/user-feedback.module#UserFeedbackPageModule' }
+  { path: 'user-feedback', loadChildren: './pages/common/user-feedback/user-feedback.module#UserFeedbackPageModule' },
+
+
 
 
 

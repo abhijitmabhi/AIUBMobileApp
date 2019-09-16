@@ -3,38 +3,47 @@
     <ion-title>More</ion-title>
 
     <ion-buttons slot="secondary">
-        <ion-button (click)="logout()">
-          <ion-icon slot="icon-only" name="ios-log-out"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="ios-log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <!-- <ion-button (click)="redirectToFeedback()">Feedback</ion-button> -->
+  <!-- <ion-button (click)="redirectToFeedback()">Feedback</ion-button> -->
 
-    <ion-card button="true" color="warning">
-        <ion-card-header>
-          <ion-card-subtitle>Message   <ion-icon name="mail"></ion-icon></ion-card-subtitle>
-          <ion-card-title>More features are coming soon!</ion-card-title>
-        </ion-card-header>
-        <!-- <ion-card-content>
+  <ion-card button="true" color="warning">
+    <ion-card-header>
+      <ion-card-subtitle>Message <ion-icon name="mail"></ion-icon>
+      </ion-card-subtitle>
+      <ion-card-title>More features are coming soon!</ion-card-title>
+    </ion-card-header>
+    <!-- <ion-card-content>
               Keep close to Nature's heart... and break clear away, once in awhile,
               and climb a mountain or spend a week in the woods. Wash your spirit clean.
             </ion-card-content> -->
-      </ion-card>
+  </ion-card>
 
-    <span [hidden]="true">
+  <ion-card button="true" color="success" (click)="goToDepartmentLeaveCalendar()">
+    <ion-card-header>
+      <ion-card-subtitle>Department Leave Calendar <ion-icon name="calendar"></ion-icon>
+      </ion-card-subtitle>
+      <ion-card-title>Moja hobe!</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <span [hidden]="true">
     <!-- Academics Manu -->
     <mat-expansion-panel class="menuTile">
       <mat-expansion-panel-header class="menuTileHeader">
-          <mat-panel-title class="menuTileHeaderTitle">
-            <div class="package-rating-detail">
-              <mat-icon class="material-icons">insert_chart</mat-icon>
-              <label>Academics</label>
-            </div>
-          </mat-panel-title>
+        <mat-panel-title class="menuTileHeaderTitle">
+          <div class="package-rating-detail">
+            <mat-icon class="material-icons">insert_chart</mat-icon>
+            <label>Academics</label>
+          </div>
+        </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description class="subMenuPanel">
         <ion-row>
@@ -55,7 +64,7 @@
               </ion-card>
             </div>
           </ion-col>
-          
+
           <ion-col>
             <div class="menu-div">
               <ion-card class="ion-activatable">
@@ -93,7 +102,7 @@
               </ion-card>
             </div>
           </ion-col>
-          
+
           <ion-col>
             <!-- <div class="menu-div">
               <ion-card class="ion-activatable">
@@ -118,12 +127,12 @@
     <!-- Attendance Manu -->
     <mat-expansion-panel class="menuTile">
       <mat-expansion-panel-header class="menuTileHeader">
-          <mat-panel-title class="menuTileHeaderTitle">
-            <div class="package-rating-detail">
-              <mat-icon class="material-icons">fingerprint</mat-icon>
-              <label>Attendance</label>
-            </div>
-          </mat-panel-title>
+        <mat-panel-title class="menuTileHeaderTitle">
+          <div class="package-rating-detail">
+            <mat-icon class="material-icons">fingerprint</mat-icon>
+            <label>Attendance</label>
+          </div>
+        </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-panel-description class="subMenuPanel">
         <ion-row>
@@ -147,7 +156,7 @@
               </ion-card>
             </div>
           </ion-col>
-          
+
           <ion-col>
             <div class="menu-div">
               <ion-card class="ion-activatable">
@@ -188,7 +197,7 @@
               </ion-card>
             </div>
           </ion-col>
-          
+
           <ion-col>
             <div class="menu-div">
               <ion-card class="ion-activatable">
@@ -213,10 +222,10 @@
     <!-- Manage Leave Manu -->
     <ion-row class="horizontalListMenu">
       <ion-item-divider>
-          <div class="package-rating-detail">
-              <mat-icon class="material-icons menuDividerIcon">notes</mat-icon>
-              <label class="menuDividerTile">Manage Leave</label>
-          </div>
+        <div class="package-rating-detail">
+          <mat-icon class="material-icons menuDividerIcon">notes</mat-icon>
+          <label class="menuDividerTile">Manage Leave</label>
+        </div>
       </ion-item-divider>
       <div class="scrolling-wrapper">
         <div class="card firstCard">
@@ -410,7 +419,7 @@
           Not Implemented Yet!
         </mat-panel-description>
     </mat-expansion-panel> -->
-  </span>  
+  </span>
 
   <!-- <ion-button (click)="showNotification()">Show Notification </ion-button> -->
 </ion-content>

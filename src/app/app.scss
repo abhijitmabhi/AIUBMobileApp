@@ -36,3 +36,40 @@ ion-modal.popup-modal-css {
 ion-toolbar {
   --color: var(--ion-color-primary-contrast);
 }
+
+/* for dept leave calendar */
+.monthview-current {
+  background-color: #388e3c !important;
+}
+
+.monthview-primary-with-event {
+  background-color: #0288d1 !important;
+}
+
+.monthview-selected {
+  background-color: #388e3c !important;
+}
+
+.monthview-datetable {
+  margin: 7px;
+}
+
+.deptLeaveAlert .alert-wrapper {
+  .alert-title {
+    text-align: center;
+  }
+  .alert-sub-title {
+    text-align: center;
+  }
+
+  .alert-message {
+    text-align: center;
+  }
+
+  .alert-button-inner {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+/* for dept leave calendar */

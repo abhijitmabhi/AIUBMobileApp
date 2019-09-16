@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Department Leave Calendar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Refresh Page-->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Skeleton Text Loading -->
+  <div *ngIf="!leaveMonths">
+    <ion-list>
+      <ion-item *ngFor="let item of [].constructor(4)">
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <!-- Dropdown Menu to Select Month -->
+  <div style="margin: 7px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;">
+    <ion-item style="width: 100%;">
+      <ion-label style="width:20%;">Select Month: </ion-label>
+      <ion-select width="100%" placeholder="Select Payroll" [(ngModel)]='selectedMonth' (ionChange)="onChangePayroll()">
+        <ion-select-option style="width: 100%;" *ngFor="let month of leaveMonths" [value]="month?.Id">
+          {{month?.Title}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <!-- Month & Year Title -->
+  <ion-row text-center class="month-title" style="font-size: 1.2em; margin: 7px;">
+    <ion-label color="primary">{{ viewTitle }}</ion-label>
+  </ion-row>
+
+  <!-- Template for Custom Design -->
+  <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate"
+    let-noEventsLabel=“noEventsLabel”>
+    <div style="width: 100%;" *ngIf="selectedDate.events.length == 0">
+      <div style="margin: 7px 7px 7px 7px;">
+        <mat-list>
+          <mat-list-item class="matListItem" style="height: auto;">
+            <div style="width: 100%;" class="day-title">
+              No Leave on This Day!
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+    <div style="width: 100%;" (click)="onEventSelected(event)" *ngFor="let event of selectedDate.events">
+      <div style=" margin: 7px 7px 0px 7px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;"
+        [ngStyle]="{'border-left': '3px solid' + event.color}">
+        <mat-list>
+          <mat-list-item class="matListItem" style="height: auto;">
+            <div style="width: 100%;" class="day-title">
+              {{event.title}}
+            </div>
+          </mat-list-item>
+          <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
+            <div>
+              <ion-text>
+                - On <b>{{event.desc}}</b>
+              </ion-text>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Calendar -->
+  <div>
+    <calendar [eventSource]="eventSource" [currentDate]="calendar.currentDate" [monthviewEventDetailTemplate]="template"
+      [lockSwipes]="SwipeLock" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
+      (onTimeSelected)="onTimeSelected($event)" startHour="6" endHour="20" step="30" startingDayWeek="1">
+    </calendar>
+  </div>
+</ion-content>

@@ -11,14 +11,14 @@ export const settings = {
     // tokenUrl:'http://172.16.22.117:60002/Token'
 
     //Abhi
-    baseUrl:'http://172.16.22.160:22420/api/',
-    tokenUrl:'http://172.16.22.160:11420/Token'
+    // baseUrl:'http://172.16.22.160:22420/api/',
+    // tokenUrl:'http://172.16.22.160:11420/Token'
 
      //Abhi
     // baseUrl:'http://172.16.22.160:6420/api/',
     // tokenUrl:'http://172.16.22.160:7420/Token'
 
     //Nayan
-    // baseUrl: 'http://localhost:22420/api/',
-    // tokenUrl: 'http://localhost:11420/Token'
+    baseUrl: 'http://localhost:22420/api/',
+    tokenUrl: 'http://localhost:11420/Token'
 }

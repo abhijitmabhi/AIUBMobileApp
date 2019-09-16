@@ -48,6 +48,7 @@
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-plugin-network-information": "^2.0.2",
     "core-js": "^2.5.4",
+    "ionic2-calendar": "^0.5.4",
     "onesignal-cordova-plugin": "^2.5.2",
     "rxjs": "^6.5.3",
     "tslib": "^1.9.0",

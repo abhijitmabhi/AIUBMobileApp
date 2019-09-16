@@ -39,4 +39,7 @@ export class EmployeeMenuPage implements OnInit {
     this.router.navigate(['user-feedback']);
   }
 
+  goToDepartmentLeaveCalendar(){
+    this.router.navigate(["/employee-department-leave-calendar"]);
+  }
 }
