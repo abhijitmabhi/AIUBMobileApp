@@ -58,7 +58,7 @@
   <div style="margin: 7px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;">
     <ion-item style="width: 100%;">
       <ion-label style="width:20%;">Select Month: </ion-label>
-      <ion-select width="100%" placeholder="Select Payroll" [(ngModel)]='selectedMonth' (ionChange)="onChangePayroll()">
+      <ion-select style="max-width: 100%;" placeholder="Select Payroll" [(ngModel)]='selectedMonth' (ionChange)="onChangePayroll()">
         <ion-select-option style="width: 100%;" *ngFor="let month of leaveMonths" [value]="month?.Id">
           {{month?.Title}}
         </ion-select-option>
@@ -67,7 +67,7 @@
   </div>
 
   <!-- Month & Year Title -->
-  <ion-row text-center class="month-title" style="font-size: 1.2em; margin: 7px;">
+  <ion-row text-center class="month-title" style="font-size: 1.2em; margin: 7px; font-weight: 600;">
     <ion-label color="primary">{{ viewTitle }}</ion-label>
   </ion-row>
 
@@ -75,7 +75,7 @@
   <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate"
     let-noEventsLabel=“noEventsLabel”>
     <div style="width: 100%;" *ngIf="selectedDate.events.length == 0">
-      <div style="margin: 7px 7px 7px 7px;">
+      <div style="margin: 7px;">
         <mat-list>
           <mat-list-item class="matListItem" style="height: auto;">
             <div style="width: 100%;" class="day-title">
@@ -86,15 +86,15 @@
       </div>
     </div>
     <div style="width: 100%;" (click)="onEventSelected(event)" *ngFor="let event of selectedDate.events">
-      <div style=" margin: 7px 7px 0px 7px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;"
+      <div style=" margin: 7px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;"
         [ngStyle]="{'border-left': '3px solid' + event.color}">
-        <mat-list>
+        <mat-list style="padding-bottom: 8px;">
           <mat-list-item class="matListItem" style="height: auto;">
             <div style="width: 100%;" class="day-title">
               {{event.title}}
             </div>
           </mat-list-item>
-          <mat-list-item class="matListItem" style="height: auto; padding-bottom: 1%;">
+          <mat-list-item class="matListItem" style="height: auto;">
             <div>
               <ion-text>
                 - On <b>{{event.desc}}</b>
