@@ -40,12 +40,15 @@ export class EmployeeDepartmentLeaveCalendarPage implements OnInit {
   constructor(public employeeDepartmentLeaveCalendar: EmployeeDepartmentLeaveCalendarService, private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
 
   ngOnInit() {
-    this.getleaveMonths();
-    this.formatData();
+    this.loadData(null);
   }
 
+  loadData(refresher){
+    this.getleaveMonths(refresher);
+  };
+
   //Leave Months from API
-  getleaveMonths() {
+  getleaveMonths(refresher) {
     this.employeeDepartmentLeaveCalendar.GetDepartmentLeaveMonths().subscribe(res => {
       if (res.HasError) {
         console.log("Error While Getting LeaveMonths Data!");
@@ -54,7 +57,7 @@ export class EmployeeDepartmentLeaveCalendarPage implements OnInit {
           this.leaveMonths = res.Data.reverse();
           var index = this.leaveMonths.findIndex(month => month.IsCurrent === true);
           this.selectedMonth = this.leaveMonths[index].Id;
-          this.getLeaves(this.selectedMonth);
+          this.getLeaves(refresher);
         } else {
           console.log("Empty Result for LeaveMonths Data!");
         }
@@ -63,22 +66,31 @@ export class EmployeeDepartmentLeaveCalendarPage implements OnInit {
   }
 
   //Leave Data from API
-  getLeaves(payrollId) {
-    this.employeeDepartmentLeaveCalendar.GetDepartmentLeaves(payrollId).subscribe(res => {
-      if (res.HasError) {
-        console.log("Error while getting Leave Data!");
-      }
-      else {
-        if (res.Data !== null && res.Data !== undefined && res.Data !== "") {
-          this.leaveData = [];
-          this.leaveData = res.Data;
-          this.eventSource = [];
-          this.eventSource = this.formatData();
-        } else {
-          console.log("Empty Result for Leave Data!");
+  getLeaves(refresher) {
+    if(this.selectedMonth > 0){
+      this.employeeDepartmentLeaveCalendar.GetDepartmentLeaves(this.selectedMonth).subscribe(res => {
+        if (res.HasError) {
+          console.log("Error while getting Leave Data!");
         }
-      }
-    });
+        else {
+          if (res.Data !== null && res.Data !== undefined && res.Data !== "") {
+            this.leaveData = [];
+            this.leaveData = res.Data;
+            this.eventSource = [];
+            this.eventSource = this.formatData();
+
+            if (refresher != null) {
+              /* setTimeout(()=>{
+                refresher.target.complete();
+              }, 3000); */
+              refresher.target.complete();
+            }
+          } else {
+            console.log("Empty Result for Leave Data!");
+          }
+        }
+      });
+    }
   }
 
   //leaveData & eventSource Properties Mapping
@@ -110,7 +122,7 @@ export class EmployeeDepartmentLeaveCalendarPage implements OnInit {
   onChangePayroll() {
     var date = this.leaveMonths[this.leaveMonths.findIndex(month => month.Id === this.selectedMonth)].StartDate;
     this.calendar.currentDate = new Date(date);
-    this.getLeaves(this.selectedMonth);
+    this.getLeaves(null);
   }
 
   // Selected date reange and hence title changed
@@ -143,5 +155,9 @@ export class EmployeeDepartmentLeaveCalendarPage implements OnInit {
   doRefresh(event){
     this.ngOnInit();
     event.target.complete();
+  }
+
+  pullToRefreshData(refresher) {
+    this.loadData(refresher);
   }
 }
