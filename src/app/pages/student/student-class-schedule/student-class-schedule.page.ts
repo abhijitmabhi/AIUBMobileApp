@@ -31,18 +31,15 @@ export class StudentClassSchedulePage implements OnInit {
     let currentDateTime = new Date();
     let fromDateTime = this.datePipe.transform(currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
     let toDateTime = this.datePipe.transform(currentDateTime.setDate(currentDateTime.getDate()+5),'yyyy-MM-dd HH:mm:ss.SSS');
-    this.loadingService.loadingStart();
     this.studentClassSceduleService.getStudentClassSchedule(fromDateTime, toDateTime).subscribe(response => {
-      this.loadingService.loadingDismiss();
       let result = response;
       if(result.HasError){
-        console.log(result.Messages);
+        //Handle error
       }else{
         this.classSchedules = result.Data;
       }
     },
       error => {
-        this.loadingService.loadingDismiss();
         let errorResponse = error;
         console.log(errorResponse.error.Message);
     });

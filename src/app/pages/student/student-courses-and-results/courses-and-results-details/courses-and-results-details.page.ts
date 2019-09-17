@@ -35,8 +35,6 @@ export class CoursesAndResultsDetailsPage implements OnInit {
 
   onChangeCourse() {
 
-    this.loadingService.loadingStart();
-
     this.course = JSON.parse(localStorage.getItem('course'));
     this.course = this.dataService.serviceData;
 
@@ -51,14 +49,16 @@ export class CoursesAndResultsDetailsPage implements OnInit {
       this.finaltermResult = res.Data.Exams[1];
       this.teachers = res.Data.Section.Teachers;
       this.numberOfTeachers = this.teachers.length;
-      // console.log(res);
     });
-
-    this.loadingService.loadingDismiss();
   }
 
   isExpanded(numberOfTeachers:any){
     return numberOfTeachers == 0 || numberOfTeachers == 1 ? true : false;
+  }
+
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
   }
 }
 

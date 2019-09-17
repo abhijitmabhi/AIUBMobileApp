@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { CommonService } from 'src/app/services/common/common.service';
 import { Router } from '@angular/router';
+import { DataService } from '../dataService/data-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class PushNotificationService {
       private oneSignal: OneSignal,
       private commonService : CommonService,
       private alertController: AlertController,
-      private router:Router
+      private router:Router,
+      private dataService: DataService
   ) { }
 
   oneSignalSubscription(){
@@ -27,12 +29,8 @@ export class PushNotificationService {
       this.oneSignal.handleNotificationOpened().subscribe((res) => {
         // do something when notification is opened
         localStorage.setItem('notification', JSON.stringify(res.notification.payload.additionalData.ID));
-        if(res.notification.payload.additionalData.URL === "notifications"){
-          this.router.navigateByUrl(`/${res.notification.payload.additionalData.URL}`);
-        }
-        let urls = res.notification.payload.additionalData.URL.split('/');
-        this.router.navigate([`${urls[0]}`, `${urls[1]}`]);
-        // this.router.navigateByUrl(`/${res.notification.payload.additionalData.URL}`);
+        // this.router.navigateByUrl('/notifications');
+        this.router.navigateByUrl(`/${res.notification.payload.additionalData.Url}`);
       });
       
       this.oneSignal.endInit();  

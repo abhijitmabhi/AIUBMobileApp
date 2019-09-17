@@ -342,7 +342,7 @@ export class EmployeeHomePage implements OnInit {
   /* Refresh the whole page */
 
   doRefresh(event){
-    this.ionViewWillEnter();
+    this.ngOnInit();
     event.target.complete();
   }
 }

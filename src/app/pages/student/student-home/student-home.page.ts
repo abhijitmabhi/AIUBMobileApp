@@ -109,20 +109,17 @@ export class StudentHomePage implements OnInit {
   getClassSchedule() {
     let fromDateTime = this.datePipe.transform(this.currentDateTime,'yyyy-MM-dd HH:mm:ss.SSS');
     let toDateTime = this.datePipe.transform(this.currentDateTime.setDate(this.currentDateTime.getDate()+1),'yyyy-MM-dd HH:mm:ss.SSS');
-    // this.loadingService.loadingStart();
     this.studentClassSceduleService.getStudentClassSchedule(fromDateTime, toDateTime).subscribe(response => {
-      // this.loadingService.loadingDismiss();
       let result = response;
       if(result.HasError){
-        console.log(result.Messages);
+        //Show error here
       }else{
         this.classSchedules = result.Data;
       }
     },
       error => {
-        // this.loadingService.loadingDismiss();
         let errorResponse = error;
-        console.log(errorResponse.error.Message);
+        // console.log(errorResponse.error.Message);
     });
   }
 
@@ -195,7 +192,7 @@ export class StudentHomePage implements OnInit {
   /* Refresh the whole page */
 
   doRefresh(event){
-    this.ionViewWillEnter();
+    this.ngOnInit();
     event.target.complete();
   }
 

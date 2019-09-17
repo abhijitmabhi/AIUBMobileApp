@@ -142,7 +142,7 @@
             <svg:g ngx-bullet-list-preset></svg:g>
           </ngx-content-loading>
         </div> -->
-
+      <ion-progress-bar *ngIf="!semesterData" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
       <div *ngIf="!semesterData">
         <ion-list>
           <ion-item *ngFor="let item of [].constructor(5)">

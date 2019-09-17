@@ -19,6 +19,7 @@ export class NotificationDetails implements OnInit {
     private dataService: DataService
     ) {
     this.unregisterBackButtonAction = this.platform.backButton.subscribeWithPriority(0, () => {
+      this.CloseModal();
     });
   }
 

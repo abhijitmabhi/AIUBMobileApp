@@ -13,7 +13,7 @@
           <ion-refresher-content refreshingSpinner="circles">
           </ion-refresher-content>
         </ion-refresher>
-      <ion-progress-bar [hidden]="noteList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+      <ion-progress-bar [hidden]="!noteList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
     
       <div *ngIf="!noteList">
           <ion-list>

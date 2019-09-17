@@ -9,6 +9,11 @@ export class DataService {
   test:any;
   isModalOn = false;
   isFirstTime = false;
+
+  //these variables used only for notification tap
+  notification_notificationId:any;
+  notification_sectionId:any;
+
   constructor(public platform: Platform){
   }
 

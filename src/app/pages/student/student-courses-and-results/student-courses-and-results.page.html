@@ -7,6 +7,34 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-progress-bar *ngIf="!courseList" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+  <div *ngIf="!courseList">
+    <ion-list>
+      <ion-item *ngFor="let item of [].constructor(5)">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
   <div class="subMenuPanel" style="background-color: whitesmoke;">
     <ion-item style="width: 100%; padding: 10px; background-color: whitesmoke;">
       <ion-label style="width:20%;">Semester: </ion-label>
@@ -21,7 +49,7 @@
         (click)="details(course.Section.ID, course.Section.Description, course?.Result?.ResultantGrade?.Grade,course?.Result?.Mark,course?.Result?.Bouns  )">
         <mat-card-content>
           <ion-row>
-          <!-- strip-column -->
+            <!-- strip-column -->
             <ion-col class="strip-col"></ion-col>
             <!-- course & grade column -->
             <ion-col>
@@ -33,7 +61,8 @@
               </ion-row>
               <!-- course teachers -->
               <ion-row>
-                <ion-label class="course-teacher-label">Course Teacher(s): {{ course?.Section?.FacaltyNames }}</ion-label>
+                <ion-label class="course-teacher-label">Course Teacher(s): {{ course?.Section?.FacaltyNames }}
+                </ion-label>
               </ion-row>
               <ion-row>
                 <!-- mid term result -->
@@ -42,17 +71,19 @@
                     <ion-label class="grade-text" *ngIf="course?.MidtermResult != 'Pending'">
                       <span [hidden]="course?.MidtermResult?.Bonus == '0'">
                         Mid:
-                          {{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})
+                        {{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}}/+{{course?.MidtermResult?.Bonus}})
                       </span>
                       <span [hidden]="course?.MidtermResult?.Bonus != '0'">
                         Mid:
-                          {{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}})
+                        {{course?.MidtermResult?.ResultantGrade?.Grade}}({{course?.MidtermResult?.Mark}})
                       </span>
                     </ion-label>
-                    <ion-label class="grade-text" *ngIf="course?.MidtermResult == 'Pending' && course?.Result != 'Pending'">
+                    <ion-label class="grade-text"
+                      *ngIf="course?.MidtermResult == 'Pending' && course?.Result != 'Pending'">
                       Mid: -(-)
                     </ion-label>
-                    <ion-label class="grade-text" *ngIf="course?.MidtermResult == 'Pending' && course?.Result == 'Pending'">
+                    <ion-label class="grade-text"
+                      *ngIf="course?.MidtermResult == 'Pending' && course?.Result == 'Pending'">
                       Mid: {{ course?.MidtermResult }}
                     </ion-label>
                   </ion-chip>
@@ -70,10 +101,12 @@
                         {{course?.FinaltermResult?.ResultantGrade?.Grade}}({{course?.FinaltermResult?.Mark}})
                       </span>
                     </ion-label>
-                    <ion-label class="grade-text" *ngIf="course?.FinaltermResult == 'Pending' && course?.Result == 'Pending'">
+                    <ion-label class="grade-text"
+                      *ngIf="course?.FinaltermResult == 'Pending' && course?.Result == 'Pending'">
                       Final: {{ course?.FinaltermResult }}
                     </ion-label>
-                    <ion-label class="grade-text" *ngIf="course?.FinaltermResult == 'Pending' && course?.Result != 'Pending'">
+                    <ion-label class="grade-text"
+                      *ngIf="course?.FinaltermResult == 'Pending' && course?.Result != 'Pending'">
                       Final: -(-)
                     </ion-label>
                   </ion-chip>
@@ -83,14 +116,14 @@
                   <ion-chip class="grade-chip" color="primary">
                     <ion-label class="grade-text" *ngIf="course?.Result != 'Pending'">
                       <span [hidden]="course?.Result?.Bouns == '0'">
-                          Total:
-                            {{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})
+                        Total:
+                        {{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}}/+{{course?.Result?.Bouns}})
                       </span>
                       <span [hidden]="course?.Result?.Bouns != '0'">
                         Total:
-                          {{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}})
+                        {{course?.Result?.ResultantGrade?.Grade}}({{course?.Result?.Mark}})
                       </span>
-                      
+
                     </ion-label>
                     <ion-label class="grade-text" *ngIf="course?.Result == 'Pending'">
                       Total: {{ course?.Result }}

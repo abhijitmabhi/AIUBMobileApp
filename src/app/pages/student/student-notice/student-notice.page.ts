@@ -31,10 +31,8 @@ export class StudentNoticePage implements OnInit {
 
   getSectionNoticesByID() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.loadingService.loadingStart();
       this.sectionId = params['sectionId'];
       this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(res => {
-        this.loadingService.loadingDismiss();
         this.extraData = res.ExtraData;
         if(res && !res.HasError){
           if(res.Data){

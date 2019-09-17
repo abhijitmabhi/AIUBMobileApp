@@ -116,5 +116,10 @@ export class StudentCoursesAndResultsPage implements OnInit {
     };
     this.router.navigate(['courses-and-results-details']);
   }
+
+  doRefresh(event){
+    this.ngOnInit();
+    event.target.complete();
+  }
 }
 

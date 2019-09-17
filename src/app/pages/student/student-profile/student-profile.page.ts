@@ -49,13 +49,10 @@ export class StudentProfilePage implements OnInit {
   }
 
   getProfile() {
-    this.loadingService.loadingStart();
     this.profileService.getStudentProfile().subscribe(res => {
-      this.loadingService.loadingDismiss();
       this.studentProfile = res.Data;
     },
       error => {
-        this.loadingService.loadingDismiss();
         this.alertService.alertError("Something went wrong");
       });
   }
@@ -67,8 +64,7 @@ export class StudentProfilePage implements OnInit {
   }
 
   doRefresh(event){
-    this.getProfile();
-    this.getUserProfileImage();
+    this.ngOnInit();
     event.target.complete();
   }
 

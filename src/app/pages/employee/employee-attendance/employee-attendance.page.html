@@ -10,7 +10,7 @@
       </ion-refresher-content>
   </ion-refresher>
   <!-- <mat-progress-bar mode="indeterminate" [color]="color" [hidden]="attendanceList"></mat-progress-bar> -->
-  <ion-progress-bar [hidden]="attendanceList" type="indeterminate" color="danger" value="0.5" ></ion-progress-bar>
+  
   <ion-item style="width: 100%; padding-top: 10px; padding-left: 10px; padding-right: 10px;">
     <ion-label>Select Month</ion-label>
     <ion-select placeholder="Select One" [(ngModel)]='nrSelect' (ionChange)="onChangePayroll()">
@@ -38,8 +38,9 @@
         <b>Total by FI-LO</b>
       </div> -->
     </mat-list-item>
+    
     <mat-divider></mat-divider>
-
+    <ion-progress-bar [hidden]="attendanceList" type="indeterminate" color="danger" value="0.5" ></ion-progress-bar>
     <div *ngIf="!attendanceList">
         <ion-list>
           <ion-item *ngFor="let item of [].constructor(8)">

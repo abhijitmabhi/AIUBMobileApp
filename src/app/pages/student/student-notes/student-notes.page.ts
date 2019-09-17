@@ -32,10 +32,8 @@ export class StudentNotesPage implements OnInit {
 
   getSectionNoticesByID() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.loadingService.loadingStart();
       this.sectionId = params['sectionId'];
       this.notesService.getNotesBySection(this.sectionId,0,100).subscribe(res => {
-        this.loadingService.loadingDismiss();
         if(res && !res.HasError){
           this.extraData = res.ExtraData;
           if(res.Data){
@@ -43,13 +41,14 @@ export class StudentNotesPage implements OnInit {
               this.flag = true;
             }
             let Data = res.Data;
-            this.noteList = Data.reverse();
+            // this.noteList = Data.reverse();
+            this.noteList = Data;
           }
         }
       },
       error => {
         let errorResponse = error;
-        console.log(errorResponse.error.Message);
+        // console.log(errorResponse.error.Message);
       });
     })
    

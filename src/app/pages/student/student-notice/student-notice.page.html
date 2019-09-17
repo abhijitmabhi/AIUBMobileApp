@@ -9,8 +9,8 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content refreshingSpinner="circles">
-      </ion-refresher-content>
+    <ion-refresher-content refreshingSpinner="circles">
+    </ion-refresher-content>
   </ion-refresher>
   <ion-item color="secondary" class="ion-text-center" slot="fixed">
     <ion-label>
@@ -18,19 +18,40 @@
     </ion-label>
   </ion-item>
   <ion-item class="ion-text-center" slot="fixed" *ngIf="flag">
-    <ion-label >
+    <ion-label>
       <ion-note color="danger">No Notice Available!</ion-note>
     </ion-label>
   </ion-item>
-  <ion-list style="padding: 0px; margin-top: 40px !important;">
-      <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
+  <ion-progress-bar [hidden]="!notices" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
+  <div *ngIf="!notices">
+    <ion-list>
+      <ion-item *ngFor="let item of [].constructor(10)">
         <ion-thumbnail slot="start">
-          <img src="assets/icon/reminder.png">
+          <ion-skeleton-text animated></ion-skeleton-text>
         </ion-thumbnail>
         <ion-label>
-          <h2>{{notice.Subject}}</h2>
-          <p>{{notice.PostDate}}</p>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
         </ion-label>
       </ion-item>
     </ion-list>
+  </div>
+  <ion-list style="padding: 0px; margin-top: 40px !important;">
+    <ion-item *ngFor="let notice of notices" (click)="readNotice(notice)">
+      <ion-thumbnail slot="start">
+        <img src="assets/icon/reminder.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{notice.Subject}}</h2>
+        <p>{{notice.PostDate}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
