@@ -33,15 +33,18 @@
 
 .menuTile{
     margin: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
 }
 
 .menuTileHeader{
     background: var(--ion-color-primary) !important;
+    min-height: 48px;
+    padding: 0 12px !important;
 }
 
 .menuTileHeaderTitle{
     color: white;
-    font-size: 13px;
+    /* font-size: 13px; */
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -64,7 +67,7 @@
 
   ::ng-deep .menuTile .mat-expansion-panel-body {
     padding: 5px !important;
-    background-color: #f3efef;
+    background-color: white !important;
 }
 
   .card-content-ios {
@@ -79,6 +82,17 @@
 
 .icContent{
     text-align: center;
+}
+
+.title_center{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); */
 }
 
 .menu-card {
@@ -119,12 +133,12 @@
 
 .card-content-ios {
     padding: 10px !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
 }
 
 .card-content-md {
     padding: 10px !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
     line-height: 1.5;
 }
 
@@ -175,5 +189,18 @@
 
 .horizontalMenuCard{
     min-width: 140px;;
+}
+
+.singleMenu{
+    min-height: 48px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 5px;
+    border-radius: 4px;
+    background-color: #004ea2;
+    color: whitesmoke;
+    padding: 0px 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
 }
 

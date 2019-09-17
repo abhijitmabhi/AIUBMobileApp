@@ -2,11 +2,11 @@
   <ion-toolbar class="appHeader">
     <ion-title>More</ion-title>
 
-    <ion-buttons slot="secondary">
+    <!-- <ion-buttons slot="secondary">
       <ion-button (click)="logout()">
         <ion-icon slot="icon-only" name="ios-log-out"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -35,7 +35,7 @@
   </ion-card> -->
 
   <!-- Manage Leave Manu -->
-  <ion-row class="horizontalListMenu">
+  <ion-row [hidden]="true" class="horizontalListMenu">
     <ion-item-divider>
       <div class="package-rating-detail">
         <mat-icon class="material-icons menuDividerIcon">notes</mat-icon>
@@ -83,7 +83,73 @@
   </ion-row>
 
 
+  <!-- Manage Leaves Manu -->
+  <mat-expansion-panel [expanded]="true" class="menuTile">
+    <mat-expansion-panel-header class="menuTileHeader" [collapsedHeight]="'auto'"
+    [expandedHeight]="'auto'" matRipple [matRippleCentered]="true">
+      <mat-panel-title class="menuTileHeaderTitle">
+        <div class="package-rating-detail">
+          <mat-icon class="material-icons">event</mat-icon>
+          <label>Manage Leaves</label>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-panel-description class="subMenuPanel">
+      <ion-row>
+        <ion-col>
+          <div class="menu-div">
+            <ion-card class="ion-activatable" (click)="goToDepartmentLeaveCalendar()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="md-calendar"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content needExtraHeight">
+                <div class="icContent title_center">
+                  <span class="menu-title">Dept. Leave Calender</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
 
+        <ion-col>
+          <div class="menu-div">
+            <ion-card class="ion-activatable">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-card-header class="subMenuHeader">
+                <ion-card-title class="hTitle">
+                  <ion-icon class="subMenuIcon" name="ios-list"></ion-icon>
+                </ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="menu-card-content needExtraHeight">
+                <div class="icContent title_center">
+                  <span class="menu-title">Leave Allocation</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-row>
+        <ion-col>
+        </ion-col>
+
+        <ion-col>
+          
+        </ion-col>
+      </ion-row> -->
+    </mat-panel-description>
+  </mat-expansion-panel>
+
+  <div class="singleMenu" matRipple [matRippleCentered]="true" (click)="logout()">
+    <div class="package-rating-detail">
+      <mat-icon class="material-icons">exit_to_app</mat-icon>
+      <label class="menuTileHeaderTitle">LOGOUT</label>
+    </div>
+  </div>
 
 
   <span [hidden]="true">

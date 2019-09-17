@@ -46,7 +46,7 @@ export class EmployeeHomePage implements OnInit {
   color = 'warn';
   mode = 'indeterminate';
   value = 50;
-  noLeave: any;
+  noLeave:boolean = true;
 
   constructor(
     private router: Router,
@@ -73,7 +73,6 @@ export class EmployeeHomePage implements OnInit {
       this.getCurrentUserInfo();
       this.getUserProfileImage();
       this.getSemesterList();
-      this.createPieChart();
     }
   }
 
@@ -124,7 +123,6 @@ export class EmployeeHomePage implements OnInit {
         }
         else {
           this.noLeave = false;
-          console.log(this.leaveAllocationData);
           this.createPieChart();
         }
       }
