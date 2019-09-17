@@ -73,6 +73,7 @@ export class EmployeeHomePage implements OnInit {
       this.getCurrentUserInfo();
       this.getUserProfileImage();
       this.getSemesterList();
+      this.createPieChart();
     }
   }
 

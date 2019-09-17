@@ -10,57 +10,60 @@ import { DataService } from '../dataService/data-service.service';
 })
 export class PushNotificationService {
   signal_app_id: string = "b945d1b3-030a-46ca-895b-ec97919f689a";
-  firebase_id:string = "860919846901";
+  firebase_id: string = "860919846901";
   constructor(
-      private oneSignal: OneSignal,
-      private commonService : CommonService,
-      private alertController: AlertController,
-      private router:Router,
-      private dataService: DataService
+    private oneSignal: OneSignal,
+    private commonService: CommonService,
+    private alertController: AlertController,
+    private router: Router,
+    private dataService: DataService
   ) { }
 
-  oneSignalSubscription(){
-      this.oneSignal.startInit(this.signal_app_id, this.firebase_id);
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-      this.oneSignal.handleNotificationReceived().subscribe((res) => {
+  oneSignalSubscription() {
+    this.oneSignal.startInit(this.signal_app_id, this.firebase_id);
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    this.oneSignal.handleNotificationReceived().subscribe((res) => {
       // do something when notification is received
-      });
-  
-      this.oneSignal.handleNotificationOpened().subscribe((res) => {
-        // do something when notification is opened
-        localStorage.setItem('notification', JSON.stringify(res.notification.payload.additionalData.ID));
-        // this.router.navigateByUrl('/notifications');
-        this.router.navigateByUrl(`/${res.notification.payload.additionalData.Url}`);
-      });
-      
-      this.oneSignal.endInit();  
-      // this.oneSignal.setSubscription(true);
+    });
+
+    this.oneSignal.handleNotificationOpened().subscribe((res) => {
+      // do something when notification is opened
+      localStorage.setItem('notification', JSON.stringify(res.notification.payload.additionalData.ID));
+      if (res.notification.payload.additionalData.URL === "notifications") {
+        this.router.navigateByUrl(`/${res.notification.payload.additionalData.URL}`);
+      }
+      let urls = res.notification.payload.additionalData.URL.split('/');
+      this.router.navigate([`${urls[0]}`, `${urls[1]}`]);
+    });
+
+    this.oneSignal.endInit();
+    // this.oneSignal.setSubscription(true);
   }
 
-  getPlayerID(){
+  getPlayerID() {
     this.oneSignal.getIds().then(obj => {
-        if(!localStorage.getItem('playerId')){
-          localStorage.setItem('playerId', obj.userId);
+      if (!localStorage.getItem('playerId')) {
+        localStorage.setItem('playerId', obj.userId);
+      }
+      this.commonService.savePLayerIDIntoDatabase(obj.userId, false).subscribe(res => {
+        if (res.Data.HasWarning) {
+          this.alertForSubscribeToOneSignal(obj.userId);
         }
-        this.commonService.savePLayerIDIntoDatabase(obj.userId, false).subscribe(res => {
-          if(res.Data.HasWarning){
-            this.alertForSubscribeToOneSignal(obj.userId);
-          }
-        });
+      });
     });
   }
 
-  getPlayerID2(playerID){
+  getPlayerID2(playerID) {
     return this.commonService.savePLayerIDIntoDatabase(playerID, true).subscribe(res => {
       console.log(res);
     });
   }
 
-  unsubscribeFromNotification(){
-      this.oneSignal.setSubscription(false);
+  unsubscribeFromNotification() {
+    this.oneSignal.setSubscription(false);
   }
 
-  async alertForSubscribeToOneSignal(playerID){
+  async alertForSubscribeToOneSignal(playerID) {
     const alert = await this.alertController.create({
       header: 'Push Notification Alert!',
       subHeader: '',
