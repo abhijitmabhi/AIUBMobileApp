@@ -31,8 +31,8 @@ export class GetStudentListPage implements OnInit {
         this.studentList = res.Data;
         this.studentCount = res.Count;
         this.studentList.forEach(element => {
-          this.sectionService.GetStudentPhoto(element.User.PictureLocation).subscribe(res => {
-            element.User.PictureLocation = res;
+          this.sectionService.GetStudentPhoto(element.User.PictureLocation).subscribe(result => {
+            element.User.PictureLocation1 = result;
           })
         });
       });
@@ -47,7 +47,6 @@ export class GetStudentListPage implements OnInit {
    //MODAL
    viewStudentDetails(stdList: any) {
     this.dataService.isModalOn = true;
-    console.log(stdList);
     this.modalController.create({
       component: StudentDetailsComponent,
       componentProps: {

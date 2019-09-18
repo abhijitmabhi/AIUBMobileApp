@@ -12,6 +12,7 @@
     <ion-refresher-content refreshingSpinner="circles">
     </ion-refresher-content>
   </ion-refresher>
+  <ion-progress-bar [hidden]="!notices" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
   <ion-item color="secondary" class="ion-text-center" slot="fixed">
     <ion-label>
       {{extraData?.Description}}
@@ -22,7 +23,6 @@
       <ion-note color="danger">No Notice Available!</ion-note>
     </ion-label>
   </ion-item>
-  <ion-progress-bar [hidden]="!notices" type="indeterminate" color="danger" value="0.5"></ion-progress-bar>
   <div *ngIf="!notices">
     <ion-list>
       <ion-item *ngFor="let item of [].constructor(10)">

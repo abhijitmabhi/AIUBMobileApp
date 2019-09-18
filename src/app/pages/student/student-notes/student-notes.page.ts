@@ -126,6 +126,7 @@ export class StudentNotesPage implements OnInit {
         let path = this.file.externalRootDirectory + '/Download/';
         //Downloading the file
         this.file.writeFile(path, file.FileName, blob, { replace: true }).then(() => {
+          this.alert.Success("Please, check your DOWNLOADS folder");
           this.toastService.presentToast('Download Completed');
         }, 
         err => {

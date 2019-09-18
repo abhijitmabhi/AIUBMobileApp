@@ -38,7 +38,7 @@
     <span *ngFor="let student of studentList" (click)="viewStudentDetails(student)">
       <ion-item>
         <ion-thumbnail slot="start">
-          <ion-img class="Picture" src="{{'data:image/jpg;base64,' + student.User.PictureLocation}}"></ion-img>
+          <ion-img class="Picture" src="{{'data:image/jpg;base64,' + student?.User?.PictureLocation1}}"></ion-img>
         </ion-thumbnail>
         <ion-label class="ion-text-wrap">
           <h2>

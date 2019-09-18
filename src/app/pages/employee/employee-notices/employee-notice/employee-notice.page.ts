@@ -14,7 +14,9 @@ import { NoticeUpload } from 'src/app/modals/notice-upload/notice-upload';
 })
 export class EmployeeNoticePage implements OnInit {
   sectionId:any;
-  notices:any[] = [];
+  notices:any;
+  extraData: any;
+  flag:boolean=false;
   constructor(
     private employeeSectionService: EmployeeSectionService, 
     private activatedRoute: ActivatedRoute,
@@ -30,10 +32,15 @@ export class EmployeeNoticePage implements OnInit {
   getSectionNoticesByID() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.sectionId = params['sectionId'];
-      this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(data => {
-        if(data && !data.HasError){
-          if(data.Data){
-            let Data = data.Data;
+      this.employeeSectionService.getSectionNoticeBySectionId(this.sectionId).subscribe(res => {
+        this.extraData = res.ExtraData;
+        if(res && !res.HasError){
+          if(res.Data){
+            if(res.Count == 0){
+              this.flag = true;
+            }
+           
+            let Data = res.Data;
             this.notices = Data.reverse();
           }
         }
@@ -43,7 +50,6 @@ export class EmployeeNoticePage implements OnInit {
         console.log(errorResponse.error.Message);
       });
     })
-   
   }
 
   async readNotice(notice:any){

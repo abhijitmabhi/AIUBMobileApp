@@ -302,11 +302,14 @@ export class EmployeeHomePage implements OnInit {
       plugins: [ChartDataLabels],
       type: 'pie',
       data: {
-        labels: this.leaveAllocationData.ChartData.ChartLabels,
+        labels: this.leaveAllocationData.AllocationChartData
+        .ChartLabels,
         datasets: [{
           // label: 'Viewers in millions',
-          data: this.leaveAllocationData.ChartData.ChartValues,
-          backgroundColor: this.leaveAllocationData.ChartData.ChartColors,
+          data: this.leaveAllocationData.AllocationChartData
+          .ChartValues,
+          backgroundColor: this.leaveAllocationData.AllocationChartData
+          .ChartColors,
           borderColor: 'rgb(237, 246, 255)',// array should have same number of elements as number of dataset
           borderWidth: 2
         }]
